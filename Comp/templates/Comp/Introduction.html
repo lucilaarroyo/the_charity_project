@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+<p class="custom" align="justify"><br>
+    In this study you will have the opportunity to donate money to various charities, using an endowment
+    of  {{ endowment }}. Prior to the donation task, you will be asked to rate how deserving each charity is,
+    as well as how likely it is to benefit you or someone you know.  Throughout the study, you will also be presented
+    with questionnaires assessing your feelings, beliefs and everyday decisions.  <br>
+
+    <br><br>
+    The experiment will last about 90 minutes. Your decisions will be self-spaced and you are encouraged
+    to take short (~30-second) breaks as needed. <br>
+    <br><br>
+    You will receive {{ compensation }} for completing the experiment.
+    Additionally, as noted, you have been endowed with {{ endowment }} that you may donate to a charity or keep for
+    yourself, as you see fit.<br>
+    <br><br>
+    You are free to stop the experiment at any time you wish.
+    However, stopping before the experiment has been completed means that you will be compensated only
+    for the time that you have already participated ($5.00/half hour) and will forfeit any possible additional earnings.<br>
+</p>
+<br><br>
+<p class="custom">
+    Thank you in advance for your participation!
+</p>
+<br>
+
+<br>
+<p class="custom">
+    Press "NEXT" to begin.</p> <br>
+
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+<!--.page-header {-->
+<!--    margin-top: 20px;-->
+<!--    margin-bottom: 25px;-->
+<!--    padding-top: 10px;-->
+<!--}-->
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+{% endblock %}

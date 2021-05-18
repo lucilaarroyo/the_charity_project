@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Thank you for your participation!
+{% endblock %}
+
+{% block content %}<br>
+    <p class="custom"> The charity selected is <b>{{ charity }}</b>.<br><br>
+
+        The donation decision is <b>{{ anonymity }}</b>.
+
+    <br>
+    {% if anonymity == 'ANONYMOUS' %}
+        {% if matched_donation == 'YES' %}
+            The donation was selected to be doubled by the researchers.
+        {% else %}
+            The donation was not selected to be doubled by the researchers.
+        {% endif %}
+    {% endif %}
+
+    {% if anonymity == 'PUBLIC' %}
+        {% if listed == 'YES' %}
+            Your donation has earned you a place on the Charity Heroes' List.
+        {% else %}
+            Your donation has not earned you a place on the Charity Heroes' List.
+        {% endif %}
+    {% endif %}
+
+    <br><br>
+    The endowment was <b>{{ endowment }}</b>. <br>
+    The amount you chose to donate was <b>${{ subject_donation }}.00</b>.<br>
+    {% if matched_donation == 'YES' %}
+        The total amount that will be sent to the charity is <b>${{ total_donation }}</b>.<br>
+    {% endif %}
+    The portion of the endowment you are keeping is <b>{{ endow_portion }}.</b>
+    <br><br>
+    Your total payoff for participating in this study includes:<br>
+    - Compensation for your time = <b>{{ compensation }}</b><br>
+    - Endowment portion = <b>{{ endow_portion }}</b><br>
+    </p> <br>
+    <p class="custom">
+    You will receive a payment of <b>{{ total_subject_payoff }}</b>.
+
+
+    </p>
+
+    <br><br><br>
+
+<p class="custom0"> <i>(Please close this window once you are finished)</i> </p>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+.custom0 {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+</style>
+{% endblock %}

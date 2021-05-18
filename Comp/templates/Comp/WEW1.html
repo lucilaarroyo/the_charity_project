@@ -1,0 +1,411 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Questionnaire
+{% endblock %}
+
+{% block content %}<br>
+
+    <p class="custom2" align="justify">
+        Below are some statements about feelings and thoughts. Please select the option that best describes
+        your experience of each over the last 2 weeks.
+    </p>
+
+    <br>
+
+<div class="grid-container">
+    {{ form.non_field_errors }}
+
+    <div class="item item-0">
+        <table class="custom" cellpadding="20" cellspacing="500" >
+            <tr align="center" style="font-weight:bold" >
+                <td width="375"><pre>    </pre></td>
+                <td width="160"><pre>None of the time</pre></td>
+                <td width="160"><pre>Rarely</pre></td>
+                <td width="160"><pre>Some of the time</pre></td>
+                <td width="160"><pre>Often </pre></td>
+                <td width="160"><pre>All of the time</pre></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.0}}">
+        <table cellpadding="10" >
+
+            <tr border =0 class="custom" height="80">
+
+            {{ form.WEW1.errors }}
+            <td width="400"><pre> 1. I've been feeling optimistic <br>about the future</pre></td>
+            {% for radio in form.WEW1 %}
+                <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+            {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.1}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW2.errors }}
+                <td width="400"><pre> 2. I've been feeling useful     <br></pre></td>
+                {% for radio in form.WEW2 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.2}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW3.errors }}
+                <td width="400"><pre> 3. I've been feeling relaxed    <br></pre></td>
+                {% for radio in form.WEW3 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.3}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW4.errors }}
+                <td width="400"><pre> 4. I've been feeling interested <br>in other people</pre></td>
+                {% for radio in form.WEW4 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.4}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW5.errors }}
+                <td width="400"><pre> 5. I've had energy to spare     <br></pre></td>
+                {% for radio in form.WEW5 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.5}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW6.errors }}
+                <td width="400"><pre> 6. I've been dealing with       <br>problems well</pre></td>
+                {% for radio in form.WEW6 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.6}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW7.errors }}
+                <td width="400"><pre> 7. I've been thinking clearly   <br></pre></td>
+                {% for radio in form.WEW7 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.7}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW8.errors }}
+                <td width="400"><pre> 8. I've been feeling good about <br>myself</pre></td>
+                {% for radio in form.WEW8 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.8}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW9.errors }}
+                <td width="400"><pre> 9. I've been feeling close to   <br>other people</pre></td>
+                {% for radio in form.WEW9 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.9}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW10.errors }}
+                <td width="400"><pre> 10. I've been feeling confident <br></pre></td>
+                {% for radio in form.WEW10 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.10}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW11.errors }}
+                <td width="400"><pre> 11. I've been able to make up my<br>own mind about things</pre></td>
+                {% for radio in form.WEW11 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.11}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW12.errors }}
+                <td width="400"><pre> 12. I've been feeling loved     <br></pre></td>
+                {% for radio in form.WEW12 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.12}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW13.errors }}
+                <td width="400"><pre> 13. I've been interested in new <br>things</pre></td>
+                {% for radio in form.WEW13 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{WEW1_num.13}}">
+        <table cellpadding="10" >
+            <tr border =0 class="custom" height="80">
+
+                {{ form.WEW14.errors }}
+                <td width="400"><pre> 14. I've been feeling cheerful  <br></pre></td>
+                {% for radio in form.WEW14 %}
+                    <td align="center" width="160" ><pre>       {{ radio.tag }}</pre></td>
+                {% endfor %}
+
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+<br><br><br><br>
+<p class="custom"> Press "NEXT" to continue.</p> <br>
+<button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+pre {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+<!--	text-align: center;-->
+}
+
+table tr#ROWodd {background-color:#ededed;}
+table tr#ROWeven {background-color:white;}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+  align-content: start;
+}
+
+
+.item-0 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 1;
+  grid-row-end: 2;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-1 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: top center;
+}
+
+.item-2 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 3;
+  grid-row-end: 4;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-3 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 4;
+  grid-row-end: 5;
+  place-self: top center;
+}
+
+.item-4 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 5;
+  grid-row-end: 6;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-5 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 6;
+  grid-row-end: 7;
+  place-self: top center;
+}
+
+.item-6 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 7;
+  grid-row-end: 8;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-7 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 8;
+  grid-row-end: 9;
+  place-self: top center;
+}
+
+.item-8 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 9;
+  grid-row-end: 10;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-9 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 10;
+  grid-row-end: 11;
+  place-self: top center;
+}
+
+.item-10 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 11;
+  grid-row-end: 12;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-11 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 12;
+  grid-row-end: 13;
+  place-self: top center;
+}
+
+.item-12 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 13;
+  grid-row-end: 14;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-13 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 14;
+  grid-row-end: 15;
+  place-self: top center;
+}
+
+.item-14 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 15;
+  grid-row-end: 16;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.wew {
+  font-weight: bold  ;
+  font-size: 20px;
+  text-align: top;
+  color: black;
+  border           : 1.5em solid black;
+  width            : 1em;
+  height           : 1em;
+
+}
+</style>
+{% endblock %}

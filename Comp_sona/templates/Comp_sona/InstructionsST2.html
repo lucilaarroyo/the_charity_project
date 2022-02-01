@@ -1,0 +1,165 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Donations
+{% endblock %}
+
+{% block content %}
+
+<p class="custom" align="justify"><br>
+    The task will be the same for every charity.<br>
+    <br>
+    You will be shown 10 sliders randomly distributed across the screen. At the start of the task all sliders will
+    be positioned at the value 0. You will be given 1 minute to adjust as many sliders as you want at the value 50.
+    For each slider that is positioned at 50 when the minute runs out, you will gain ${{ slider_value }}
+    for the corresponding charity.
+    <br><br>
+
+    Below you can see a representation of the task with only two sliders. Please position each of them at 50
+    to get a sense of what the task is about.
+</p>
+
+<section>
+    <div class="grid-container" >
+        <div class="item item-1" style="margin-left:300px" >
+            <input type="range" min="0" max="100" value="0" name="ST1" class="slider" id="ST1"> <span id="value1" class="custom2"></span>
+
+        </div>
+        <div class="item item-2" style="margin-left:50px">
+            <input type="range" min="0" max="100" value="0" name="ST2" class="slider" id="ST2"> <span id="value2" class="custom2"></span>
+        </div>
+    </div>
+</section>
+
+<!--how much do you think that the work you just did is worth if you could translate the time and effort into a
+monetary amount?-->
+<!--a link to the Charity Heroes' Website will be shared with all participants that complete this experiment-->
+<!--try to upload it to github-->
+<br><br><br>
+<p class="custom"> Press "NEXT" to begin.</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    text-align: center;
+}
+
+.boxed {
+  border: 1px solid black ;
+  padding: 12px;
+}
+
+.slider{
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 300px; /* Full-width */
+  height: 10px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 5px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #008000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 5px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #008000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1000px;
+  grid-template-rows: auto auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  justify-content: center;
+  align-content: start;
+  margin-left: 140px;
+}
+
+.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.item-2 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+var slider1 = document.getElementById("ST1");
+var output1 = document.getElementById("value1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+
+var slider2 = document.getElementById("ST2");
+var output2 = document.getElementById("value2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+</script>
+{% endblock %}

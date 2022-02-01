@@ -18,53 +18,19 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
 
     {
-        'name': 'Comp',
-        'display_name': "Comp",
+        'name': 'Comp_sona',
+        'display_name': "Comp_sona",
         'num_demo_participants': 2,
-        'app_sequence': ['Comp'],
+        'app_sequence': ['Comp_sona'],
     },
 
     # {
-    #     'name': 'accom_dynam',
-    #     'display_name': "Accom dy",
+    #     'name': 'Comp',
+    #     'display_name': "Comp",
     #     'num_demo_participants': 2,
-    #     'app_sequence': ['accom_dynam'],
+    #     'app_sequence': ['Comp'],
     # },
 
-    # {
-    #     'name': 'accom_dynam_single',
-    #     'display_name': "Accom dy single",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['accom_dynam_single'],
-    # },
-
-    # {
-    #     'name': 'Stag_Hunt',
-    #     'display_name': "Stag Hunt",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['Stag_Hunt'],
-    # },
-
-    # {
-    #     'name': 'dictator',
-    #     'display_name': "Dictator Game",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['dictator', 'payment_info'],
-    # },
-
-    # {
-    #     'name': 'survey',
-    #     'display_name': "Survey",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['survey', 'payment_info'],
-    # },
-
-    # {
-    #     'name': 'surveytwo',
-    #     'display_name': "Surveytwo",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['surveytwo',],
-    # },
 
 
 
@@ -89,6 +55,11 @@ ROOMS = [
     {
         'name': 'live_demo',
         'display_name': 'Room for live demo (no participant labels)',
+    },
+
+{
+        'name': 'sona',
+        'display_name': 'SONA',
     },
 ]
 

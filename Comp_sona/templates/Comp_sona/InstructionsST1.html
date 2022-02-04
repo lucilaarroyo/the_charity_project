@@ -1,0 +1,104 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Donations
+{% endblock %}
+
+{% block content %}
+
+<p class="custom" align="justify"><br>
+    Each decision will be randomly classified as <b>Anonymous or Public</b>. You will know the
+    classification before you have to submit your choice. Half decisions will be Anonymous and half will be Public.<br>
+</p>
+    <ul class="custom" align="justify">
+    <li>The total amount of your <b>Anonymous</b> donations will have a 50% chance of being doubled by the researchers.
+        <b>Anonymous</b> donations will not be associated with your name or any identifiable information.<br>
+    </li>
+    <br>
+    <li><b>Public</b> donations will have no possibility of being doubled.
+        However, if the total amount of your <b>Public</b> donations is large enough,
+        you will be listed (if you consent) as a <b>CHARITY HEROE</b> on a website linked to the Lead Researcher's Laboratory:
+        <b>The Charity Project</b> <i>(see a preview in the image below)</i>. <br>
+    </li>
+
+    </ul>
+    <p class="custom" align="justify">  </p>
+    <br><br>
+<section class="picture"><img src="{% static 'Comp_sona/pics/web pic.jpg' %}" width="100%"></section>
+<br><br>
+<p class="custom"> All study participants will be emailed the website's link address.</p>
+<br><br>
+<section class="boxed">
+
+    <p class="custom" align="justify"><b>Permission to publish your name on The Charity Project's website*</b><br><br>
+        The research team would like your permission to publish your name on The Charity Project's website.
+        Please check your level of permission below:</p><br>
+{{ form.non_field_errors }}
+    {{ form.consent.errors }}
+        {{ form.name_consent.errors }}
+
+        <table class="custom" style="margin: 15px">
+            <tr >
+                <td ><input type="radio" name="consent" value ="1"> Yes, the research team may publish my name in The Charity Project's website.</td>
+            </tr>
+            <tr><td style="padding-left:28px"><i>Please type your preferred name in the box:</i> <input type="text" name="name_consent" size="26"> <br><br></td></tr>
+            <tr >
+                <td ><input type="radio" name="consent" value ="0"> No, the research team may <b><u>not</u></b> publish my name in The Charity Project's website.</td>
+            </tr>
+        </table>
+<br>
+    <p class="custom2"> <b>* Note: If you prefer not to give permission, your decisions will be for hypothetical money. Real money will not
+        be sent to the charities.</b></p>
+</section>
+
+<br><br><br>
+<p class="custom"> Press "NEXT" to learn more about the short tasks.</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    text-align: center;
+}
+
+.boxed {
+  border: 1px solid black ;
+  padding: 12px;
+
+
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

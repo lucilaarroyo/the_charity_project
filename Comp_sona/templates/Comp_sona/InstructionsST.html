@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Donations
+{% endblock %}
+
+{% block content %}
+
+<p class="custom" align="justify"><br>
+    You will have the opportunity to gain money for the charities you just rated.<br>
+    All charities selected for this study are highly rated for financial health, accountability, and transparency
+    by Charity Navigator. Charity Navigator is a non-profit organization whose ratings seek to show donors
+    how efficiently a charity will use their support.
+    <br><br>
+
+    You will be presented with the 60 charities once again.
+    <b>For each charity you will need to decide whether or not you will want to complete a short task at the end of the study
+        in exchange for money being sent to that charity. </b>
+
+
+    <br><br>
+    You can choose to complete any number of tasks between 0 and {{ max_tasks }}.Only one task per charity.<br>
+    You will see each charity one time. Once you submit your decision, you will not be able to go back.
+    If you reach the maximum of {{ max_tasks }} tasks, you will have to select "NO" for each remaining charity.
+    <br><br>
+    <b>The research team will send the selected charities the corresponding donations.</b>
+    <br><br>
+
+
+</p>
+
+<p class="custom"> Press "NEXT" to continue with the instructions.</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    text-align: center;
+}
+
+.boxed {
+  border: 1px solid black ;
+  padding: 12px;
+
+
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

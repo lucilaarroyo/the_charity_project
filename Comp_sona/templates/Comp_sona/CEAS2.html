@@ -1,0 +1,313 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Questionnaire <i>continued</i>
+{% endblock %}
+
+{% block content %}
+<br>
+    <p class="custom3">
+        <b>When others are distressed or upset by things...</b>
+    </p>
+    <br>
+
+<div class="grid-container">
+    {{ form.non_field_errors }}
+    <div class="{{CEAS2_num.0}}">
+        <table border =0 class="custom" width="85%">
+
+            <tr id="ROWodd"><td style="padding:12px" colspan="10">I direct <i>attention</i> to what is likely to be helpful to others.</td></tr>
+            <tr> <td colspan="10" height="10px"></td> </tr>
+            <tr>
+                <td width="8.5%"><pre><b> Never </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>  Always</b></pre></td>
+            </tr>
+                {{ form.CEAS21.errors }}
+                <tr>
+                    {% for radio in form.CEAS21 %}
+                    <td align="center"><pre>    {{ radio.tag }}</pre> </td>
+                    {% endfor %}
+                </tr>
+                <tr align="center" class="custom2" >
+                    <td><pre>1</pre></td>
+                    <td><pre>2</pre></td>
+                    <td><pre>3</pre></td>
+                    <td><pre>4</pre></td>
+                    <td><pre>5</pre></td>
+                    <td><pre>6</pre></td>
+                    <td><pre>7</pre></td>
+                    <td><pre>8</pre></td>
+                    <td><pre>9</pre></td>
+                    <td><pre>10</pre></td>
+                </tr>
+            <tr height="25"><td colspan="10"></td></tr>
+        </table>
+    </div>
+
+    <div class="{{CEAS2_num.1}}">
+        <table border =0 class="custom" width="85%">
+            <tr id="ROWodd"><td style="padding:12px" colspan="10">I <i>think about</i> and <i>come up</i> with helpful ways
+                for them to cope with their distress.</td></tr>
+            <tr> <td colspan="10" height="10px"></td> </tr>
+            <tr>
+                <td width="8.5%"><pre><b> Never </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>  Always</b></pre></td>
+            </tr>
+                {{ form.CEAS22.errors }}
+                <tr>
+                    {% for radio in form.CEAS22 %}
+                    <td align="center"><pre>    {{ radio.tag }}</pre> </td>
+                    {% endfor %}
+                </tr>
+                <tr align="center" class="custom2" >
+                    <td><pre>1</pre></td>
+                    <td><pre>2</pre></td>
+                    <td><pre>3</pre></td>
+                    <td><pre>4</pre></td>
+                    <td><pre>5</pre></td>
+                    <td><pre>6</pre></td>
+                    <td><pre>7</pre></td>
+                    <td><pre>8</pre></td>
+                    <td><pre>9</pre></td>
+                    <td><pre>10</pre></td>
+                </tr>
+            <tr height="25"><td colspan="10"></td></tr>
+        </table>
+    </div>
+
+    <div class="{{CEAS2_num.2}}">
+        <table border =0 class="custom" width="85%">
+            <tr id="ROWodd"><td style="padding:12px" colspan="10">I <i>don't know</i> how to help other people when they are distressed.</td></tr>
+            <tr> <td colspan="10" height="10px"></td> </tr>
+            <tr>
+                <td width="8.5%"><pre><b> Never </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>  Always</b></pre></td>
+            </tr>
+                {{ form.CEAS23.errors }}
+                <tr>
+                    {% for radio in form.CEAS23 %}
+                    <td align="center"><pre>    {{ radio.tag }}</pre> </td>
+                    {% endfor %}
+                </tr>
+                <tr align="center" class="custom2" >
+                    <td><pre>1</pre></td>
+                    <td><pre>2</pre></td>
+                    <td><pre>3</pre></td>
+                    <td><pre>4</pre></td>
+                    <td><pre>5</pre></td>
+                    <td><pre>6</pre></td>
+                    <td><pre>7</pre></td>
+                    <td><pre>8</pre></td>
+                    <td><pre>9</pre></td>
+                    <td><pre>10</pre></td>
+                </tr>
+            <tr height="25"><td colspan="10"></td></tr>
+        </table>
+    </div>
+
+    <div class="{{CEAS2_num.3}}">
+        <table border =0 class="custom" width="85%">
+            <tr id="ROWodd"><td style="padding:12px" colspan="10" >I take the <i>actions</i> and <i>do the things</i> that will be helpful to others.</td></tr>
+            <tr> <td colspan="10" height="10px"></td> </tr>
+            <tr>
+                <td width="8.5%"><pre><b> Never </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>  Always</b></pre></td>
+            </tr>
+                {{ form.CEAS24.errors }}
+                <tr>
+                    {% for radio in form.CEAS24 %}
+                    <td align="center"><pre>    {{ radio.tag }}</pre> </td>
+                    {% endfor %}
+                </tr>
+                <tr align="center" class="custom2" >
+                    <td><pre>1</pre></td>
+                    <td><pre>2</pre></td>
+                    <td><pre>3</pre></td>
+                    <td><pre>4</pre></td>
+                    <td><pre>5</pre></td>
+                    <td><pre>6</pre></td>
+                    <td><pre>7</pre></td>
+                    <td><pre>8</pre></td>
+                    <td><pre>9</pre></td>
+                    <td><pre>10</pre></td>
+                </tr>
+            <tr height="25"><td colspan="10"></td></tr>
+        </table>
+    </div>
+
+    <div class="{{CEAS2_num.4}}">
+        <table border =0 class="custom" width="85%">
+            <tr id="ROWodd"><td style="padding:12px" colspan="10">I express feelings of <i>support</i>, <i>helpfulness</i> <i>and</i> <i>encouragement</i>
+                to others.</td></tr>
+            <tr> <td colspan="10" height="10px"></td> </tr>
+            <tr>
+                <td width="8.5%"><pre><b> Never </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>       </b></pre></td>
+                <td width="8.5%"><pre><b>  Always</b></pre></td>
+            </tr>
+                {{ form.CEAS25.errors }}
+                <tr>
+                    {% for radio in form.CEAS25 %}
+                    <td align="center"><pre>    {{ radio.tag }}</pre> </td>
+                    {% endfor %}
+                </tr>
+                <tr align="center" class="custom2" >
+                    <td><pre>1</pre></td>
+                    <td><pre>2</pre></td>
+                    <td><pre>3</pre></td>
+                    <td><pre>4</pre></td>
+                    <td><pre>5</pre></td>
+                    <td><pre>6</pre></td>
+                    <td><pre>7</pre></td>
+                    <td><pre>8</pre></td>
+                    <td><pre>9</pre></td>
+                    <td><pre>10</pre></td>
+                </tr>
+        </table>
+    </div>
+
+</div>
+<br><br>
+<p class="custom"> Press "NEXT" to continue.</p> <br>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+
+.otree-body{
+    max-width: 1280px;
+}
+
+pre{
+    font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom3 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table tr#ROWodd {background-color:#ededed;}
+table tr#ROWeven {background-color:white;}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  <!--grid-column-gap: 20px;-->
+  grid-row-gap: 20px;
+  align-content: start;
+}
+
+
+.item-1 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 1;
+  grid-row-end: 2;
+  place-self: top center;
+}
+
+.item-2 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: top center;
+}
+
+.item-3 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 3;
+  grid-row-end: 4;
+  place-self: top center;
+}
+
+.item-4 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 4;
+  grid-row-end: 5;
+  place-self: top center;
+}
+
+.item-5 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 5;
+  grid-row-end: 6;
+  place-self: top center;
+}
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

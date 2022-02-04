@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Ratings
+{% endblock %}
+
+{% block content %}<br>
+
+<p class="custom" align="justify">
+    Next you will be presented with 60 charities, one at a time. <br><br>
+    For each charity, you will be shown its name, a picture, and its mission.
+    <br><br><br>
+    For each charity, please rate:<br>
+    <ol class="custom" align="justify">
+    <li> How deserving of assistance you believe it is. </li>
+    <br>
+    <li> How likely it is that you or someone you know will directly benefit from its mission.</li>
+    </ol>
+
+</p>
+
+<br><br>
+<p class="custom"> Press "NEXT" to begin.</p><br>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

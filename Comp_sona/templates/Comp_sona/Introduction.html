@@ -1,0 +1,89 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}<br>
+<div id="fs-request">
+    <p class="custom"> Please open this page in <b>FULL SCREEN.</b></p>
+    <p class="custom2"> Press "F11" to full screen the page on a Windows computer. Press "Command-Control-F" on a Mac.</p>
+    <br>
+    <p class="custom"> Once you are in Full Screen Mode, click below to begin with the experiment:</p>
+    <p class="custom2"> <button type="button" style="background-color: lightgreen" onclick="toggleFullScreen(document.documentElement);">BEGIN</button></p>
+ </div>
+<div id="fs-main-content" class="hide" >
+
+<p class="custom" align="justify">
+    <br>
+    In this study you will be given the opportunity to gain money for several charities.
+    Prior to making those decisions, you will be asked to rate how deserving of assistance you believe each charity is,
+    as well as how likely its work is to benefit you or someone you know.  Throughout the study, you will also be asked to complete
+    some questionnaires about your everyday decisions, feelings, and beliefs.  <br>
+
+    <br><br>
+    The study will last 30 minutes and will earn you 0.5 course credit.
+    After you have completed the study, you may donate up to 30 additional minutes to gain money for the charities.<br>
+    You may pace yourself and are encouraged to take short (20-second) breaks as needed. <br>
+    <br><br>
+
+    <br>
+
+    You are free to stop the experiment at any time you wish.
+    However, stopping before completing the experiment means that you will not receive course credit compensation.
+    <br>
+</p>
+<br><br>
+<p class="custom">
+    Thank you in advance for your participation!<br><br>
+
+</p>
+<br>
+
+<br>
+<p class="custom">
+    Press "NEXT" to begin.</p> <br>
+
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+</div>
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.hide { display: none!important; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+
+
+var fsRequest = $('#fs-request');
+var fsContent = $('#fs-main-content');
+function toggleFullScreen(elem) {
+
+    fsRequest.addClass('hide');
+    fsContent.removeClass('hide');
+}
+
+
+
+
+
+</script>
+{% endblock %}

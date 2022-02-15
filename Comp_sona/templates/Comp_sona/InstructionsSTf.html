@@ -1,0 +1,99 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Donations
+{% endblock %}
+
+{% block content %}
+
+<p class="custom" align="justify"><br>
+    <b>REMEMBER:</b>
+    <br><br>
+
+            You will be presented with the 60 charities one at a time.
+        <b>For each charity you have to decide whether or not you want to complete a 1-minute task
+        to gain money for that charity.</b> You can choose to complete any number of tasks
+        between 0 and {{ max_tasks }}. Only one task per charity. You will first make all the decisions and then complete
+        the tasks in phase two of the study.
+        <br>
+
+
+
+    {% if consent == 0 %}
+         <br><br>
+            Because you did not give consent to have your name published on the Charity Project's website,
+            the short tasks will earn hypothetical money for the charities (i.e., the charities will not
+            be sent real money).
+        <br>
+    {% endif %}
+
+
+
+
+    <br>
+
+    <br>
+
+    <b>Each task will last 1 minute. This is time you will be donating, and will
+    not be compensated with course credit. For each slider that is positioned at 50 when the minute runs out,
+        you will gain ${{ slider_value }}0 for the corresponding charity (i.e., you can earn between $0 and $1 for
+    the charity).</b>
+    {% if consent == 1 %}
+    <br><br><br>
+    <b>The research team will send the selected charities the corresponding donations.</b>
+    {% endif %}
+    <br><br>
+
+
+</p>
+
+<p class="custom"> Press "NEXT" to begin.</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    text-align: center;
+}
+
+.boxed {
+  border: 1px solid black ;
+  padding: 12px;
+
+
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

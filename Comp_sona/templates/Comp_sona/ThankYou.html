@@ -6,48 +6,11 @@
 
 {% endblock %}
 
-{% block content %}<br>
+{% block content %}<br><br>
 
     <p class="custom">
 
-        {% if matched_donation == 'YES' %}
-            Your <b>Anonymous donations</b> were selected to be doubled by the researchers.
-        {% endif %}
-        {% if matched_donation == 'NO' %}
-            Your <b>Anonymous donations</b> were not selected to be doubled by the researchers.
-        {% endif %}
-
-        <br><br>
-
-        {% if listed == 'YES' %}
-            {% if gave_consent == 'YES' %}
-                Your <b>Public donations</b> have earned you a place on the Charity Heroes' List.
-            <br>
-            {% endif %}
-        {% else %}
-            {% if gave_consent == 'YES' %}
-                Your <b>Public donations</b> have not earned you a place on the Charity Heroes' List.
-            {% endif %}
-        {% endif %}
-
-        <br><br>
-
-        {% if gave_consent == 'YES' %}
-                You have earned {{ total_subject_donation }} for {{ tasks_completed }} different charities.
-            <br>
-        {% else %}
-                You have earned {{ total_subject_donation }} hypothetical dollars for {{ tasks_completed }} different charities.
-            <br>
-        {% endif %}
-
-
-    <br><br>
-
-
-    </p>
-    <p class="custom">
-
-            Your compensation for participating in this study is 0.5 course credit.
+            Your compensation for participating in phase one of this study is 0.5 course credit.
             <br>
 
     </p>
@@ -55,7 +18,31 @@
     <br><br><br>
 
 
-<p class="custom0"> <i>You may now exit Full Screen Mode (F11 or 'Command-Control-F'). Please close this window once you are finished.</i> </p>
+    {% if cont == 'YES' %}
+        <p class="custom">
+
+            {% if gave_consent == 'YES' %}
+                    Please, click "NEXT" when you are ready to begin the short tasks.
+                <br>
+            {% else %}
+                    Please, click "NEXT" when you are ready to begin the short tasks.
+                    Remember the tasks will earn hypothetical money for the charities (i.e., the charities will not
+                    be sent real money).
+                <br>
+            {% endif %}
+        <br><br>
+
+        </p>
+
+        <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+    {% endif %}
+
+    {% if cont == 'NO' %}
+        <p class="custom0"> <i>You may now exit Full Screen Mode (F11 or 'Command-Control-F').
+            Please close this window once you are finished.</i> </p>
+    {% endif %}
+
+
 
 {% endblock %}
 

@@ -12,13 +12,16 @@ Charity Donations
     <br>
     You will be shown 10 sliders randomly distributed across the screen. At the start of the task all sliders will
     be positioned at 0. You will be given 1 minute to adjust as many sliders as you want to 50.
-    For each slider that is positioned at 50 when the minute runs out, you will gain ${{ slider_value }}
-    for the corresponding charity.
+    <b>For each slider that is positioned at 50 when the minute runs out, you will gain ${{ slider_value }}0
+        for the corresponding charity.</b>
     <br><br>
 
     Below you can see a representation of the task with only two sliders. Please position each of them at 50.
 </p>
-
+<br><br>
+{{ form.non_field_errors }}
+{{ form.ST1.errors }}
+{{ form.ST2.errors }}
 <section>
     <div class="grid-container" >
         <div class="item item-1" style="margin-left:300px" >
@@ -30,12 +33,10 @@ Charity Donations
         </div>
     </div>
 </section>
-
-<p class="custom"> In the next page you will be shown the short task. Please, complete the task to get a sense of how
+<br><br><br><br>
+<p class="custom"> In the next page you will do a trial round of the task. Please, complete the task to get a sense of how
  much time and effort it demands.</p>
-<!--how much do you think that the work you just did is worth if you could translate the time and effort into a
-monetary amount?-->
-<!--a link to the Charity Heroes' Website will be shared with all participants that complete this experiment-->
+
 <!--try to upload it to github-->
 <br><br><br>
 <p class="custom"> Press "NEXT" to complete a trial of the task.</p>
@@ -106,7 +107,7 @@ monetary amount?-->
   grid-template-columns: 1000px;
   grid-template-rows: auto auto;
   grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-row-gap: 80px;
   justify-content: center;
   align-content: start;
   margin-left: 140px;

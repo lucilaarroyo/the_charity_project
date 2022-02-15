@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    {% if round_num < num_rounds %}
+            Please, click "NEXT" when you are ready to proceed to the next short task.
+        <br>
+    {% else %}
+            Thank you for your time!
+        <br>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}<br>
+
+    {% if round_num < num_rounds %}
+        <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+        <br>
+    {% else %}
+
+        <br>
+
+        <p class="custom0"> <i>You may now exit Full Screen Mode (F11 or 'Command-Control-F'). Please close this window once you are finished.</i> </p>
+
+    {% endif %}
+
+    <br><br><br>
+
+
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+.custom0 {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+</script>
+{% endblock %}

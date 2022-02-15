@@ -18,7 +18,7 @@ Charity Donations ({{round_num}} of {{last_charity}})
         {% if anonymity == 'PUBLIC' %}
         <p class="custom" align="justify"> <i>Public donations are not eligible to be doubled by the researchers.
             If the total amount of your Public donations is large enough,
-            you will earn a place on the Charity Heroes' List (if you have provided consent).
+            you will be included in the Charity Heroe's List (if you have provided consent).
             </i></p>
         {% endif %}
         {% if anonymity == 'ANONYMOUS' %}
@@ -31,20 +31,20 @@ Charity Donations ({{round_num}} of {{last_charity}})
 
             <label class="custom3" align="justify"><b> Do you want to complete the task to gain money for this charity?</b></label>
             <br>
-            <p class="custom" align="justify">You have the opportunity to complete {{tasks_allowed}} tasks throughout
+            <p class="custom" align="justify">You can choose to complete {{tasks_allowed}} tasks throughout
                 the remaining of the study.</p>
             <br>
             {% if tasks_completed == max_tasks %}
-            <p class="custom" align="justify"><b>You have already completed the maximum number of tasks.
+            <p class="custom" align="justify"><b>You have already chosen the maximum number of tasks.
                 Please select 'NO' below.</b>  </p>
             <br>
             {% endif %}
 
             <p align="center">
 
-                <button name="task_decision" value="True" style="color:blue;font-size:28px">YES</button>
+                <button name="task_decision" value="True" style="padding: 16px;color: white;background-color:CornflowerBlue;margin: 5px 3px;font-size:32px;border-radius:12px;border: none;">YES</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button name="task_decision" value="False" style="color:blue;font-size:28px">NO</button>
+                <button name="task_decision" value="False" style="padding: 16px;color: white;background-color:CornflowerBlue;margin: 5px 3px;font-size:32px;border-radius:12px;border: none;">NO</button>
 
             </p>
             <br><br><br>

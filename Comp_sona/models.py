@@ -272,25 +272,25 @@ class Player(BasePlayer):
 #         yield [p.participant.code, p.round_number, p.ST3, p.ST4, p.ST5, p.ST6, p.ST7, p.ST8, p.ST9, p.ST10, p.ST11, p.ST12, p.CST, p.tasks_completed]
 #
 
-def custom_export(players):
-    # Title row
-    yield ['participant_code', 'round_number',
-           'age', 'gender', 'race', 'ethnicity',
-           'WEW1', 'WEW2', 'WEW3', 'WEW4', 'WEW5', 'WEW6', 'WEW7', 'WEW8', 'WEW9', 'WEW10', 'WEW11', 'WEW12',
-           'WEW13', 'WEW14',
-           'CEAS11', 'CEAS12', 'CEAS13', 'CEAS14', 'CEAS15', 'CEAS16', 'CEAS17', 'CEAS18',
-           'CEAS21', 'CEAS22', 'CEAS23', 'CEAS24', 'CEAS25',
-           'SubC1', 'SubC2', 'SubC3', 'SubC4', 'SubC5', 'SubC6', 'SubC7', 'SubC8', 'SubC9', 'SubC10',
-           'SAQ1', 'SAQ2', 'SAQ3', 'SAQ4', 'SAQ5', 'SAQ6', 'SAQ7', 'SAQ8', 'SAQ9', 'SAQ10']
-    for p in players:
-        yield [p.participant.code, p.round_number,
-               p.age, p.gender, p.race, p.ethnicity,
-               p.WEW1, p.WEW2, p.WEW3, p.WEW4, p.WEW5, p.WEW6, p.WEW7, p.WEW8, p.WEW9, p.WEW10, p.WEW11, p.WEW12,
-               p.WEW13, p.WEW14,
-               p.CEAS11, p.CEAS12, p.CEAS13, p.CEAS14, p.CEAS15, p.CEAS16, p.CEAS17, p.CEAS18,
-               p.CEAS21, p.CEAS22, p.CEAS23, p.CEAS24, p.CEAS25,
-               p.SubC1, p.SubC2, p.SubC3, p.SubC4, p.SubC5, p.SubC6, p.SubC7, p.SubC8, p.SubC9, p.SubC10,
-               p.SAQ1, p.SAQ2, p.SAQ3, p.SAQ4, p.SAQ5, p.SAQ6, p.SAQ7, p.SAQ8, p.SAQ9, p.SAQ10]
+# def custom_export(players):
+#     # Title row
+#     yield ['participant_code', 'round_number',
+#            'age', 'gender', 'race', 'ethnicity',
+#            'WEW1', 'WEW2', 'WEW3', 'WEW4', 'WEW5', 'WEW6', 'WEW7', 'WEW8', 'WEW9', 'WEW10', 'WEW11', 'WEW12',
+#            'WEW13', 'WEW14',
+#            'CEAS11', 'CEAS12', 'CEAS13', 'CEAS14', 'CEAS15', 'CEAS16', 'CEAS17', 'CEAS18',
+#            'CEAS21', 'CEAS22', 'CEAS23', 'CEAS24', 'CEAS25',
+#            'SubC1', 'SubC2', 'SubC3', 'SubC4', 'SubC5', 'SubC6', 'SubC7', 'SubC8', 'SubC9', 'SubC10',
+#            'SAQ1', 'SAQ2', 'SAQ3', 'SAQ4', 'SAQ5', 'SAQ6', 'SAQ7', 'SAQ8', 'SAQ9', 'SAQ10']
+#     for p in players:
+#         yield [p.participant.code, p.round_number,
+#                p.age, p.gender, p.race, p.ethnicity,
+#                p.WEW1, p.WEW2, p.WEW3, p.WEW4, p.WEW5, p.WEW6, p.WEW7, p.WEW8, p.WEW9, p.WEW10, p.WEW11, p.WEW12,
+#                p.WEW13, p.WEW14,
+#                p.CEAS11, p.CEAS12, p.CEAS13, p.CEAS14, p.CEAS15, p.CEAS16, p.CEAS17, p.CEAS18,
+#                p.CEAS21, p.CEAS22, p.CEAS23, p.CEAS24, p.CEAS25,
+#                p.SubC1, p.SubC2, p.SubC3, p.SubC4, p.SubC5, p.SubC6, p.SubC7, p.SubC8, p.SubC9, p.SubC10,
+#                p.SAQ1, p.SAQ2, p.SAQ3, p.SAQ4, p.SAQ5, p.SAQ6, p.SAQ7, p.SAQ8, p.SAQ9, p.SAQ10]
 
 
 # def custom_export(players):

@@ -19,7 +19,7 @@ class ShortTask(Page):
         self.player.charity = char_and_anon[0]
         self.player.anonymity = char_and_anon[1]
 
-        for_marg = range(0, 220+1, 10)
+        for_marg = range(0, 210+1, 10)
         marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
 
         return {
@@ -33,14 +33,18 @@ class ShortTask(Page):
         }
 
     def before_next_page(self):
-        don = 0
+        num_sliders = 0
         slider_position = [self.player.S1, self.player.S2, self.player.S3, self.player.S4, self.player.S5,
                            self.player.S6, self.player.S7, self.player.S8, self.player.S9, self.player.S10]
         for i in slider_position:
             if i == 50:
-                don += Constants.slider_value
+                num_sliders += 1
             else:
                 pass
+        if num_sliders >= 5:
+            don = Constants.slider_value
+        else:
+            don = 0
         self.player.donation = don
         if self.player.anonymity == "PUBLIC":
             self.player.participant.vars['tot_pub_don'] += self.player.donation
@@ -62,10 +66,8 @@ class PostTaskPage(Page):
     def vars_for_template(self):
         round_num = self.subsession.round_number
         if round_num == len(self.player.participant.vars['chosen_char']):
-            if self.player.participant.vars['tot_pub_don'] >= Constants.num_rounds / 4:
+            if self.player.participant.vars['tot_pub_don'] >= (Constants.num_rounds / 4):
                 self.player.listed = 'YES'
-                self.player.name_consent = self.player.participant.vars['name_consent']
-                self.player.consent = self.player.participant.vars['consent']
             else:
                 self.player.listed = 'NO'
 

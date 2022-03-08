@@ -22,7 +22,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 20
 
-    slider_value = 0.10
+    slider_value = 1
 
 
 class Subsession(BaseSubsession):
@@ -56,21 +56,19 @@ class Player(BasePlayer):
     listed = models.StringField()
 
     # matched_donation = models.StringField
-    consent = models.IntegerField()
-    name_consent = models.StringField(blank=True)
-
-
-# def custom_export(players):
-#     # Title row
-#     yield ['participant_code', 'round_number', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10',
-#            'charity', 'anonymity', 'donation']
-#     for p in players:
-#         yield [p.participant.code, p.round_number, p.S1, p.S2, p.S3, p.S4, p.S5, p.S6, p.S7, p.S8, p.S9, p.S10,
-#                p.charity, p.anonymity, p.donation]
 
 
 def custom_export(players):
     # Title row
-    yield ['round_number',  'listed', 'consent', 'name_consent']
+    yield ['participant_code', 'round_number', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10',
+           'charity', 'anonymity', 'donation']
     for p in players:
-        yield [p.round_number,  p.listed, p.consent, p.name_consent]
+        yield [p.participant.code, p.round_number, p.S1, p.S2, p.S3, p.S4, p.S5, p.S6, p.S7, p.S8, p.S9, p.S10,
+               p.charity, p.anonymity, p.donation]
+
+#
+# def custom_export(players):
+#     # Title row
+#     yield ['round_number',  'listed', 'part_label']
+#     for p in players:
+#         yield [p.round_number,  p.listed, p.participant.label]

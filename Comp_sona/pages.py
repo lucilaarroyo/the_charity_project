@@ -34,7 +34,6 @@ class Introduction(Page):
     def vars_for_template(self):
         return {
             # 'compensation': Constants.compensation,
-            'endowment': Constants.endowment,
         }
 
 
@@ -92,16 +91,13 @@ class WEW3(Page):
             'WEW1_num': self.player.participant.vars['orderWEW3'],
         }
 
-    def before_next_page(self):
-        self.player.participant.vars['time_end'] = time.time()
-
 
 class CEAS1(Page):
     form_model = 'player'
     form_fields = ['CEAS11', 'CEAS12', 'CEAS13', 'CEAS14', 'CEAS15', 'CEAS16', 'CEAS17', 'CEAS18']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1 and self.participant.vars['end_experiment'] == False
+        return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
         return {
@@ -114,7 +110,7 @@ class CEAS2(Page):
     form_fields = ['CEAS21', 'CEAS22', 'CEAS23', 'CEAS24', 'CEAS25']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1 and self.participant.vars['end_experiment'] == False
+        return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
         return {
@@ -127,7 +123,7 @@ class SubC(Page):
     form_fields = ['SubC1', 'SubC2', 'SubC3', 'SubC4', 'SubC5', 'SubC6', 'SubC7', 'SubC8', 'SubC9', 'SubC10']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1 and self.participant.vars['end_experiment'] == False
+        return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
         return {
@@ -140,12 +136,29 @@ class SAQ(Page):
     form_fields = ['SAQ1', 'SAQ2', 'SAQ3', 'SAQ4', 'SAQ5', 'SAQ6', 'SAQ7', 'SAQ8', 'SAQ9', 'SAQ10']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1 and self.participant.vars['end_experiment'] == False
+        return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
         return {
             'SAQ_num': self.player.participant.vars['orderSAQ'],
         }
+
+
+class DYADS(Page):
+    form_model = 'player'
+    form_fields = ['NPI1', 'NPI2', 'NPI3', 'NPI4', 'NPI5', 'NPI6', 'NPI7', 'NPI8', 'NPI9', 'NPI10',
+                   'NPI11', 'NPI12', 'NPI13']
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
+
+    def vars_for_template(self):
+        return {
+            'NPI_num': self.player.participant.vars['orderNPI'],
+        }
+
+    def before_next_page(self):
+        self.player.participant.vars['time_end'] = time.time()
 
 
 class InstructionsFT(Page):
@@ -179,21 +192,17 @@ class InstructionsST(Page):
 
     def vars_for_template(self):
         return {
-            'endowment': Constants.endowment,
             'max_tasks': Constants.max_tasks,
         }
 
 
 class InstructionsST1(Page):
-    form_model = 'player'
-    form_fields = ['consent', 'name_consent']
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_charities and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
         return {
-            'endowment': Constants.endowment,
             'max_tasks': Constants.max_tasks,
         }
 
@@ -221,7 +230,7 @@ class InstructionsSTtrial(Page):
         return self.subsession.round_number == Constants.num_charities and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
-        for_marg = range(0, 220+1, 10)
+        for_marg = range(0, 210+1, 10)
         marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
 
         return {
@@ -251,7 +260,6 @@ class InstructionsSTf(Page):
         return {
             'slider_value': Constants.slider_value,
             'max_tasks': Constants.max_tasks,
-            'consent': self.player.consent
         }
 
 
@@ -280,10 +288,11 @@ class SecondTask(Page):
         }
 
     def before_next_page(self):
+        if self.player.task_decision and self.player.participant.vars['tasks_completed'] == 20:
+            self.player.task_decision = 0
         if self.player.task_decision and self.player.participant.vars['tasks_completed'] < 20:
             self.player.participant.vars['tasks_completed'] += 1
             self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
-
 
 # class SliderTask(Page):
 #     timeout_seconds = 60
@@ -296,7 +305,7 @@ class SecondTask(Page):
 #
 #     def vars_for_template(self):
 #         round_num = self.subsession.round_number - Constants.num_charities + 1
-#         for_marg = range(0, 230+1, 10)
+#         for_marg = range(0, 210+1, 10)
 #         marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
 #
 #         return {
@@ -328,12 +337,6 @@ class ThankYou(Page):
 
     def vars_for_template(self):
         time_spent = (self.player.participant.vars['time_end'] - self.player.participant.vars['time_start'])/60
-        self.player.consent = self.player.in_round(Constants.num_charities).consent
-        self.player.name_consent = self.player.in_round(Constants.num_charities).name_consent
-        if self.player.consent == 1:
-            gave_consent = 'YES'
-        else:
-            gave_consent = 'NO'
 
         if len(self.player.participant.vars['chosen_char']) > 0:
             cont = 'YES'
@@ -347,15 +350,10 @@ class ThankYou(Page):
         # else:
         #     self.player.listed = 'NO'
 
-        if gave_consent == 'YES':
-            self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
-        else:
-            self.player.matched_donation = 'N/A'
+        self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
 
         # self.player.total_subject_donation = sum(self.player.in_all_rounds().donation)
         # self.player.total_subject_donation = self.player.donation
-        self.player.participant.vars['consent'] = self.player.consent
-        self.player.participant.vars['name_consent'] = self.player.name_consent
         self.player.participant.vars['matchedDonation'] = self.player.matched_donation
         self.player.tasks_completed = self.player.participant.vars['tasks_completed']
 
@@ -363,9 +361,7 @@ class ThankYou(Page):
             'matched_donation': self.player.matched_donation,
             # 'listed': self.player.listed,
             'time_spent': round(time_spent),
-            'gave_consent': gave_consent,
             'tasks_completed': self.player.participant.vars['tasks_completed'],
-            # 'total_subject_donation': self.player.total_subject_donation,
             'cont': cont,
             'check': self.player.participant.vars['chosen_char'],
         }
@@ -387,10 +383,6 @@ page_sequence = [
     Introduction,
     Dem,
     WEW1,
-    CEAS1,
-    CEAS2,
-    SubC,
-    SAQ,
     InstructionsFT,
     FirstTask,
     InstructionsST,
@@ -401,6 +393,11 @@ page_sequence = [
     InstructionsSTf,
     SecondTask,
     WEW3,
+    CEAS1,
+    CEAS2,
+    SubC,
+    SAQ,
+    DYADS,
     ThankYou,
     TY2,
 ]

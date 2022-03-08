@@ -7,42 +7,25 @@ Charity Donations
 
 {% block content %}
 
-<p class="custom" align="justify"><br>
-    <b>REMEMBER:</b>
+<p class="custom" align="justify">
     <br><br>
+        <b>Each task you complete can gain ${{ slider_value }} for the corresponding charity.
+            To gain the money on a task, a large number of sliders need to be positioned at 50.</b>
+        You can choose to complete up to {{ max_tasks }} tasks. Only one task per charity.
 
-            You will be presented with the 60 charities one at a time.
-        <b>For each charity you have to decide whether or not you want to complete a 1-minute task
-        to gain money for that charity.</b> You can choose to complete any number of tasks
-        between 0 and {{ max_tasks }}. Only one task per charity. You will first make all the decisions and then complete
-        the tasks in phase two of the study.
         <br>
-
-
-
-    {% if consent == 0 %}
-         <br><br>
-            Because you did not give consent to have your name published on the Charity Project's website,
-            the short tasks will earn hypothetical money for the charities (i.e., the charities will not
-            be sent real money).
-        <br>
-    {% endif %}
-
-
-
 
     <br>
 
     <br>
+        You will first submit your decisions for each charity and then complete the tasks (if any) in phase two of the study.
 
-    <b>Each task will last 1 minute. This is time you will be donating, and will
-    not be compensated with course credit. For each slider that is positioned at 50 when the minute runs out,
-        you will gain ${{ slider_value }}0 for the corresponding charity (i.e., you can earn between $0 and $1 for
-    the charity).</b>
-    {% if consent == 1 %}
+        <b>Each task will last 1 minute. This is time you will be donating, and will
+        not be compensated with course credit.  </b>
+
     <br><br><br>
     <b>The research team will send the selected charities the corresponding donations.</b>
-    {% endif %}
+
     <br><br>
 
 

@@ -146,8 +146,7 @@ class SAQ(Page):
 
 class DYADS(Page):
     form_model = 'player'
-    form_fields = ['NPI1', 'NPI2', 'NPI3', 'NPI4', 'NPI5', 'NPI6', 'NPI7', 'NPI8', 'NPI9', 'NPI10',
-                   'NPI11', 'NPI12', 'NPI13']
+    form_fields = ['NPI1', 'NPI2', 'NPI4', 'NPI5', 'NPI7', 'NPI8', 'NPI10', 'NPI11', 'NPI13']
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
@@ -222,16 +221,16 @@ class InstructionsST2(Page):
 
 
 class InstructionsSTtrial(Page):
-    timeout_seconds = 60
+    timeout_seconds = 30
     form_model = 'player'
-    form_fields = ['ST3', 'ST4', 'ST5', 'ST6', 'ST7', 'ST8', 'ST9', 'ST10', 'ST11', 'ST12']
+    form_fields = ['ST3', 'ST4', 'ST5', 'ST6', 'ST7']
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_charities and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
-        for_marg = range(0, 210+1, 10)
-        marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
+        for_marg = range(0, 570+1, 10)
+        marg = random.sample(for_marg, k=5)
 
         return {
             'marg': marg
@@ -272,27 +271,45 @@ class SecondTask(Page):
 
     def vars_for_template(self):
         round_num = self.subsession.round_number - Constants.num_charities + 1
-        self.player.anonymity_task_2 = self.player.participant.vars['dictAnonym'][(round_num-1)]
         self.player.charity_task_2 = self.player.participant.vars['orderTask2'][(round_num-1)]
 
+        for_norder = ["item item-3", "item item-5"]
+        norder = random.choice(for_norder)
+        if norder == "item item-3":
+            for_yorder = ["item item-4", "item item-5"]
+            yorder = random.sample(for_yorder, 2)
+        else:
+            for_yorder = ["item item-3", "item item-4"]
+            yorder = random.sample(for_yorder, 2)
+
         return {
+            'norder': norder,
+            'yorder': yorder,
             'num_rounds': Constants.num_rounds,
             'max_tasks': Constants.max_tasks,
             'tasks_completed': self.player.participant.vars['tasks_completed'],
             'tasks_allowed': Constants.max_tasks - self.player.participant.vars['tasks_completed'],
             'round_num': round_num,
             'last_charity': Constants.num_charities,
-            'anonymity': self.player.anonymity_task_2,
             'charity': self.player.charity_task_2,
             'image_path_info': 'Comp_sona/pics/{} short.jpg'.format(self.player.charity_task_2),
         }
 
     def before_next_page(self):
-        if self.player.task_decision and self.player.participant.vars['tasks_completed'] == 20:
-            self.player.task_decision = 0
-        if self.player.task_decision and self.player.participant.vars['tasks_completed'] < 20:
-            self.player.participant.vars['tasks_completed'] += 1
-            self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
+        self.player.anonymity_task_2 = self.player.task_decision
+        if self.player.participant.vars['tasks_completed'] == 20:
+            self.player.task_decision = 'NO'
+        if self.player.participant.vars['tasks_completed'] < 20:
+            if self.player.task_decision == 'ANONYMOUS':
+                self.player.participant.vars['tasks_completed'] += 1
+                self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
+            elif self.player.task_decision == "PUBLIC":
+                self.player.participant.vars['tasks_completed'] += 1
+                self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
+            else:
+                pass
+
+
 
 # class SliderTask(Page):
 #     timeout_seconds = 60

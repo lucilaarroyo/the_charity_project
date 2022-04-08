@@ -7,7 +7,7 @@
 {% block content %}
 <br>
 <p class="custom3"> This donation is <b> {{anonymity}}</b>. </p>
-<p class="custom"> You have 1 minute to position as many sliders as you want at 50.</p>
+<p class="custom"> You have 30 seconds to position the sliders at 50.</p>
 <br><br><br>
 <div class="grid-container">
 
@@ -38,40 +38,10 @@
 
     </div>
 
-    <div class="item item-6" style="margin-left:{{marg.5}}px">
 
-        <input type="range" min="0" max="100" value="0" name="S6" class="slider" id="S6"> <span id="value6" class="custom2"></span>
-
-    </div>
-
-    <div class="item item-7" style="margin-left:{{marg.6}}px">
-        <input type="range" min="0" max="100" value="0" name="S7" class="slider" id="S7"> <span id="value7" class="custom2"></span>
-
-    </div>
-
-    <div class="item item-8" style="margin-left:{{marg.7}}px">
-        <input type="range" min="0" max="100" value="0" name="S8" class="slider" id="S8"> <span id="value8" class="custom2"></span>
-
-
-    </div>
-
-    <div class="item item-9" style="margin-left:{{marg.8}}px">
-        <input type="range" min="0" max="100" value="0" name="S9" class="slider" id="S9"> <span id="value9" class="custom2"></span>
-
-    </div>
-
-    <div class="item item-10" style="margin-left:{{marg.9}}px">
-        <input type="range" min="0" max="100" value="0" name="S10" class="slider" id="S10"> <span id="value10" class="custom2"></span>
-
-
-    </div>
 
 
 </div>
-<br>
-<br>
-<br>
-
 <br>
 <br>
 
@@ -101,13 +71,13 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 540px 540px;
+  grid-template-columns: 1000px;
   grid-template-rows: auto auto auto auto auto;
   grid-column-gap: 50px;
   grid-row-gap: 80px;
   justify-content: center;
   align-content: start;
-  margin-left: 75px;
+  margin-left: 140px;
 }
 
 .item-1 {
@@ -145,46 +115,12 @@
   grid-row-end: 6;
 }
 
-.item-6 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
-.item-7 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-.item-8 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-
-.item-9 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-.item-10 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
 
 
 .slider{
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  width: 300px; /* Full-width */
+  width: 400px; /* Full-width */
   height: 10px; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
@@ -280,54 +216,6 @@ output5.innerHTML = slider5.value; // Display the default slider value
 slider5.oninput = function() {
   output5.innerHTML = this.value;
 }
-
-var slider6 = document.getElementById("S6");
-var output6 = document.getElementById("value6");
-output6.innerHTML = slider6.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider6.oninput = function() {
-  output6.innerHTML = this.value;
-}
-
-var slider7 = document.getElementById("S7");
-var output7 = document.getElementById("value7");
-output7.innerHTML = slider7.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider7.oninput = function() {
-  output7.innerHTML = this.value;
-}
-
-var slider8 = document.getElementById("S8");
-var output8 = document.getElementById("value8");
-output8.innerHTML = slider8.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider8.oninput = function() {
-  output8.innerHTML = this.value;
-}
-
-var slider9 = document.getElementById("S9");
-var output9 = document.getElementById("value9");
-output9.innerHTML = slider9.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider9.oninput = function() {
-  output9.innerHTML = this.value;
-}
-
-var slider10 = document.getElementById("S10");
-var output10 = document.getElementById("value10");
-output10.innerHTML = slider10.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider10.oninput = function() {
-  output10.innerHTML = this.value;
-}
-
-
-
 
 
 

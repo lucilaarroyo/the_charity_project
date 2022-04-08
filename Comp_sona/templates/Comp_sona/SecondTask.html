@@ -12,55 +12,56 @@ Charity Donations ({{round_num}} of {{last_charity}})
     <div class="item item-1"><div class="boxed"> <h2 >{{ charity }}</h2> <br><img src="{% static image_path_info %}" style="width:100%;"/> </div></div>
 
     <div class="item item-2">
-
-        <p class="custom"> This donation decision is <b>{{ anonymity }}</b>.</p>
-
-        {% if anonymity == 'PUBLIC' %}
-        <p class="custom" align="justify"> <i>Public donations are not eligible to be doubled by the researchers.
-            If the total amount of your Public donations is large enough,
-            you will be included as a donor on The Charity Project's website.
-            </i></p>
-        {% endif %}
-        {% if anonymity == 'ANONYMOUS' %}
-        <p class="custom" align="justify"> <i> The total amount of your Anonymous donations will have a
-            50% chance of being doubled by the researchers.
-            Anonymous donations will not be associated with your name or any identifiable information.
-            </i></p>
-        {% endif %}
-        <br><br>
-
-            <label class="custom3" align="justify"><b> Do you want to complete the task to gain money for this charity?</b></label>
-            <br>
-            <p class="custom" align="justify">You can choose to complete {{tasks_allowed}} tasks throughout
-                the remaining of the study.</p>
+        <p class="custom3"> <b>Do you wish to perform a task to gain money for this charity?</b>
+            </p>
+        <p class="custom3" align="justify">You can choose to perform up to <b>{{tasks_allowed}}</b> tasks.</p>
             <br>
             {% if tasks_completed == max_tasks %}
             <p class="custom" align="justify"><b>You have already chosen the maximum number of tasks.
-                Please select 'NO' below.</b>  </p>
-            <br>
+                Please select 'NOT' below.</b>  </p>
             {% endif %}
 
-            <p align="center">
+        <p class="custom" align="justify"> <i> Anonymous donations will have a
+            50% chance of being doubled. Anonymous donations will not be associated with your name.
+            </i></p>
+        <p class="custom" align="justify"> <i>Public donations are not eligible to be doubled.
+            If you make a large number of Public donations, you will be included as a donor on The Charity Project's website.
+            </i></p>
+        <br>
+        <p class="custom3"><b> Please select one of the options below:</b></p>
 
-                <button name="task_decision" value="True" style="padding: 16px;color: white;background-color:CornflowerBlue;margin: 5px 3px;font-size:32px;border-radius:12px;border: none;">YES</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button name="task_decision" value="False" style="padding: 16px;color: white;background-color:CornflowerBlue;margin: 5px 3px;font-size:32px;border-radius:12px;border: none;">NO</button>
+    </div>
+
+    <div class="{{yorder.0}}">
+
+            <p align="justify">
+
+                <button name="task_decision" value="ANONYMOUS" style="padding: 12px;color: white;background-color:CornflowerBlue;margin: 3px 3px;font-size:24px;border-radius:8px;border: none;">Anonymous Donation</button>
+            </p>
+
+    </div>
+    <div class="{{yorder.1}}">
+
+            <p align="justify">
+
+                <button name="task_decision" value="PUBLIC" style="padding: 12px;color: white;background-color:CornflowerBlue;margin: 3px 3px;font-size:24px;border-radius:8px;border: none;">Public Donation</button>
 
             </p>
-            <br><br><br>
 
 
+    </div>
 
+    <div class="{{norder.0}}">
+        <p align="justify">
+
+            <button name="task_decision" value="NO" style="padding: 12px;color: white;background-color:CornflowerBlue;margin: 3px 3px;font-size:24px;border-radius:8px;border: none;">No Donation</button>
+
+        </p>
     </div>
 
 
 </div>
 <br>
-<br>
-<br>
-
-
-
 <br>
 <br>
 
@@ -90,9 +91,9 @@ Charity Donations ({{round_num}} of {{last_charity}})
 .grid-container {
   display: grid;
   grid-template-columns: 42% 58%;
-  grid-template-rows: 100%;
+  grid-template-rows: auto auto auto auto;
   grid-column-gap: 35px;
-  grid-row-gap: 15px;
+  grid-row-gap: 5px;
   align-content: start;
 }
 
@@ -101,7 +102,7 @@ Charity Donations ({{round_num}} of {{last_charity}})
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
-  grid-row-end: 2;
+  grid-row-end: 5;
   place-self: center;
 }
 
@@ -110,7 +111,27 @@ Charity Donations ({{round_num}} of {{last_charity}})
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
-  place-self: center;
+  place-self: left;
+}
+.item-3 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: left;
+}
+.item-4 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  place-self: left;
+}.item-5 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  place-self: left;
 }
 
 

@@ -5,9 +5,9 @@ import random
 
 
 class ShortTask(Page):
-    timeout_seconds = 60
+    timeout_seconds = 30
     form_model = 'player'
-    form_fields = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10']
+    form_fields = ['S1', 'S2', 'S3', 'S4', 'S5']
 
     def is_displayed(self):
         return self.subsession.round_number <= len(self.player.participant.vars['chosen_char']) and \
@@ -18,9 +18,10 @@ class ShortTask(Page):
         char_and_anon = self.player.participant.vars['chosen_char'][round_num-1]
         self.player.charity = char_and_anon[0]
         self.player.anonymity = char_and_anon[1]
+        self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
 
-        for_marg = range(0, 210+1, 10)
-        marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
+        for_marg = range(0, 570+1, 10)
+        marg = random.sample(for_marg, k=5)
 
         return {
             'num_rounds': len(self.player.participant.vars['chosen_char']),
@@ -34,18 +35,18 @@ class ShortTask(Page):
 
     def before_next_page(self):
         num_sliders = 0
-        slider_position = [self.player.S1, self.player.S2, self.player.S3, self.player.S4, self.player.S5,
-                           self.player.S6, self.player.S7, self.player.S8, self.player.S9, self.player.S10]
+        slider_position = [self.player.S1, self.player.S2, self.player.S3, self.player.S4, self.player.S5]
         for i in slider_position:
             if i == 50:
                 num_sliders += 1
             else:
                 pass
-        if num_sliders >= 5:
+        if num_sliders == 5:
             don = Constants.slider_value
         else:
             don = 0
         self.player.donation = don
+        self.player.participant.vars['num_char_donated'] += self.player.donation
         if self.player.anonymity == "PUBLIC":
             self.player.participant.vars['tot_pub_don'] += self.player.donation
         else:
@@ -66,7 +67,7 @@ class PostTaskPage(Page):
     def vars_for_template(self):
         round_num = self.subsession.round_number
         if round_num == len(self.player.participant.vars['chosen_char']):
-            if self.player.participant.vars['tot_pub_don'] >= (Constants.num_rounds / 4):
+            if self.player.participant.vars['tot_pub_don'] >= (Constants.num_rounds / 2):
                 self.player.listed = 'YES'
             else:
                 self.player.listed = 'NO'
@@ -74,7 +75,8 @@ class PostTaskPage(Page):
         return {
             'num_rounds': len(self.player.participant.vars['chosen_char']),
             'round_num': round_num,
-            'don': self.player.donation
+            'don': self.player.donation,
+            'num_char_donated': self.player.participant.vars['num_char_donated'],
 
         }
 

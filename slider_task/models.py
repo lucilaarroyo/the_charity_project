@@ -54,21 +54,23 @@ class Player(BasePlayer):
     anonymity = models.StringField()
     donation = models.IntegerField()
     listed = models.StringField()
+    total_pub_don = models.IntegerField()
+    total_anon_don = models.IntegerField()
 
-    matched_donation = models.StringField
+    matched_donation = models.StringField()
 
 
 # def custom_export(players):
 #     # Title row
 #     yield ['participant_code', 'round_number', 'S1', 'S2', 'S3', 'S4', 'S5',
-#            'charity', 'anonymity', 'donation', 'matched_donation]
+#            'charity', 'anonymity', 'donation', 'matched_donation']
 #     for p in players:
 #         yield [p.participant.code, p.round_number, p.S1, p.S2, p.S3, p.S4, p.S5,
 #                p.charity, p.anonymity, p.donation, p.matched_donation]
 
 
-def custom_export(players):
-    # Title row
-    yield ['round_number',  'listed', 'part_label']
-    for p in players:
-        yield [p.round_number,  p.listed, p.participant.label]
+# def custom_export(players):
+#     # Title row
+#     yield ['round_number',  'listed', 'part_label']
+#     for p in players:
+#         yield [p.round_number,  p.listed, p.participant.label]

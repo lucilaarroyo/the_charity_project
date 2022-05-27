@@ -10,21 +10,21 @@ class ShortTask(Page):
     form_fields = ['S1', 'S2', 'S3', 'S4', 'S5']
 
     def is_displayed(self):
-        return self.subsession.round_number <= len(self.player.participant.vars['chosen_char']) and \
+        return self.subsession.round_number <= self.player.participant.vars['chosen_tasks_committed'] and \
                self.participant.vars['end_experiment'] is False
 
     def vars_for_template(self):
         round_num = self.subsession.round_number
-        char_and_anon = self.player.participant.vars['chosen_char'][round_num-1]
-        self.player.charity = char_and_anon[0]
-        self.player.anonymity = char_and_anon[1]
-        self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
+
+        self.player.charity = self.player.participant.vars['chosen_charity']
+        self.player.anonymity = self.player.participant.vars['chosen_anonymity']
+        self.player.matched_donation = self.player.participant.vars['matchedDonation']
 
         for_marg = range(0, 570+1, 10)
         marg = random.sample(for_marg, k=5)
 
         return {
-            'num_rounds': len(self.player.participant.vars['chosen_char']),
+            'num_rounds': self.player.participant.vars['chosen_tasks_committed'],
             'round_num': round_num,
             'marg': marg,
             # 'image_path_info': 'Comp_sona/pics/{} short.jpg'.format(self.player.charity),
@@ -46,11 +46,11 @@ class ShortTask(Page):
         else:
             don = 0
         self.player.donation = don
-        self.player.participant.vars['num_char_donated'] += self.player.donation
-        if self.player.anonymity == "PUBLIC":
+        self.player.participant.vars['total_don'] += self.player.donation
+        if self.player.anonymity == "Public":
             self.player.participant.vars['tot_pub_don'] += self.player.donation
         else:
-            pass
+            self.player.participant.vars['tot_anon_don'] += self.player.donation
 
 
 # class TasksWaitPage(WaitPage):
@@ -61,22 +61,28 @@ class ShortTask(Page):
 
 class PostTaskPage(Page):
     def is_displayed(self):
-        return self.subsession.round_number <= len(self.player.participant.vars['chosen_char']) and \
+        return self.subsession.round_number <= self.player.participant.vars['chosen_tasks_committed'] and \
                self.participant.vars['end_experiment'] is False
 
     def vars_for_template(self):
         round_num = self.subsession.round_number
-        if round_num == len(self.player.participant.vars['chosen_char']):
+        if round_num == self.player.participant.vars['chosen_tasks_committed']:
             if self.player.participant.vars['tot_pub_don'] >= (Constants.num_rounds / 2):
                 self.player.listed = 'YES'
             else:
                 self.player.listed = 'NO'
 
+            self.player.total_pub_don = self.player.participant.vars['tot_pub_don']
+            self.player.total_anon_don = self.player.participant.vars['tot_anon_don']
+
         return {
-            'num_rounds': len(self.player.participant.vars['chosen_char']),
+            'num_rounds': self.player.participant.vars['chosen_tasks_committed'],
             'round_num': round_num,
             'don': self.player.donation,
-            'num_char_donated': self.player.participant.vars['num_char_donated'],
+            'donated_so_far_pub': self.player.participant.vars['tot_pub_don'],
+            'donated_so_far_anon': self.player.participant.vars['tot_anon_don'],
+            'total_don': self.player.participant.vars['total_don'],
+            'charity': self.player.charity,
 
         }
 

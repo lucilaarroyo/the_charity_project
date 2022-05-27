@@ -16,15 +16,21 @@
     </p>
 
     <br><br>
-
+    <p class="custom2"> The charity chosen is <b>{{ charity_chosen }}</b>.  </p>
 
     {% if cont == 'YES' %}
         <p class="custom2">
+            You made a(n) <b>{{ chosen_anonymity }}</b> donation and committed to perform
+            <b>{{ chosen_tasks_committed }} task(s)</b> for this charity.
 
+            <br><br>
 
-            Please, click "NEXT" when you are ready to begin the Slider Tasks.
+            Please, click "NEXT" when you are ready to begin the Slider Tasks. The time you spend completing the tasks
+            will not be compensated with course credit, instead, you will be donating your time and effort to gain
+            money for the charity.
         <br><br>
-            <i>Remember that to gain the money for a charity, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.</i>
+            <i>Remember that to gain the money for a task, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
+            You will gain ${{slider_value}} for each task you complete correctly.</i>
         <br>
 
         </p>
@@ -33,6 +39,14 @@
     {% endif %}
 
     {% if cont == 'NO' %}
+        <p class="custom2"> You committed to perform {{ chosen_tasks_committed }} tasks for this charity.
+        {% if chosen_tasks_committed > 0 and chosen_anonymity == 'N/A' %}
+         However, you did not select whether you wanted the donation to be Public or Anonymous. For this
+            reason, you will not be able to perform the tasks.
+        {% endif %}
+
+        </p>
+        <br><br>
         <p class="custom0"> <i>You may now exit Full Screen Mode (F11 or 'Command-Control-F').
             Please close this window once you are finished.</i> </p>
     {% endif %}

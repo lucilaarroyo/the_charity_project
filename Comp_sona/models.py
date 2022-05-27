@@ -15,27 +15,27 @@ Comp_sona
 class Constants(BaseConstants):
     name_in_url = 'Comp_sona'
     players_per_group = None
-    num_charities = 60
-    # num_charities = 4
+    # num_charities = 60
+    num_charities = 4
     num_rounds = num_charities*2 - 1
-    charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION',
-     'WATER MISSION', 'MULTIPLE MYELOMA RESEARCH FOUNDATION', 'LIVING BEYOND BREAST CANCER', 'FIGHT COLORECTAL CANCER',
-     'CURE CHILDHOOD CANCER', 'KIDNEY CANCER ASSOCIATION', 'AIDS UNITED', 'ORGANIZATION FOR AUTISM RESEARCH',
-     'CAN DO MULTIPLE SCLEROSIS', 'SAN DIEGO CENTER FOR THE BLIND', 'DIABETES FOUNDATION OF MISSISSIPPI',
-     'THE ASSOCIATION FOR FRONTOTEMPORAL DEGENERATION', 'FISHER CENTER FOR ALZHEIMER`S RESEARCH FOUNDATION',
-     'THE JED FOUNDATION', 'THE TREVOR PROJECT', 'TRAGEDY ASSISTANCE PROGRAM FOR SURVIVORS', 'THE GLOBAL ORPHAN PROJECT',
-     'HELP THE HELPLESS', 'PREVENT CHILD ABUSE AMERICA', 'SAVE THE CHILDREN', 'CHRISTIAN RELIEF FUND', 'ALL HANDS AND HEARTS',
-     'SBP', 'SAMARITAN`S PURSE', 'UNITED METHODIST COMMITTEE ON RELIEF OF GLOBAL MINISTRIES', 'INTERNATIONAL RELIEF TEAMS',
-     'SEMPER FI & AMERICA`S FUND', 'FISHER HOUSE FOUNDATION', 'SOLDIERS` ANGELS', 'OUR MILITARY KIDS', 'BUILDING HOMES FOR HEROES',
-     'MEMORIAL ASSISTANCE MINISTRIES', 'TRANSITIONS', 'ROSIE`S PLACE', 'HEALTHCARE FOR THE HOMELESS - HOUSTON',
-     'CHICAGO COALITION FOR THE HOMELESS', 'ALIGHT', 'REFUGEES INTERNATIONAL', 'PREEMPTIVE LOVE', 'THE TIBET FUND',
-     'UNITED PALESTINIAN APPEAL', 'WOMEN IN DISTRESS OF BROWARD COUNTY', 'ALTERNATIVES', 'THE FAMILY PLACE', 'SAFEHOUSE DENVER',
-     'LYDIA`S HOUSE', 'AMERICANS FOR IMMIGRANT JUSTICE', 'JUSTICE IN AGING', 'CAMPHILL VILLAGE KIMBERTON HILLS',
-     'STATE VOICES', 'RAINIER SCHOLARS', 'ANIMAL DEFENSE LEAGUE OF TEXAS', 'THE DIAN FOSSEY GORILLA FUND INTERNATIONAL',
-     'MICHIGAN ANTI-CRUELTY SOCIETY', 'CHEETAH CONSERVATION FUND', 'RE- WILD']
+    # charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION',
+    #  'WATER MISSION', 'MULTIPLE MYELOMA RESEARCH FOUNDATION', 'LIVING BEYOND BREAST CANCER', 'FIGHT COLORECTAL CANCER',
+    #  'CURE CHILDHOOD CANCER', 'KIDNEY CANCER ASSOCIATION', 'AIDS UNITED', 'ORGANIZATION FOR AUTISM RESEARCH',
+    #  'CAN DO MULTIPLE SCLEROSIS', 'SAN DIEGO CENTER FOR THE BLIND', 'DIABETES FOUNDATION OF MISSISSIPPI',
+    #  'THE ASSOCIATION FOR FRONTOTEMPORAL DEGENERATION', 'FISHER CENTER FOR ALZHEIMER`S RESEARCH FOUNDATION',
+    #  'THE JED FOUNDATION', 'THE TREVOR PROJECT', 'TRAGEDY ASSISTANCE PROGRAM FOR SURVIVORS', 'THE GLOBAL ORPHAN PROJECT',
+    #  'HELP THE HELPLESS', 'PREVENT CHILD ABUSE AMERICA', 'SAVE THE CHILDREN', 'CHRISTIAN RELIEF FUND', 'ALL HANDS AND HEARTS',
+    #  'SBP', 'SAMARITAN`S PURSE', 'UNITED METHODIST COMMITTEE ON RELIEF OF GLOBAL MINISTRIES', 'INTERNATIONAL RELIEF TEAMS',
+    #  'SEMPER FI & AMERICA`S FUND', 'FISHER HOUSE FOUNDATION', 'SOLDIERS` ANGELS', 'OUR MILITARY KIDS', 'BUILDING HOMES FOR HEROES',
+    #  'MEMORIAL ASSISTANCE MINISTRIES', 'TRANSITIONS', 'ROSIE`S PLACE', 'HEALTHCARE FOR THE HOMELESS - HOUSTON',
+    #  'CHICAGO COALITION FOR THE HOMELESS', 'ALIGHT', 'REFUGEES INTERNATIONAL', 'PREEMPTIVE LOVE', 'THE TIBET FUND',
+    #  'UNITED PALESTINIAN APPEAL', 'WOMEN IN DISTRESS OF BROWARD COUNTY', 'ALTERNATIVES', 'THE FAMILY PLACE', 'SAFEHOUSE DENVER',
+    #  'LYDIA`S HOUSE', 'AMERICANS FOR IMMIGRANT JUSTICE', 'JUSTICE IN AGING', 'CAMPHILL VILLAGE KIMBERTON HILLS',
+    #  'STATE VOICES', 'RAINIER SCHOLARS', 'ANIMAL DEFENSE LEAGUE OF TEXAS', 'THE DIAN FOSSEY GORILLA FUND INTERNATIONAL',
+    #  'MICHIGAN ANTI-CRUELTY SOCIETY', 'CHEETAH CONSERVATION FUND', 'RE- WILD']
 
 
-    # charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION']
+    charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION']
 
     # anonymity = public or anonymous
     anonymity = ["PUBLIC"] * int(num_charities/2) + ["ANONYMOUS"] * int(num_charities/2)
@@ -59,7 +59,8 @@ class Constants(BaseConstants):
     SAQ_num = ["item item-1", "item item-2", "item item-3", "item item-4", "item item-5", "item item-6",
                "item item-7", "item item-8", "item item-9", "item item-10"]
     NPI_num = ["item item-1", "item item-2", "item item-3", "item item-4", "item item-5", "item item-6",
-               "item item-7", "item item-8", "item item-9"]
+               "item item-7", "item item-8", "item item-9", "item item-10", "item item-11", "item item-12",
+               "item item-13"]
 
 
 class Subsession(BaseSubsession):
@@ -74,7 +75,7 @@ class Subsession(BaseSubsession):
                 player.participant.vars['orderCEAS2'] = random.sample(Constants.CEAS2_num, 5)
                 player.participant.vars['orderSubC'] = random.sample(Constants.SubC_num, 10)
                 player.participant.vars['orderSAQ'] = random.sample(Constants.SAQ_num, 10)
-                player.participant.vars['orderNPI'] = random.sample(Constants.NPI_num, 9)
+                player.participant.vars['orderNPI'] = random.sample(Constants.NPI_num, 13)
                 player.participant.vars['orderTask1'] = random.sample(Constants.charities, Constants.num_charities)
                 player.participant.vars['orderTask2'] = random.sample(Constants.charities, Constants.num_charities)
                 #player.participant.vars['dictVersion'] = random.sample(Constants.versions, Constants.num_charities*2)
@@ -84,11 +85,13 @@ class Subsession(BaseSubsession):
                 player.participant.vars['end_experiment'] = False
                 player.participant.vars['already_donated'] = 0
                 player.participant.vars['tot_pub_don'] = 0
+                player.participant.vars['tot_anon_don'] = 0
+                player.participant.vars['total_don'] = 0
                 player.participant.vars['tasks_completed'] = 0
-                player.participant.vars['chosen_char'] = list()
-                player.participant.vars['consent'] = False
-                player.participant.vars['name_consent'] = ''
-                player.participant.vars['num_char_donated'] = 0
+                player.participant.vars['chosen_round'] = random.randint(Constants.num_charities, Constants.num_rounds)
+                player.participant.vars['chosen_charity'] = ''
+                player.participant.vars['chosen_anonymity'] = ''
+                player.participant.vars['chosen_tasks_committed'] = 0
                 #player.participant.vars['version_1_count'] = 0
                 # for_for_don = []
                 # for i in range(Constants.num_charities):
@@ -122,9 +125,7 @@ class Player(BasePlayer):
     closeness = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
                                     widget=widgets.RadioSelectHorizontal(attrs={'class': 'close'}))
 
-    task_decision = models.StringField(choices=['ANONYMOUS', 'PUBLIC', 'NO'])
-    tasks_completed = models.IntegerField()
-    # max_to_donate = models.IntegerField(min=0, max=Constants.val_endowment)
+    tasks_committed = models.IntegerField(min=0, max=Constants.max_tasks)
     donation = models.DecimalField(max_digits=4, decimal_places=2)
 
     # def donation_max(self):
@@ -210,25 +211,24 @@ class Player(BasePlayer):
     #NPI
     NPI1 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI2 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
-    # NPI3 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
+    NPI3 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI4 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI5 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
-    # NPI6 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
+    NPI6 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI7 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI8 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
-    # NPI9 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
+    NPI9 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI10 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI11 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
-    # NPI12 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
+    NPI12 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
     NPI13 = models.IntegerField(choices=[0, 1], widget=widgets.RadioSelect)
 
     charity_task_1 = models.StringField()
     charity_task_2 = models.StringField()
-    anonymity_task_2 = models.StringField()
+    anonymity_task_2 = models.StringField(choices=['Anonymous', 'Public', 'N/A'])
     total_subject_donation = models.CurrencyField(min=0, max=Constants.max_tasks)
     matched_donation = models.StringField()
-    # consent = models.IntegerField()
-    # name_consent = models.StringField(blank=True)
+
     # listed = models.StringField()
 
     ST1 = models.IntegerField()
@@ -248,11 +248,7 @@ class Player(BasePlayer):
     ST5 = models.IntegerField(blank=True)
     ST6 = models.IntegerField(blank=True)
     ST7 = models.IntegerField(blank=True)
-    # ST8 = models.IntegerField(blank=True)
-    # ST9 = models.IntegerField(blank=True)
-    # ST10 = models.IntegerField(blank=True)
-    # ST11 = models.IntegerField(blank=True)
-    # ST12 = models.IntegerField(blank=True)
+
 
     # S1 = models.IntegerField(blank=True)
     # S2 = models.IntegerField(blank=True)
@@ -266,6 +262,10 @@ class Player(BasePlayer):
     # S10 = models.IntegerField(blank=True)
 
     CST = models.DecimalField(max_digits=40, decimal_places=2)
+
+    chosen_charity = models.StringField()
+    chosen_anonymity = models.StringField()
+    chosen_tasks_committed = models.IntegerField()
 
 
 
@@ -298,7 +298,7 @@ class Player(BasePlayer):
 #            'CEAS21', 'CEAS22', 'CEAS23', 'CEAS24', 'CEAS25',
 #            'SubC1', 'SubC2', 'SubC3', 'SubC4', 'SubC5', 'SubC6', 'SubC7', 'SubC8', 'SubC9', 'SubC10',
 #            'SAQ1', 'SAQ2', 'SAQ3', 'SAQ4', 'SAQ5', 'SAQ6', 'SAQ7', 'SAQ8', 'SAQ9', 'SAQ10',
-#            'NPI1', 'NPI2', 'NPI4', 'NPI5', 'NPI7', 'NPI8', 'NPI10', 'NPI11', 'NPI13']
+#            'NPI1', 'NPI2', 'NPI3', 'NPI4', 'NPI5', 'NPI6', 'NPI7', 'NPI8', 'NPI9', 'NPI10', 'NPI11', 'NPI12', 'NPI13']
 #     for p in players:
 #         yield [p.participant.code, p.round_number,
 #                p.age, p.gender, p.race, p.ethnicity,
@@ -308,14 +308,14 @@ class Player(BasePlayer):
 #                p.CEAS21, p.CEAS22, p.CEAS23, p.CEAS24, p.CEAS25,
 #                p.SubC1, p.SubC2, p.SubC3, p.SubC4, p.SubC5, p.SubC6, p.SubC7, p.SubC8, p.SubC9, p.SubC10,
 #                p.SAQ1, p.SAQ2, p.SAQ3, p.SAQ4, p.SAQ5, p.SAQ6, p.SAQ7, p.SAQ8, p.SAQ9, p.SAQ10,
-#                p.NPI1, p.NPI2, p.NPI4, p.NPI5, p.NPI7, p.NPI8, p.NPI10, p.NPI11, p.NPI13]
+#                p.NPI1, p.NPI2, p.NPI3, p.NPI4, p.NPI5, p.NPI6, p.NPI7, p.NPI8, p.NPI9, p.NPI10, p.NPI11, p.NPI12, p.NPI13]
+#
 
-
-def custom_export(players):
-    # Title row
-    yield ['round_number', 'future', 'email']
-    for p in players:
-        yield [p.round_number, p.future, p.email]
+# def custom_export(players):
+#     # Title row
+#     yield ['round_number', 'future', 'email']
+#     for p in players:
+#         yield [p.round_number, p.future, p.email]
 
 # def custom_export(players):
 #     # Title row

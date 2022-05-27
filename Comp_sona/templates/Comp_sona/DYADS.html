@@ -24,12 +24,12 @@ Questionnaire
     <div class="{{NPI_num.0}}">
 
         {{ form.NPI1.errors }}
-        <table class="custom" style="margin: 15px" >
+        <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="NPI1" value ="1"> I find it easy to manipulate people.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI1" value ="0"> I don't like it when I find myself manipulating people. </td>
+                <td align=left><input type="radio" name="NPI1" value ="0">I don't like it when I find myself manipulating people. </td>
             </tr>
         </table>
 
@@ -38,32 +38,43 @@ Questionnaire
 
     <div class="{{NPI_num.1}}">
         {{ form.NPI2.errors }}
-        <table class="custom" style="margin: 15px" >
+        <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="NPI2" value ="0"> When people compliment me I get embarrassed.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI2" value ="1"> I know that I am a good person because everybody keeps telling me so. </td>
+                <td align=left><input type="radio" name="NPI2" value ="1">I know that I am a good person because everybody keeps telling me so. </td>
             </tr>
         </table>
     </div>
 
-
     <div class="{{NPI_num.2}}">
-        {{ form.NPI4.errors }}
-        <table class="custom" style="margin: 15px" >
+        {{ form.NPI3.errors }}
+        <table class="custom2" style="margin: 15px" >
             <tr >
-                <td align=left><input type="radio" name="NPI4" value ="1"> I insist upon getting the respect that is due me.<br></td>
+                <td align=left><input type="radio" name="NPI3" value ="1"> I like having authority over other people.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI4" value ="0"> I usually get the respect I deserve. </td>
+                <td align=left><input type="radio" name="NPI3" value ="0">I don't mind following orders.</td>
             </tr>
         </table>
     </div>
 
     <div class="{{NPI_num.3}}">
+        {{ form.NPI4.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI4" value ="1"> I insist upon getting the respect that is due me.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI4" value ="0">I usually get the respect I deserve. </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{NPI_num.4}}">
         {{ form.NPI5.errors }}
-        <table class="custom" style="margin: 15px" >
+        <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="NPI5" value ="0"> I don't particularly like to show off my body.<br></td>
             </tr>
@@ -73,65 +84,98 @@ Questionnaire
         </table>
     </div>
 
+    <div class="{{NPI_num.5}}">
+        {{ form.NPI6.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI6" value ="1"> I have a strong will to power.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI6" value ="0">Power for its own sake doesn't interest me. </td>
+            </tr>
+        </table>
+    </div>
 
-    <div class="{{NPI_num.4}}">
+    <div class="{{NPI_num.6}}">
         {{ form.NPI7.errors }}
-        <table class="custom" style="margin: 15px" >
+        <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="NPI7" value ="1"> I expect a great deal from other people.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI7" value ="0"> I like to do things for other people. </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="{{NPI_num.5}}">
-        {{ form.NPI8.errors }}
-        <table class="custom" style="margin: 15px" >
-            <tr >
-                <td align=left><input type="radio" name="NPI8" value ="0"> My body is nothing special.<br></td>
-            </tr>
-            <tr >
-                <td align=left><input type="radio" name="NPI8" value ="1"> I like to look at my body. </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <div class="{{NPI_num.6}}">
-        {{ form.NPI10.errors }}
-        <table class="custom" style="margin: 15px" >
-            <tr >
-                <td align=left><input type="radio" name="NPI10" value ="1"> I will never be satisfied until I get all that I deserve.<br></td>
-            </tr>
-            <tr >
-                <td align=left><input type="radio" name="NPI10" value ="0"> I will take my satisfactions as they come. </td>
+                <td align=left><input type="radio" name="NPI7" value ="0">I like to do things for other people. </td>
             </tr>
         </table>
     </div>
 
     <div class="{{NPI_num.7}}">
-        {{ form.NPI11.errors }}
-        <table class="custom" style="margin: 15px" >
+        {{ form.NPI8.errors }}
+        <table class="custom2" style="margin: 15px" >
             <tr >
-                <td align=left><input type="radio" name="NPI11" value ="0"> I try not to be a show off.<br></td>
+                <td align=left><input type="radio" name="NPI8" value ="0"> My body is nothing special.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI11" value ="1"> I will usually show off if I get the chance. </td>
+                <td align=left><input type="radio" name="NPI8" value ="1">I like to look at my body. </td>
             </tr>
         </table>
     </div>
 
-
     <div class="{{NPI_num.8}}">
+        {{ form.NPI9.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI9" value ="0"> Being in authority doesn't mean much to me.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI9" value ="1">People always seem to recognize my authority. </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{NPI_num.9}}">
+        {{ form.NPI10.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI10" value ="1"> I will never be satisfied until I get all that I deserve.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI10" value ="0">I will take my satisfactions as they come. </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{NPI_num.10}}">
+        {{ form.NPI11.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI11" value ="0">I try not to be a show off.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI11" value ="1">I will usually show off if I get the chance. </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{NPI_num.11}}">
+        {{ form.NPI12.errors }}
+        <table class="custom2" style="margin: 15px" >
+            <tr >
+                <td align=left><input type="radio" name="NPI12" value ="1"> I am a born leader.<br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="NPI12" value ="0">Leadership is a quality that takes a long time to develop. </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="{{NPI_num.12}}">
         {{ form.NPI13.errors }}
-        <table class="custom" style="margin: 15px" >
+        <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="NPI13" value ="1"> I like to look at myself in the mirror.<br></td>
             </tr>
             <tr >
-                <td align=left><input type="radio" name="NPI13" value ="0"> I am not particularly interested in looking at myself in the mirror. </td>
+                <td align=left><input type="radio" name="NPI13" value ="0">I am not particularly interested in looking at myself in the mirror. </td>
             </tr>
         </table>
     </div>
@@ -193,7 +237,6 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 2;
   grid-row-end: 3;
   place-self: top center;
-  background-color:#ededed;
 }
 
 .item-2 {
@@ -202,6 +245,7 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 3;
   grid-row-end: 4;
   place-self: top center;
+  background-color:#ededed;
 }
 
 .item-3 {
@@ -210,7 +254,6 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 4;
   grid-row-end: 5;
   place-self: top center;
-  background-color:#ededed;
 }
 
 .item-4 {
@@ -219,6 +262,7 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 5;
   grid-row-end: 6;
   place-self: top center;
+  background-color:#ededed;
 }
 
 .item-5 {
@@ -227,7 +271,6 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 6;
   grid-row-end: 7;
   place-self: top center;
-  background-color:#ededed;
 }
 
 .item-6 {
@@ -236,6 +279,7 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 7;
   grid-row-end: 8;
   place-self: top center;
+  background-color:#ededed;
 }
 
 .item-7 {
@@ -244,7 +288,6 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 8;
   grid-row-end: 9;
   place-self: top center;
-  background-color:#ededed;
 }
 
 .item-8 {
@@ -253,7 +296,7 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 9;
   grid-row-end: 10;
   place-self: top center;
-
+  background-color:#ededed;
 }
 
 .item-9 {
@@ -262,9 +305,41 @@ table tr#ROWeven {background-color:white;}
   grid-row-start: 10;
   grid-row-end: 11;
   place-self: top center;
+}
+
+.item-10 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 11;
+  grid-row-end: 12;
+  place-self: top center;
   background-color:#ededed;
 }
 
+.item-11 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 12;
+  grid-row-end: 13;
+  place-self: top center;
+}
+
+.item-12 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 13;
+  grid-row-end: 14;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+.item-13 {
+  <!--grid-column-start: 2;-->
+  <!--grid-column-end: 3;-->
+  grid-row-start: 14;
+  grid-row-end: 15;
+  place-self: top center;
+}
 
 
 .wew {

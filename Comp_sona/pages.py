@@ -146,7 +146,7 @@ class SAQ(Page):
 
 class DYADS(Page):
     form_model = 'player'
-    form_fields = ['NPI1', 'NPI2', 'NPI4', 'NPI5', 'NPI7', 'NPI8', 'NPI10', 'NPI11', 'NPI13']
+    form_fields = ['NPI1', 'NPI2', 'NPI3', 'NPI4', 'NPI5', 'NPI6', 'NPI7', 'NPI8', 'NPI9', 'NPI10', 'NPI11', 'NPI12', 'NPI13']
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds and self.participant.vars['end_experiment'] == False
@@ -264,7 +264,7 @@ class InstructionsSTf(Page):
 
 class SecondTask(Page):
     form_model = 'player'
-    form_fields = ['task_decision']
+    form_fields = ['tasks_committed', 'anonymity_task_2']
 
     def is_displayed(self):
         return self.subsession.round_number >= Constants.num_charities and self.participant.vars['end_experiment'] == False
@@ -273,13 +273,13 @@ class SecondTask(Page):
         round_num = self.subsession.round_number - Constants.num_charities + 1
         self.player.charity_task_2 = self.player.participant.vars['orderTask2'][(round_num-1)]
 
-        for_norder = ["item item-3", "item item-5"]
+        for_norder = ["item item-4", "item item-6"]
         norder = random.choice(for_norder)
-        if norder == "item item-3":
-            for_yorder = ["item item-4", "item item-5"]
+        if norder == "item item-4":
+            for_yorder = ["item item-5", "item item-6"]
             yorder = random.sample(for_yorder, 2)
         else:
-            for_yorder = ["item item-3", "item item-4"]
+            for_yorder = ["item item-4", "item item-5"]
             yorder = random.sample(for_yorder, 2)
 
         return {
@@ -287,65 +287,13 @@ class SecondTask(Page):
             'yorder': yorder,
             'num_rounds': Constants.num_rounds,
             'max_tasks': Constants.max_tasks,
-            'tasks_completed': self.player.participant.vars['tasks_completed'],
-            'tasks_allowed': Constants.max_tasks - self.player.participant.vars['tasks_completed'],
             'round_num': round_num,
             'last_charity': Constants.num_charities,
             'charity': self.player.charity_task_2,
             'image_path_info': 'Comp_sona/pics/{} short.jpg'.format(self.player.charity_task_2),
         }
 
-    def before_next_page(self):
-        self.player.anonymity_task_2 = self.player.task_decision
-        if self.player.participant.vars['tasks_completed'] == 20:
-            self.player.task_decision = 'NO'
-        if self.player.participant.vars['tasks_completed'] < 20:
-            if self.player.task_decision == 'ANONYMOUS':
-                self.player.participant.vars['tasks_completed'] += 1
-                self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
-            elif self.player.task_decision == "PUBLIC":
-                self.player.participant.vars['tasks_completed'] += 1
-                self.player.participant.vars['chosen_char'].append((self.player.charity_task_2, self.player.anonymity_task_2))
-            else:
-                pass
-
-
-
-# class SliderTask(Page):
-#     timeout_seconds = 60
-#     form_model = 'player'
-#     form_fields = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10']
-#
-#     def is_displayed(self):
-#         return self.subsession.round_number >= Constants.num_charities and self.participant.vars[
-#             'end_experiment'] is False and self.player.in_round(self.subsession.round_number).task_decision is True
-#
-#     def vars_for_template(self):
-#         round_num = self.subsession.round_number - Constants.num_charities + 1
-#         for_marg = range(0, 210+1, 10)
-#         marg = random.choices(for_marg, weights=None, cum_weights=None, k=10)
-#
-#         return {
-#             'num_rounds': Constants.num_rounds,
-#             'round_num': round_num,
-#             'last_charity': Constants.num_charities,
-#             'marg': marg
-#         }
-#
-#     def before_next_page(self):
-#         don = 0
-#         slider_position = [self.player.S1, self.player.S2, self.player.S3, self.player.S4, self.player.S5,
-#                            self.player.S6, self.player.S7, self.player.S8, self.player.S9, self.player.S10]
-#         for i in slider_position:
-#             if i == 50:
-#                 don += Constants.slider_value
-#             else:
-#                 pass
-#         self.player.donation = don
-#         if self.player.anonymity_task_2 == "PUBLIC":
-#             self.player.participant.vars['tot_pub_don'] += self.player.donation
-#         else:
-#             pass
+    # def before_next_page(self):
 
 
 class ThankYou(Page):
@@ -355,32 +303,36 @@ class ThankYou(Page):
     def vars_for_template(self):
         time_spent = (self.player.participant.vars['time_end'] - self.player.participant.vars['time_start'])/60
 
-        if len(self.player.participant.vars['chosen_char']) > 0:
+        chosen_round = self.player.participant.vars['chosen_round']
+        self.player.chosen_charity = self.player.in_round(chosen_round).charity_task_2
+        self.player.chosen_anonymity = self.player.in_round(chosen_round).anonymity_task_2
+        self.player.chosen_tasks_committed = self.player.in_round(chosen_round).tasks_committed
+
+        if self.player.chosen_tasks_committed > 0 and self.player.chosen_anonymity != "N/A":
             cont = 'YES'
         else:
             cont = 'NO'
 
-        random.shuffle(self.player.participant.vars['chosen_char'])
+        if self.player.chosen_anonymity == "Public":
+            self.player.matched_donation = "NO"
+        elif self.player.chosen_anonymity == "N/A":
+            self.player.matched_donation = "NO"
+        else:
+            self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
 
-        # if self.player.participant.vars['tot_pub_don'] >= Constants.max_tasks / 4:
-        #     self.player.listed = 'YES'
-        # else:
-        #     self.player.listed = 'NO'
-
-        self.player.matched_donation = self.player.participant.vars['matchedDonation'][0]
-
-        # self.player.total_subject_donation = sum(self.player.in_all_rounds().donation)
-        # self.player.total_subject_donation = self.player.donation
         self.player.participant.vars['matchedDonation'] = self.player.matched_donation
-        self.player.tasks_completed = self.player.participant.vars['tasks_completed']
+        self.player.participant.vars['chosen_charity'] = self.player.chosen_charity
+        self.player.participant.vars['chosen_anonymity'] = self.player.chosen_anonymity
+        self.player.participant.vars['chosen_tasks_committed'] = self.player.chosen_tasks_committed
 
         return {
             'matched_donation': self.player.matched_donation,
-            # 'listed': self.player.listed,
             'time_spent': round(time_spent),
-            'tasks_completed': self.player.participant.vars['tasks_completed'],
             'cont': cont,
-            'check': self.player.participant.vars['chosen_char'],
+            'chosen_charity': self.player.chosen_charity,
+            'chosen_anonymity': self.player.chosen_anonymity,
+            'chosen_tasks_committed': self.player.chosen_tasks_committed,
+            'slider_value': Constants.slider_value,
         }
 
 
@@ -398,8 +350,8 @@ class TY2(Page):
 page_sequence = [
     SIS,
     Introduction,
-    Dem,
-    WEW1,
+    # Dem,
+    # WEW1,
     InstructionsFT,
     FirstTask,
     InstructionsST,
@@ -409,11 +361,11 @@ page_sequence = [
     CAEST,
     InstructionsSTf,
     SecondTask,
-    WEW3,
-    CEAS1,
-    CEAS2,
-    SubC,
-    SAQ,
+    # WEW3,
+    # CEAS1,
+    # CEAS2,
+    # SubC,
+    # SAQ,
     DYADS,
     ThankYou,
     TY2,

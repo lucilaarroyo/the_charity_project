@@ -8,24 +8,29 @@ Charity Donations Instructions <i>(2 of 3)</i>
 {% block content %}
 
 <p class="custom" align="justify"><br>
-    Each potential donation can be classified as either <b>Anonymous or Public</b>. <b>You will decide which type of
-        donation to make.</b><br><br>
+    Each potential donation can be either <b>Anonymous or Public</b>. <b>You will decide which type of
+        donation to make for each charity.</b><br><br>
 </p>
 <p class="custom"> If chosen for implementation:</p>
     <ul class="custom" align="justify">
     <li>An <b>Anonymous donation will have a 50% chance of being doubled</b> by the researchers.
-        An <b>Anonymous</b> donation will not be associated with your name.<br>
+        An <b>Anonymous donation</b> will not be associated with your name.<br>
     </li>
     <br>
-    <li>A <b>Public</b> donation will have no possibility of being doubled.
-        However, <b>if the number of slider tasks you complete for a Public donation is large enough,
+    <li>A <b>Public donation</b> will have no possibility of being doubled.
+        However, <b>if the number of slider tasks you perform correctly for a Public donation is large enough,
         your name will be included on a "Donation Hero's" list on The Charity Project's website</b>.
         The link to the website is on the Study Information page on SONA and will also be emailed to all participants
             that complete this study. <br>
     </li>
 
     </ul>
-
+{% if social_conformity == 1 %}
+<p class="custom" align="justify"><br>
+    <i><b>For each charity, you will be shown out of all donations made to that charity by previous participants
+        what percentage were <i>Public</i> donations and what percentage were <i>Anonymous</i> donations.</b></i>
+</p>
+{% endif %}
 <br><br><br>
 <p class="custom"> Press "NEXT" to learn more about the Slider Tasks.</p>
     <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>

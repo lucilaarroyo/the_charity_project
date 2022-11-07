@@ -9,7 +9,14 @@ Charity Donations ({{round_num}} of {{last_charity}})
 <br>
 <div class="grid-container">
 
-    <div class="item item-1"><div class="boxed"> <h2 >{{ charity }}</h2> <br><img src="{% static image_path_info %}" style="width:100%;"/> </div></div>
+    <div class="item item-1"><div class="boxed"> <h2 >{{ charity }}</h2> <br><img src="{% static image_path_info %}" style="width:100%;"/> </div>
+        {% if social_conformity == 1 %}
+            <br>
+            <div class="boxed"><p class="custom3" align="justify"> <b>Out of all donations made to this charity
+                by previous participants {{subsample_choice}}% were Public and {{subsample_choice_anon}}% were Anonymous.
+                </b></div>
+        {% endif %}
+    </div>
 
     <div class="item item-2">
         <p class="custom3" align="justify"> <b>How many tasks would you like to perform to gain money for this charity?</b>
@@ -29,13 +36,13 @@ Charity Donations ({{round_num}} of {{last_charity}})
     <div class="item item-3">
         <br><br>
         {{ form.anonymity_task_2.errors }}
-        <p class="custom3">   <b>How would you like to classify this donation?</b>  </p>
+        <p class="custom3">   <b>Please select what type of donation you would like to make</b>  </p>
 
         <p class="custom" align="justify"> <i> An Anonymous donation has a
             50% chance of being doubled. An Anonymous donation will not be associated with your name.
             </i></p>
         <p class="custom" align="justify"> <i>A Public donation has no possibility of being doubled. However,
-            if the number of tasks you complete correctly for a Public donation is large enough,
+            if the number of tasks you perform correctly for a Public donation is large enough,
             your name will be included on the "Donation Hero's" list.
 
             </i></p>

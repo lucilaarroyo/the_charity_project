@@ -32,6 +32,7 @@ class Introduction(Page):
         return self.subsession.round_number == 1 and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
+        self.player.conformity = self.player.participant.vars['social_conformity']
         return {
             # 'compensation': Constants.compensation,
         }
@@ -201,8 +202,13 @@ class InstructionsST1(Page):
         return self.subsession.round_number == Constants.num_charities and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
+        if self.player.participant.vars['social_conformity'] == 1:
+            social_conformity = 1
+        else:
+            social_conformity = 0
         return {
             'max_tasks': Constants.max_tasks,
+            'social_conformity': social_conformity,
         }
 
 
@@ -256,9 +262,15 @@ class InstructionsSTf(Page):
         return self.subsession.round_number == Constants.num_charities and self.participant.vars['end_experiment'] == False
 
     def vars_for_template(self):
+        if self.player.participant.vars['social_conformity'] == 1:
+            social_conformity = 1
+        else:
+            social_conformity = 0
         return {
             'slider_value': Constants.slider_value,
             'max_tasks': Constants.max_tasks,
+            'social_conformity': social_conformity,
+
         }
 
 
@@ -282,6 +294,17 @@ class SecondTask(Page):
             for_yorder = ["item item-4", "item item-5"]
             yorder = random.sample(for_yorder, 2)
 
+        if self.player.participant.vars['social_conformity'] == 1:
+            social_conformity = 1
+            subsample_choice = self.player.participant.vars['subsample_choices'][self.player.charity_task_2]
+            subsample_choice_anon = 100 - subsample_choice
+        else:
+            social_conformity = 0
+            subsample_choice = 1000
+            subsample_choice_anon = 1000
+
+        self.player.subsample_choice = subsample_choice
+
         return {
             'norder': norder,
             'yorder': yorder,
@@ -291,6 +314,9 @@ class SecondTask(Page):
             'last_charity': Constants.num_charities,
             'charity': self.player.charity_task_2,
             'image_path_info': 'Comp_sona/pics/{} short.jpg'.format(self.player.charity_task_2),
+            'social_conformity': social_conformity,
+            'subsample_choice': subsample_choice,
+            'subsample_choice_anon': subsample_choice_anon,
         }
 
     # def before_next_page(self):
@@ -350,8 +376,8 @@ class TY2(Page):
 page_sequence = [
     SIS,
     Introduction,
-    # Dem,
-    # WEW1,
+    Dem,
+    WEW1,
     InstructionsFT,
     FirstTask,
     InstructionsST,
@@ -361,11 +387,11 @@ page_sequence = [
     CAEST,
     InstructionsSTf,
     SecondTask,
-    # WEW3,
-    # CEAS1,
-    # CEAS2,
-    # SubC,
-    # SAQ,
+    WEW3,
+    CEAS1,
+    CEAS2,
+    SubC,
+    SAQ,
     DYADS,
     ThankYou,
     TY2,

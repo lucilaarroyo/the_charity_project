@@ -16,30 +16,34 @@
     </p>
 
     <br><br>
-    <p class="custom2"> The charity chosen is <b>{{ charity_chosen }}</b>.  </p>
+    <p class="custom2" align="justify"> The charity chosen is <b>{{ chosen_charity }}</b>.  </p>
 
     {% if cont == 'YES' %}
-        <p class="custom2">
-            You made a(n) <b>{{ chosen_anonymity }}</b> donation and committed to perform
+        <p class="custom2" align="justify">
+            You made a(n) <b>{{ chosen_anonymity }} donation </b>and committed to perform
             <b>{{ chosen_tasks_committed }} task(s)</b> for this charity.
 
-            <br><br>
+            <br><br><br>
 
-            Please, click "NEXT" when you are ready to begin the Slider Tasks. The time you spend completing the tasks
+            Please, click "NEXT" when you are ready to begin the Slider Tasks.
+            <br><br><br>
+            <i>Remember:</i></p>
+            <ul class="custom2" align="justify"> <li>
+            The time you spend completing the tasks
             will not be compensated with course credit, instead, you will be donating your time and effort to gain
-            money for the charity.
-        <br><br>
-            <i>Remember that to gain the money for a task, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
-            You will gain ${{slider_value}} for each task you complete correctly.</i>
-        <br>
+            money for the charity.</li>
 
-        </p>
+            <li>Remember that to gain the money from a task, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
+                <b>You will gain ${{slider_value}} for each task you perform correctly.</b></li>
 
+            </ul>
+
+<br><br><br>
         <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
     {% endif %}
 
     {% if cont == 'NO' %}
-        <p class="custom2"> You committed to perform {{ chosen_tasks_committed }} tasks for this charity.
+        <p class="custom2" align="justify"> You committed to perform {{ chosen_tasks_committed }} task(s) for this charity.
         {% if chosen_tasks_committed > 0 and chosen_anonymity == 'N/A' %}
          However, you did not select whether you wanted the donation to be Public or Anonymous. For this
             reason, you will not be able to perform the tasks.

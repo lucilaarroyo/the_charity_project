@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   Decision
+{% endblock %}
+
+{% block content %}
+    <p> The other player's advice is <b>{{ advice }}</b>.</p>
+
+    {{ form.non_field_errors }}
+    {{ form.decision.errors }}
+    {% formfield 'decision' %}
+
+    {% next_button %}
+{% endblock %}
+
+

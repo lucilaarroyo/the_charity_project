@@ -30,7 +30,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['Comp_sona', 'slider_task'],
     },
-
+    {
+        'name': 'sbe',
+        'display_name': "sb",
+        'num_demo_participants': 2,
+        'app_sequence': ['sbe'],
+    },
 
 
 
@@ -84,6 +89,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 # Consider '', None, and '0' to be empty/false
 DEBUG = (environ.get('OTREE_PRODUCTION') in {None, '', '0'})
+
 
 DEMO_PAGE_INTRO_HTML = """
 <ul>

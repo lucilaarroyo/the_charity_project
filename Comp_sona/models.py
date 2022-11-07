@@ -15,27 +15,27 @@ Comp_sona
 class Constants(BaseConstants):
     name_in_url = 'Comp_sona'
     players_per_group = None
-    # num_charities = 60
-    num_charities = 4
+    num_charities = 60
+    # num_charities = 4
     num_rounds = num_charities*2 - 1
-    # charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION',
-    #  'WATER MISSION', 'MULTIPLE MYELOMA RESEARCH FOUNDATION', 'LIVING BEYOND BREAST CANCER', 'FIGHT COLORECTAL CANCER',
-    #  'CURE CHILDHOOD CANCER', 'KIDNEY CANCER ASSOCIATION', 'AIDS UNITED', 'ORGANIZATION FOR AUTISM RESEARCH',
-    #  'CAN DO MULTIPLE SCLEROSIS', 'SAN DIEGO CENTER FOR THE BLIND', 'DIABETES FOUNDATION OF MISSISSIPPI',
-    #  'THE ASSOCIATION FOR FRONTOTEMPORAL DEGENERATION', 'FISHER CENTER FOR ALZHEIMER`S RESEARCH FOUNDATION',
-    #  'THE JED FOUNDATION', 'THE TREVOR PROJECT', 'TRAGEDY ASSISTANCE PROGRAM FOR SURVIVORS', 'THE GLOBAL ORPHAN PROJECT',
-    #  'HELP THE HELPLESS', 'PREVENT CHILD ABUSE AMERICA', 'SAVE THE CHILDREN', 'CHRISTIAN RELIEF FUND', 'ALL HANDS AND HEARTS',
-    #  'SBP', 'SAMARITAN`S PURSE', 'UNITED METHODIST COMMITTEE ON RELIEF OF GLOBAL MINISTRIES', 'INTERNATIONAL RELIEF TEAMS',
-    #  'SEMPER FI & AMERICA`S FUND', 'FISHER HOUSE FOUNDATION', 'SOLDIERS` ANGELS', 'OUR MILITARY KIDS', 'BUILDING HOMES FOR HEROES',
-    #  'MEMORIAL ASSISTANCE MINISTRIES', 'TRANSITIONS', 'ROSIE`S PLACE', 'HEALTHCARE FOR THE HOMELESS - HOUSTON',
-    #  'CHICAGO COALITION FOR THE HOMELESS', 'ALIGHT', 'REFUGEES INTERNATIONAL', 'PREEMPTIVE LOVE', 'THE TIBET FUND',
-    #  'UNITED PALESTINIAN APPEAL', 'WOMEN IN DISTRESS OF BROWARD COUNTY', 'ALTERNATIVES', 'THE FAMILY PLACE', 'SAFEHOUSE DENVER',
-    #  'LYDIA`S HOUSE', 'AMERICANS FOR IMMIGRANT JUSTICE', 'JUSTICE IN AGING', 'CAMPHILL VILLAGE KIMBERTON HILLS',
-    #  'STATE VOICES', 'RAINIER SCHOLARS', 'ANIMAL DEFENSE LEAGUE OF TEXAS', 'THE DIAN FOSSEY GORILLA FUND INTERNATIONAL',
-    #  'MICHIGAN ANTI-CRUELTY SOCIETY', 'CHEETAH CONSERVATION FUND', 'RE- WILD']
+    charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION',
+     'WATER MISSION', 'MULTIPLE MYELOMA RESEARCH FOUNDATION', 'LIVING BEYOND BREAST CANCER', 'FIGHT COLORECTAL CANCER',
+     'CURE CHILDHOOD CANCER', 'KIDNEY CANCER ASSOCIATION', 'AIDS UNITED', 'ORGANIZATION FOR AUTISM RESEARCH',
+     'CAN DO MULTIPLE SCLEROSIS', 'SAN DIEGO CENTER FOR THE BLIND', 'DIABETES FOUNDATION OF MISSISSIPPI',
+     'THE ASSOCIATION FOR FRONTOTEMPORAL DEGENERATION', 'FISHER CENTER FOR ALZHEIMER`S RESEARCH FOUNDATION',
+     'THE JED FOUNDATION', 'THE TREVOR PROJECT', 'TRAGEDY ASSISTANCE PROGRAM FOR SURVIVORS', 'THE GLOBAL ORPHAN PROJECT',
+     'HELP THE HELPLESS', 'PREVENT CHILD ABUSE AMERICA', 'SAVE THE CHILDREN', 'CHRISTIAN RELIEF FUND', 'ALL HANDS AND HEARTS',
+     'SBP', 'SAMARITAN`S PURSE', 'UNITED METHODIST COMMITTEE ON RELIEF OF GLOBAL MINISTRIES', 'INTERNATIONAL RELIEF TEAMS',
+     'SEMPER FI & AMERICA`S FUND', 'FISHER HOUSE FOUNDATION', 'SOLDIERS` ANGELS', 'OUR MILITARY KIDS', 'BUILDING HOMES FOR HEROES',
+     'MEMORIAL ASSISTANCE MINISTRIES', 'TRANSITIONS', 'ROSIE`S PLACE', 'HEALTHCARE FOR THE HOMELESS - HOUSTON',
+     'CHICAGO COALITION FOR THE HOMELESS', 'ALIGHT', 'REFUGEES INTERNATIONAL', 'PREEMPTIVE LOVE', 'THE TIBET FUND',
+     'UNITED PALESTINIAN APPEAL', 'WOMEN IN DISTRESS OF BROWARD COUNTY', 'ALTERNATIVES', 'THE FAMILY PLACE', 'SAFEHOUSE DENVER',
+     'LYDIA`S HOUSE', 'AMERICANS FOR IMMIGRANT JUSTICE', 'JUSTICE IN AGING', 'CAMPHILL VILLAGE KIMBERTON HILLS',
+     'STATE VOICES', 'RAINIER SCHOLARS', 'ANIMAL DEFENSE LEAGUE OF TEXAS', 'THE DIAN FOSSEY GORILLA FUND INTERNATIONAL',
+     'MICHIGAN ANTI-CRUELTY SOCIETY', 'CHEETAH CONSERVATION FUND', 'RE- WILD']
 
 
-    charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION']
+    # charities = ['ACTION AGAINST HUNGER', 'FEED MY STARVING CHILDREN', 'FACING HUNGER FOODBANK', 'THE HUNGER COALITION']
 
     # anonymity = public or anonymous
     anonymity = ["PUBLIC"] * int(num_charities/2) + ["ANONYMOUS"] * int(num_charities/2)
@@ -92,6 +92,41 @@ class Subsession(BaseSubsession):
                 player.participant.vars['chosen_charity'] = ''
                 player.participant.vars['chosen_anonymity'] = ''
                 player.participant.vars['chosen_tasks_committed'] = 0
+                #change this depending if I want to show subsample choices to the participants
+                player.participant.vars['social_conformity'] = 1
+                    #random.randint(0, 1)
+                player.participant.vars['subsample_choices'] = {"ACTION AGAINST HUNGER":	19, "AIDS UNITED":	35,
+                                                                "ALIGHT":	21, "ALL HANDS AND HEARTS":	8,
+                                                                "ALTERNATIVES":	40, "AMERICANS FOR IMMIGRANT JUSTICE":	15,
+                                                                "ANIMAL DEFENSE LEAGUE OF TEXAS":	22, "BUILDING HOMES FOR HEROES":	30,
+                                                                "CAMPHILL VILLAGE KIMBERTON HILLS":	25, "CAN DO MULTIPLE SCLEROSIS":	25,
+                                                                "CHEETAH CONSERVATION FUND":	22, "CHICAGO COALITION FOR THE HOMELESS": 29,
+                                                                "CHRISTIAN RELIEF FUND":	18, "CURE CHILDHOOD CANCER":	19,
+                                                                "DIABETES FOUNDATION OF MISSISSIPPI":	33, "FACING HUNGER FOODBANK":	11,
+                                                                "FEED MY STARVING CHILDREN":	33, "FIGHT COLORECTAL CANCER":	9,
+                                                                "FISHER CENTER FOR ALZHEIMER`S RESEARCH FOUNDATION":	19,
+                                                                "FISHER HOUSE FOUNDATION":	43, "HEALTHCARE FOR THE HOMELESS - HOUSTON":	23,
+                                                                "HELP THE HELPLESS":	20, "INTERNATIONAL RELIEF TEAMS":	18,
+                                                                "JUSTICE IN AGING":	20, "KIDNEY CANCER ASSOCIATION":	17,
+                                                                "LIVING BEYOND BREAST CANCER":	44, "LYDIA`S HOUSE":	35,
+                                                                "MEMORIAL ASSISTANCE MINISTRIES":	15, "MICHIGAN ANTI-CRUELTY SOCIETY":	19,
+                                                                "MULTIPLE MYELOMA RESEARCH FOUNDATION":	33, "ORGANIZATION FOR AUTISM RESEARCH":	30,
+                                                                "OUR MILITARY KIDS":	29, "PREEMPTIVE LOVE":	27,
+                                                                "PREVENT CHILD ABUSE AMERICA":	31, "RAINIER SCHOLARS":	10,
+                                                                "RE- WILD":	33, "REFUGEES INTERNATIONAL":	20,
+                                                                "ROSIE`S PLACE":	18, "SAFEHOUSE DENVER":	29,
+                                                                "SAMARITAN`S PURSE":	33, "SAN DIEGO CENTER FOR THE BLIND":	33,
+                                                                "SAVE THE CHILDREN":	16, "SBP":	25, "SEMPER FI & AMERICA`S FUND":	33,
+                                                                "SOLDIERS` ANGELS":	20, "STATE VOICES":	12,
+                                                                "THE ASSOCIATION FOR FRONTOTEMPORAL DEGENERATION":	33,
+                                                                "THE DIAN FOSSEY GORILLA FUND INTERNATIONAL":	0,
+                                                                "THE FAMILY PLACE":	19, "THE GLOBAL ORPHAN PROJECT": 18,
+                                                                "THE HUNGER COALITION":	28, "THE JED FOUNDATION":	13,
+                                                                "THE TIBET FUND":	27, "THE TREVOR PROJECT":	22,
+                                                                "TRAGEDY ASSISTANCE PROGRAM FOR SURVIVORS":	50, "TRANSITIONS":	17,
+                                                                "UNITED METHODIST COMMITTEE ON RELIEF OF GLOBAL MINISTRIES":	20,
+                                                                "UNITED PALESTINIAN APPEAL":	0, "WATER MISSION":	13,
+                                                                "WOMEN IN DISTRESS OF BROWARD COUNTY":	24, }
                 #player.participant.vars['version_1_count'] = 0
                 # for_for_don = []
                 # for i in range(Constants.num_charities):
@@ -266,6 +301,9 @@ class Player(BasePlayer):
     chosen_charity = models.StringField()
     chosen_anonymity = models.StringField()
     chosen_tasks_committed = models.IntegerField()
+
+    subsample_choice = models.IntegerField()
+    conformity = models.IntegerField()
 
 
 

@@ -24,12 +24,12 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['Comp_sona'],
     # },
 
-    {
-        'name': 'comp_and_slider',
-        'display_name': "comp_and_slider",
-        'num_demo_participants': 2,
-        'app_sequence': ['Comp_sona', 'slider_task'],
-    },
+    # {
+    #     'name': 'comp_and_slider',
+    #     'display_name': "comp_and_slider",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['Comp_sona', 'slider_task'],
+    # },
     {
         'name': 'sbe',
         'display_name': "sb",

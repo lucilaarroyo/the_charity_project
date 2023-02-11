@@ -2,12 +2,27 @@
 {% load otree static %}
 
 {% block title %}
-    PreDots
+    {% if round_num <= Constants.num_trial_rounds %}
+        Trial Round {{ round_num }} is about to begin
+    {% endif %}
+    {% if round_num > Constants.num_trial_rounds %}
+        Round {{ round_count }} is about to begin
+    {% endif %}
 {% endblock %}
 
 {% block content %}
 
-    {% next_button %}
+
 {% endblock %}
 
+{% block app_styles %}
+<style type="text/css">
+.otree-timer {
+        display: none;
+    }
 
+.otree-body{
+    max-width: 1280px;
+}
+</style>
+{% endblock %}

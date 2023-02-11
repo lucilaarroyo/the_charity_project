@@ -1,0 +1,200 @@
+
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Questionnaire
+{% endblock %}
+
+{% block content %}
+
+
+    <p class="custom2">
+        Please read each scenario carefully and rate how likely it would be for you to react in each of the ways stated.
+    </p>
+<br><br>
+    {{ form.non_field_errors }}
+    {{ form.sh3.errors }}
+    {{ form.g3.errors }}
+    {{ form.d3.errors }}
+    {{ form.e3.errors }}
+    {{ form.sh4.errors }}
+    {{ form.g4.errors }}
+    {{ form.d4.errors }}
+    {{ form.e4.errors }}
+
+<div class="grid-container">
+    <div class="{{SCA.0}}">
+        <table class="custom" cellpadding="15" cellspacing="20"  >
+            <tr align="center" style="font-weight:bold; background-color:#ddf2ee;">
+                <td width="600" align="left" class="custom2">At work, you wait until the last minute to plan a project,
+                    and it turns out badly.</td>
+                <td width="120"><pre>Not likely </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>Very likely</pre></td>
+            </tr>
+            <tr>
+                <td width="600">You would feel incompetent.</td>
+                {% for radio in form.sh3 %}
+                    <td align="center" width="120" ><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600" style="background-color:#effbf5;">You would think: "There are never enough hours in the day."</td>
+                {% for radio in form.e3 %}
+                    <td align="center" width="120" style="background-color:#effbf5;" ><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600">You would feel: "I deserve to be reprimanded for mismanaging the project."</td>
+                {% for radio in form.g3 %}
+                    <td align="center" width="120" ><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600" style="background-color:#effbf5;">You would think: "What's done is done."</td>
+                {% for radio in form.d3 %}
+                    <td align="center" width="120"  style="background-color:#effbf5;"><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+
+    <div clas="{{SCA.1}}">
+        <table class="custom" cellpadding="15" cellspacing="20" >
+            <tr align="center" style="font-weight:bold; background-color:#ddf2ee;" >
+                <td width="600" align="left" class="custom2">You make a mistake at work and find out a coworker is blamed
+                    for the error.</td>
+                <td width="120"><pre>Not likely </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>           </pre></td>
+                <td width="120"><pre>Very likely</pre></td>
+            </tr>
+            <tr>
+                <td width="600">You would think the company did not like the coworker.</td>
+                {% for radio in form.e4 %}
+                    <td align="center" width="120" ><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600" style="background-color:#effbf5;">You would think: "Life is not fair."</td>
+                {% for radio in form.d4 %}
+                    <td align="center" width="120" style="background-color:#effbf5;"><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600">You would keep quiet and avoid the coworker.</td>
+                {% for radio in form.sh4 %}
+                    <td align="center" width="120" ><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td width="600" style="background-color:#effbf5;">You would feel unhappy and eager to correct the situation.</td>
+                {% for radio in form.g4 %}
+                    <td align="center" width="120" style="background-color:#effbf5;"><pre> {{ radio.tag }}</pre></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<br><br><br>
+{% if subsession.round_number == 6 %}
+<p class="custom"> Press "NEXT" to continue.</p> <br>
+{% endif %}
+<button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+
+.otree-body{
+    max-width: 1280px;
+}
+
+pre{
+    font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table tr#ROWodd {background-color:#ededed;}
+table tr#ROWeven {background-color:white;}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 60px;
+  align-content: start;
+}
+
+
+.item-0 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 1;
+  grid-row-end: 2;
+  place-self: top center;
+
+}
+
+.item-1 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: top center;
+}
+
+.item-2 {
+  <!--grid-column-start: 1;-->
+  <!--grid-column-end: 2;-->
+  grid-row-start: 3;
+  grid-row-end: 4;
+  place-self: top center;
+  background-color:#ededed;
+}
+
+
+
+.hide { display: none!important; }
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+addEventListener("click", function() {
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+});
+
+
+
+</script>
+{% endblock %}

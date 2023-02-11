@@ -4,46 +4,82 @@ from .models import Constants
 import random
 
 
-class PreDots(Page):
-    timeout_seconds = 3
+class Instructions(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+    def vars_for_template(self):
+        self.player.rolee = self.player.participant.vars['role']
+        self.player.difficulty = self.player.participant.vars['difficulty']
+
+        return {
+            'num_actual_rounds': Constants.num_actual_rounds,
+            'num_trial_rounds': Constants.num_trial_rounds,
+            'role': self.player.rolee,
+            'round_multiplier': Constants.round_multiplier,
+            'dots_secs': Constants.dots_secs,
+
+        }
+
+
+class WP(WaitPage):
+    template_name = 'sbe/WP.html'
 
     def vars_for_template(self):
         round_num = self.subsession.round_number
-        if round_num <= (Constants.num_trial_rounds/2):
-            self.player.role_in_round = self.player.participant.vars['role_1']
-        elif round_num <= Constants.num_trial_rounds:
-            self.player.role_in_round = self.player.participant.vars['role_2']
-        else:
-            self.player.role_in_round = self.player.participant.vars['role_3']
-
+        for_margins_left = range(30, 1240 + 1, 15)
+        for_margins_top = range(20, 720 + 1, 15)
         if round_num <= Constants.num_trial_rounds:
-            self.player.num_of_dots = self.player.participant.vars['dots_displayed_trial'][(round_num-1)]
+            # self.player.num_of_dots = self.player.participant.vars['dots_displayed_trial'][(round_num - 1)]
+            for g in self.subsession.get_groups():
+                num_dots = g.get_player_by_id(1).participant.vars['dots_displayed_trial'][(round_num - 1)]
+                margins_left = random.sample(for_margins_left, num_dots)
+                margins_top = random.sample(for_margins_top, num_dots)
+                for p in g.get_players():
+                    p.participant.vars['m_l'] = margins_left
+                    p.participant.vars['m_t'] = margins_top
+
         else:
-            self.player.num_of_dots = self.player.participant.vars['dots_displayed'][(round_num-Constants.num_trial_rounds-1)]
-
-        if self.player.role_in_round == 'Advisor':
-            for_margins_left = range(30, 1240+1, 15)
-            for_margins_top = range(20, 720+1, 15)
-            margins_left = random.sample(for_margins_left, self.player.num_of_dots)
-            margins_top = random.sample(for_margins_top, self.player.num_of_dots)
-            self.player.participant.vars['m_l'] = margins_left
-            self.player.participant.vars['m_t'] = margins_top
-
+            # self.player.num_of_dots = self.player.participant.vars['dots_displayed'][(round_num - Constants.num_trial_rounds - 1)]
+            for g in self.subsession.get_groups():
+                num_dots = g.get_player_by_id(1).participant.vars['dots_displayed'][
+                    (round_num - Constants.num_trial_rounds - 1)]
+                margins_left = random.sample(for_margins_left, num_dots)
+                margins_top = random.sample(for_margins_top, num_dots)
+                for p in g.get_players():
+                    p.participant.vars['m_l'] = margins_left
+                    p.participant.vars['m_t'] = margins_top
 
         return {
-            'role': self.player.role_in_round,
-            # 'm_l': margins_left,
-            # 'm_t': margins_top,
-            'num_dots': self.player.num_of_dots,
+            'round_num': round_num,
 
 
         }
 
 
+class PreDots(Page):
+    timeout_seconds = 15
+
+    def vars_for_template(self):
+        round_num = self.subsession.round_number
+        if round_num <= Constants.num_trial_rounds:
+            self.player.num_of_dots = self.player.participant.vars['dots_displayed_trial'][(round_num - 1)]
+        else:
+            self.player.num_of_dots = self.player.participant.vars['dots_displayed'][(round_num - Constants.num_trial_rounds - 1)]
+
+        return {
+            'role': self.player.participant.vars['role'],
+            'num_dots': self.player.num_of_dots,
+            'round_num': round_num,
+            'round_count': round_num - Constants.num_trial_rounds,
+            'm_l': self.player.participant.vars['m_l'],
+            'm_t': self.player.participant.vars['m_t']
+
+        }
 
 
 class DotsAdv(Page):
-    timeout_seconds = 3
+    timeout_seconds = Constants.sec_adv_sees
 
     def is_displayed(self):
         return self.player.role_in_round == 'Advisor'
@@ -65,7 +101,6 @@ class DotsAdv(Page):
 class Adv(Page):
     form_model = 'player'
     form_fields = ['advice']
-    timeout_seconds = 60
 
     def is_displayed(self):
         return self.player.role_in_round == 'Advisor'
@@ -82,14 +117,22 @@ class Adv(Page):
 
         }
 
+    def before_next_page(self):
+        if self.player.num_of_dots < 20 and self.player.advice == 'LESS':
+            self.player.correct_advice = 1
+        elif self.player.num_of_dots > 20 and self.player.advice == 'MORE':
+            self.player.correct_advice = 1
+        else:
+            self.player.correct_advice = 0
+
 
 class AdvWaitPage(WaitPage):
     def vars_for_template(self):
 
 
 
-
         return {
+
 
 
         }
@@ -97,7 +140,7 @@ class AdvWaitPage(WaitPage):
 
 
 class DotsDec(Page):
-    timeout_seconds = 3
+    timeout_seconds = Constants.sec_dec_sees
 
     def is_displayed(self):
         return self.player.role_in_round == 'Decider'
@@ -122,7 +165,6 @@ class DotsDec(Page):
 class Dec(Page):
     form_model = 'player'
     form_fields = ['decision']
-    timeout_seconds = 60
 
     def is_displayed(self):
         return self.player.role_in_round == 'Decider'
@@ -138,6 +180,14 @@ class Dec(Page):
 
         }
 
+    def before_next_page(self):
+        if self.player.num_of_dots < 20 and self.player.decision == 'LESS':
+            self.player.correct_decision = 1
+        elif self.player.num_of_dots > 20 and self.player.decision == 'MORE':
+            self.player.correct_decision = 1
+        else:
+            self.player.correct_decision = 0
+
 
 class DecWaitPage(WaitPage):
     def vars_for_template(self):
@@ -151,21 +201,61 @@ class DecWaitPage(WaitPage):
 
         }
 
-# class ResultsWaitPage(WaitPage):
-#     pass
+
+class RoundResult(Page):
+    def vars_for_template(self):
+        round_num = self.subsession.round_number
+
+        if self.player.role_in_round == 'Advisor':
+            advice = self.player.advice
+            correct_advice = self.player.correct_advice
+            for pl in self.player.get_others_in_group():
+                decision = pl.decision
+                correct_decision = pl.correct_decision
+        else:
+            decision = self.player.decision
+            correct_decision = self.player.correct_decision
+            for pl in self.player.get_others_in_group():
+                advice = pl.advice
+                correct_advice = pl.correct_advice
+
+        return {
+            'advice': advice,
+            'correct_advice': correct_advice,
+            'decision': decision,
+            'correct_decision': correct_decision,
+            'round_num': round_num,
+            'round_count': round_num - Constants.num_trial_rounds,
+
+        }
+
+
+class BeforeNextRound(WaitPage):
+    def vars_for_template(self):
+
+
+
+
+        return {
+
+
+        }
 
 
 # class Results(Page):
-#     pass
-
 
 page_sequence = [
+    Instructions,
+    WP,
     PreDots,
-    DotsAdv,
-    Adv,
-    AdvWaitPage,
-    DotsDec,
-    Dec,
-    DecWaitPage,
+    # DotsAdv,
+    # Adv,
+    # AdvWaitPage,
+    # DotsDec,
+    # Dec,
+    # DecWaitPage,
+    # RoundResult,
+    # BeforeNextRound,
+
 
 ]

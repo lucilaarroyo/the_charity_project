@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <br>
+<section class="custom">
+    {{ form.non_field_errors }}
+    {{ form.gender.errors }}
+    {% formfield 'gender' %}
+<br><br>
+    What is your age? <span style="font-size:18px"> (Leave blank if you rather not say)</span>
+    {{ form.age.errors }}
+    <p class="ind">  {% formfield 'age' label="" %}</p>
+<br><br>
+    {{ form.ethnicity.errors }}
+    {% formfield 'ethnicity' %}
+<br><br>
+    {{ form.race.errors }}
+    {% formfield 'race' %}
+
+
+</section>
+
+<br><br><br><br>
+<p class="custom"> Press "NEXT" to continue.</p><br>
+<button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.ind{
+    text-indent: 2em;
+
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+</script>
+{% endblock %}

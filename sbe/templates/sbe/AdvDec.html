@@ -1,0 +1,101 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    The box below shows the text displayed to your partner:
+
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div class="boxed">
+    <h2> Your decision for this round is determined by the Advisor's advice </h2>
+    <br><br><br>
+<p class="custom3"> The Advisor's advice is <b>{{ advice }}</b>.</p>
+<p class="custom3"> Your decision in this round is, therefore, <b>{{ advice }}</b>. </p>
+</div>
+
+
+<br><br><br><br><br><br>
+<p class="custom"> Press "NEXT" to continue.</p>
+<button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+.otree-body{
+    max-width: 1280px;
+}
+
+pre{
+    font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom3 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table tr#ROWodd {background-color:#ededed;}
+table tr#ROWeven {background-color:white;}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 50%;
+  grid-template-rows: auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 60px;
+  align-content: start;
+}
+
+
+.item-0 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  place-self: top center;
+
+}
+
+
+input[type=radio] {
+    border: 0px;
+    width: 100%;
+    height: 1em;
+}
+
+.hide { display: none!important; }
+
+.boxed {
+  width: auto;
+  border: 2px solid red ;
+  padding: 15px;
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+   document.getElementById('decision').value = js_vars.decision_adv;
+
+
+</script>
+
+{% endblock %}

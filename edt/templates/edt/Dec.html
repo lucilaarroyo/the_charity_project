@@ -1,0 +1,125 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+        Please submit your decision
+
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div class="grid-container"> <br><br>
+    <div class="item item-0">
+    <p class="custom3"> Do you believe the number of dots shown in the previous screen was less or more than 20? </p>
+
+    {{ form.non_field_errors }}
+    {{ form.decision.errors }}
+    </div>
+    <div class="item item-1">
+
+        <p class="custom" align="center"><input type="radio" name="decision" value="LESS" > <b>LESS</b> </p>
+
+
+    </div>
+    <div class="item item-2">
+
+        <p class="custom" align="center"><input type="radio" name="decision" value="MORE" > <b>MORE</b> </p>
+
+
+    </div>
+</div>
+
+
+<br><br><br><br>
+
+        <p class="custom"> Press "NEXT" to submit your decision.</p>
+<button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+.otree-body{
+    max-width: 1280px;
+}
+
+pre{
+    font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom3 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table tr#ROWodd {background-color:#ededed;}
+table tr#ROWeven {background-color:white;}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  grid-template-rows: auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 60px;
+  align-content: start;
+}
+
+
+.item-0 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  place-self: top center;
+
+}
+
+.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: top center;
+}
+
+.item-2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  place-self: top center;
+}
+
+input[type=radio] {
+    border: 0px;
+    width: 100%;
+    height: 1em;
+}
+
+.hide { display: none!important; }
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+
+
+</script>
+
+{% endblock %}

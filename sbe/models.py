@@ -31,7 +31,7 @@ class Constants(BaseConstants):
     num_dots_medium = [18, 22]
     num_dots_hard = [19, 21]
 
-    dots_secs = 1
+    dots_secs = 3
     sec_adv_sees = 3
     sec_dec_sees = 1
 
@@ -44,6 +44,8 @@ class Subsession(BaseSubsession):
             for p in self.get_players():
                 p.participant.vars['m_l'] = []
                 p.participant.vars['m_t'] = []
+                p.participant.vars['num_correct_adv'] = []
+                p.participant.vars['num_extra_rounds'] = 0
 
         if self.round_number == 1:
             for g in self.get_groups():
@@ -97,11 +99,6 @@ class Subsession(BaseSubsession):
                         player.participant.vars['difficulty'] = 'Hard'
 
 
-
-
-
-
-
 class Group(BaseGroup):
     pass
 
@@ -114,4 +111,6 @@ class Player(BasePlayer):
     decision = models.StringField(choices=['LESS', 'MORE'])
     correct_advice = models.BooleanField()
     correct_decision = models.BooleanField()
-
+    correctness = models.BooleanField()
+    num_adv_incorrect = models.IntegerField()
+    num_extra_rounds = models.IntegerField()

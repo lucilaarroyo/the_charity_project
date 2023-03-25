@@ -93,7 +93,7 @@ class Subsession(BaseSubsession):
                 player.participant.vars['chosen_anonymity'] = ''
                 player.participant.vars['chosen_tasks_committed'] = 0
                 #change this depending if I want to show subsample choices to the participants
-                player.participant.vars['social_conformity'] = random.randint(0, 1)
+                player.participant.vars['social_conformity'] = 0
                     #random.randint(0, 1)
                 player.participant.vars['subsample_choices'] = {"ACTION AGAINST HUNGER":	19, "AIDS UNITED":	35,
                                                                 "ALIGHT":	21, "ALL HANDS AND HEARTS":	8,

@@ -3,11 +3,12 @@
 
 {% block title %}
     {% if round_num <= Constants.num_trial_rounds %}
-        Trial Round {{ round_num }} is about to begin
+        Trial Round {{ round_num }}
     {% endif %}
     {% if round_num > Constants.num_trial_rounds %}
-        Round {{ round_count }} is about to begin
+        Round {{ round_count }}
     {% endif %}
+<br><br>
 {% endblock %}
 
 {% block content %}
@@ -17,9 +18,9 @@
 
 {% block app_styles %}
 <style type="text/css">
-.otree-timer {
-        display: none;
-    }
+<!--.otree-timer {-->
+<!--        display: none;-->
+<!--    }-->
 
 .otree-body{
     max-width: 1280px;

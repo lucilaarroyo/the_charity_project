@@ -14,31 +14,47 @@
 {% block content %}<br><br>
 
     <p class="custom2">
-        The advice given was {{ advice }}.
-        {% if correct_advice == 0 %}
-            The advice was <b>INCORRECT</b>.
+        {% if adv_round == "TRIAL" and role == "Advisor" %}
+            Your advice was <b>{{ result }}</b>.
         {% endif %}
-        {% if correct_advice == 1 %}
-            The advice was <b>CORRECT</b>.
+        {% if adv_round == "TRIAL" and role == "Decider" %}
+            Your decision was <b>{{ result }}</b>.
         {% endif %}
-    </p>
-    <p class="custom2">
-        The decision submitted was {{ decision }}.
-        {% if correct_decision == 0 %}
-            The decision was <b>INCORRECT</b>.
+        {% if adv_round == "With" and role == "Advisor" %}
+            Your advice was <b>{{ result }}</b>.
+            {% if correctness == 0 %}
+                <br><br>
+                <b> The Decider will have to complete {{ round_mult }} extra rounds of the task.</b>
+            {% endif %}
         {% endif %}
-        {% if correct_decision == 1 %}
-            The decision was <b>CORRECT</b>.
+        {% if adv_round == "With" and role == "Decider" %}
+             The Advisor's advice was <b>{{ result }}</b>.
+            {% if correctness == 0 %}
+                <br><br>
+                <b>You will have to complete {{ round_mult }} extra rounds of the task.</b>
+            {% endif %}
         {% endif %}
+        {% if adv_round == "Without" and role == "Decider" %}
+            Your decision was <b>{{ result }}</b>.
+        {% endif %}
+        {% if adv_round == "Without" and role == "Advisor" %}
+            In this round the Decider will submit a decision without advice.
+        {% endif %}
+
     </p>
 
+
 <br><br><br>
-{% if round_num < Constants.num_trial_rounds %}
-    <p class="custom"> Click 'NEXT' to proceed to the next Trial Round <br> </p>
-{% elif round_num == Constants.num_trial_rounds %}
+<!--{% if round_num < Constants.num_trial_rounds %}-->
+<!--    <p class="custom"> Click 'NEXT' to proceed to the next Trial Round <br> </p>-->
+{% if round_num == Constants.num_trial_rounds %}
+    <p class="custom"> <b>This was the last Trial Round.</b>Click 'NEXT' to begin the task. <br> </p>
+{% endif %}
+<!--{% elif round_num < Constants.num_rounds %}-->
+<!--    <p class="custom"> Click 'NEXT' to proceed to the next Round <br> </p>-->
+<!--{% else %}-->
+{% if round_num == Constants.num_rounds %}
     <p class="custom"> Click 'NEXT' to proceed <br> </p>
-{% elif round_num < Constants.num_rounds %}
-    <p class="custom"> Click 'NEXT' to proceed to the next Round <br> </p>
 {% endif %}
         <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
 
@@ -74,16 +90,16 @@
 <script>
 
 
-addEventListener("click", function() {
-    var
-          el = document.documentElement
-        , rfs =
-               el.requestFullScreen
-            || el.webkitRequestFullScreen
-            || el.mozRequestFullScreen
-    ;
-    rfs.call(el);
-});
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
 
 </script>
 {% endblock %}

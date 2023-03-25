@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}<br>
+
+<p class="custom" align="justify"> <br>
+ Please, click "NEXT" when you are ready to begin the extra rounds.
+</p>
+
+
+
+<br>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+li{
+  margin: 10px 0;
+}
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 24px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+</script>
+{% endblock %}

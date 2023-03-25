@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+            Round {{ round_num }} Result
+
+{% endblock %}
+
+{% block content %}<br><br>
+
+    <p class="custom2">
+
+            Your decision was <b>{{ result }}</b>.
+
+    </p>
+
+
+<br><br><br>
+{% if round_num == num_extra_rounds %}
+    <p class="custom"> Click 'NEXT' to proceed <br> </p>
+{% endif %}
+        <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+
+
+
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+.custom0 {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+</script>
+{% endblock %}

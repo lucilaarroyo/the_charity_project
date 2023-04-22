@@ -3,7 +3,7 @@
 
 {% block title %}
     {% if round_num <= Constants.num_trial_rounds %}
-        Trial Round Result
+        Practice Round
     {% endif %}
     {% if round_num > Constants.num_trial_rounds %}
         Round {{ round_count }} Result
@@ -15,10 +15,10 @@
 
     <p class="custom2">
         {% if adv_round == "TRIAL" and role == "Advisor" %}
-            Your advice was <b>{{ result }}</b>.
+            This was a Practice Round.
         {% endif %}
         {% if adv_round == "TRIAL" and role == "Decider" %}
-            Your decision was <b>{{ result }}</b>.
+            This was a Practice Round.
         {% endif %}
         {% if adv_round == "With" and role == "Advisor" %}
             Your advice was <b>{{ result }}</b>.
@@ -46,9 +46,9 @@
 
 <br><br><br>
 <!--{% if round_num < Constants.num_trial_rounds %}-->
-<!--    <p class="custom"> Click 'NEXT' to proceed to the next Trial Round <br> </p>-->
+<!--    <p class="custom"> Click 'NEXT' to proceed to the next Practice Round <br> </p>-->
 {% if round_num == Constants.num_trial_rounds %}
-    <p class="custom"> <b>This was the last Trial Round.</b>Click 'NEXT' to begin the task. <br> </p>
+    <p class="custom"> <b>This was the last Practice Round.</b>Click 'NEXT' to begin the task. <br> </p>
 {% endif %}
 <!--{% elif round_num < Constants.num_rounds %}-->
 <!--    <p class="custom"> Click 'NEXT' to proceed to the next Round <br> </p>-->

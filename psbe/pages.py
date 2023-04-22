@@ -168,14 +168,14 @@ class SCA6(Page):
 
 
 page_sequence = [
-    # SIS,
-    # TY2,
+    SIS,
+    TY2,
     Introduction,
-    # Dem,
-    # SCA1,
-    # SCA2,
-    # SCA3,
-    # SCA4,
-    # SCA5,
-    # SCA6,
+    Dem,
+    SCA1,
+    SCA2,
+    SCA3,
+    SCA4,
+    SCA5,
+    SCA6,
 ]

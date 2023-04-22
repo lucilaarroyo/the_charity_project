@@ -17,28 +17,19 @@ Welcome!
 
 <p class="custom" align="justify">
     <br>
-    {% if role == 'Advisor' %}
-    You will be participating in two different studies.
-    Before you begin, we want you to fill out a couple of brief questionnaires, about your background and personality.
-    The total time of participation is about 30 minutes. <br><br><br>
+    To begin, we want you to fill out a couple of brief questionnaires about your background and personality.
+    You will then participate in two short tasks. The total time of participation is about 30 minutes.
+
+    <br><br><br>
 
     You may pace yourself and are encouraged to take short (20-second) breaks as needed.
-    You are free to stop the experiment at any time you wish; however, stopping before completing both studies means
+    <br><br><br>
+
+    You are free to stop the experiment at any time you wish; however, stopping before completing the study means
     that you will not receive course credit compensation.<br>
 
-    {% else %}
-    In this study you will be paired with another participant to complete an advice-decision task. On each round,
-    you will be shown various dots dispersed across the screen and have to estimate if the number of dots is above
-    or below 20. In half of the rounds you will have to make this decision on your own and in the other half you
-    will have to follow the advice of your partner. For the rounds in which your partner gives advice, if the advice
-    is incorrect, you will have to complete additional rounds of the same task on your own.
-    Before completing the task, we want you to fill out a couple of brief questionnaires, about your background and personality.  <br>
-    <br><br>
-    You may pace yourself and are encouraged to take short (20-second) breaks as needed.
-    You are free to stop the experiment at any time you wish; however, stopping before completing the study means that
-    you will not receive course credit compensation.
+
     <br>
-    {% endif %}
 </p>
 <br><br>
 <p class="custom">
@@ -49,12 +40,7 @@ Welcome!
 <br>
 
 <br>
-<p class="custom">
-    {% if role == 'Advisor' %}
-    Press "NEXT" to begin the first study.</p> <br>
-    {% else %}
-    Press "NEXT" to begin.
-    {% endif %}
+
     <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
 </div>
 {% endblock %}

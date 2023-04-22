@@ -1,0 +1,236 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+{{charity}} <br><br>
+Slider Task {{ round_num }}
+{% endblock %}
+{% block content %}
+<br>
+<p class="custom3"> You have 30 seconds to position all sliders at 50.</p>
+<br><br><br>
+
+{{ form.non_field_errors }}
+{{ form.S1.errors }}
+{{ form.S2.errors }}
+{{ form.S3.errors }}
+{{ form.S4.errors }}
+{{ form.S5.errors }}
+<div class="grid-container">
+
+    <div class="item item-1" style="margin-left:{{marg.0}}px">
+        <input type="range" min="0" max="100" value="0" name="S1" class="slider" id="S1"> <span id="value1" class="custom2"></span>
+
+
+    </div>
+
+    <div class="item item-2" style="margin-left:{{marg.1}}px">
+        <input type="range" min="0" max="100" value="0" name="S2" class="slider" id="S2"> <span id="value2" class="custom2"></span>
+
+    </div>
+
+    <div class="item item-3" style="margin-left:{{marg.2}}px">
+        <input type="range" min="0" max="100" value="0" name="S3" class="slider" id="S3"> <span id="value3" class="custom2"></span>
+
+    </div>
+
+    <div class="item item-4" style="margin-left:{{marg.3}}px">
+        <input type="range" min="0" max="100" value="0" name="S4" class="slider" id="S4"> <span id="value4" class="custom2"></span>
+
+
+    </div>
+
+    <div class="item item-5" style="margin-left:{{marg.4}}px">
+        <input type="range" min="0" max="100" value="0" name="S5" class="slider" id="S5"> <span id="value5" class="custom2"></span>
+
+    </div>
+
+
+
+
+</div>
+<br>
+<br>
+
+
+
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+.otree-body{
+    max-width: 1280px;
+}
+
+.custom {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom3 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1000px;
+  grid-template-rows: auto auto auto auto auto;
+  grid-column-gap: 50px;
+  grid-row-gap: 80px;
+  justify-content: center;
+  align-content: start;
+  margin-left: 140px;
+}
+
+.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.item-2 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.item-3 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.item-4 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.item-5 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+
+
+.slider{
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 400px; /* Full-width */
+  height: 10px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 5px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #008000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 5px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #008000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+
+
+var slider1 = document.getElementById("S1");
+var output1 = document.getElementById("value1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+
+var slider2 = document.getElementById("S2");
+var output2 = document.getElementById("value2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+var slider3 = document.getElementById("S3");
+var output3 = document.getElementById("value3");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}
+
+var slider4 = document.getElementById("S4");
+var output4 = document.getElementById("value4");
+output4.innerHTML = slider4.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+}
+
+var slider5 = document.getElementById("S5");
+var output5 = document.getElementById("value5");
+output5.innerHTML = slider5.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+}
+
+
+
+</script>
+{% endblock %}
+
+
+
+
+
+

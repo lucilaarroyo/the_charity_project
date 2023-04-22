@@ -30,12 +30,12 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 2,
     #     'app_sequence': ['Comp_sona', 'slider_task'],
     # },
-    # {
-    #     'name': 'psbe',
-    #     'display_name': "psb",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['psbe'],
-    # },
+    {
+        'name': 'sbe',
+        'display_name': "sbe",
+        'num_demo_participants': 4,
+        'app_sequence': ['psbe', 'sbe', 'edt', 'dt', 'st'],
+    },
     {
         'name': 'sbe',
         'display_name': "sb",

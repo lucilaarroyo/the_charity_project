@@ -1,0 +1,112 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div id="fs-request">
+    Thank you for completing the First Task!  <br><br>
+</div>
+
+Click below to start the Second Task
+
+{% endblock %}
+{% block content %}<br>
+<div id="fs-request">
+
+    <p class="custom2"> <button type="button" style="background-color: lightgreen" onclick="toggleFullScreen(document.documentElement);">BEGIN</button></p>
+ </div>
+<div id="fs-main-content" class="hide" >
+
+<p class="custom" align="justify">
+    <br>
+    In this task you will have the opportunity to gain real money for a charity.
+    <br>
+
+    <br><br>
+    <b>This task has two phases. You need to complete the first phase to earn course credit.
+    The second phase is optional and can last up to 20 minutes. The second phase will not be compensated with course
+        credit, instead, you would be donating your time and effort to gain money for a charity of your liking.</b>
+     <br>
+    <br><br>
+    <b>In the first phase, you will submit a donation commitment for each of {{num_charities}} charities.
+        To gain money for a charity, you will have to complete one or more slider tasks. </b>The
+        more tasks you complete correctly, the more money you will gain for the charity.
+    A donation commitment specifies how many slider tasks you would like to complete for a particular charity.
+    For each charity, you will be shown its name, a picture, and its mission, and you will be asked how many slider tasks you
+    want to commit to that charity.
+    <b>For each charity, you can commit to any number of slider tasks between 0 <i>(no tasks)</i> and {{ max_tasks }}. </b>
+    <br><br><br>
+
+
+
+    <b>In the second phase, one of your {{num_charities}} donation commitments will be randomly selected. </b>For the charity
+    chosen, you will be asked to perform your donation commitment. That is,
+    <b>you will only complete the tasks you commit to one of the {{num_charities}} charities</b>. Therefore, you should treat every
+    donation commitments as if it is the only one that counts (i.e., the one that will be selected),
+    instead of spreading the tasks commitments across charities.
+    All {{num_charities}} donation commitments have the same probability of being chosen.
+    <b>You will not be compensated with course credit for the time you spend performing the slider tasks you commit to.</b>
+
+
+    <br><br><br>
+
+    All charities selected for this task are highly rated
+    by Charity Navigator — a non-profit organization whose ratings seek to show donors
+    how efficiently a charity will use their support.
+
+
+    <br><br><br>
+    <b>The research team will send the money you gain, by correctly completing the slider tasks, to
+        your selected charity.</b>
+    <br><br>
+
+
+</p>
+<br><br>
+<br>
+
+<br>
+<p class="custom">
+    Press "NEXT" to learn more about the Slider Tasks.</p> <br>
+
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+</div>
+{% endblock %}
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.hide { display: none!important; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+
+
+var fsRequest = $('#fs-request');
+var fsContent = $('#fs-main-content');
+function toggleFullScreen(elem) {
+
+    fsRequest.addClass('hide');
+    fsContent.removeClass('hide');
+}
+
+
+
+
+
+</script>
+{% endblock %}

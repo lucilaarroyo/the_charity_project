@@ -115,47 +115,29 @@ class RoundResult(Page):
             'num_extra_rounds': self.player.participant.vars['num_extra_rounds'],
         }
 
+    # def app_after_this_page(self, upcoming_apps):
+    #     print('upcoming_apps is', upcoming_apps)
+    #     if self.subsession.round_number == self.player.participant.vars['num_extra_rounds']:
+    #         return "dt"
 
-class TaskResult(Page):
-    def is_displayed(self):
-        return self.subsession.round_number == self.player.participant.vars['num_extra_rounds']
 
-    def vars_for_template(self):
-        num_adv_rounds = Constants.num_actual_rounds/2
-        self.player.num_adv_incorrect = num_adv_rounds - self.player.participant.vars['num_correct_adv']
-
-        for p in self.player.get_others_in_group():
-            if self.player.participant.vars['num_correct_adv'] != p.participant.vars['num_correct_adv']:
-                check = "ERROR"
-            else:
-                check = "GOOD JOB"
-
-        self.player.num_extra_rounds = self.player.num_adv_incorrect * Constants.round_multiplier
-
-        if self.player.participant.vars['role'] == 'Decider':
-            self.player.participant.vars['num_extra_rounds'] = self.player.num_extra_rounds
-
-        return {
-            'num_actual_rounds': Constants.num_actual_rounds,
-            'num_adv_incorrect': self.player.num_adv_incorrect,
-            'round_multiplier': Constants.round_multiplier,
-            'num_extra_rounds': self.player.num_extra_rounds,
-            'check': check,
-
-        }
-
-    def app_after_this_page(self, upcoming_apps):
-        print('upcoming_apps is', upcoming_apps)
-        if self.player.participant.vars['role'] == 'Advisor':
-            return "dt"
+# class TaskResult(Page):
+#     def is_displayed(self):
+#         return self.subsession.round_number == self.player.participant.vars['num_extra_rounds']
+#
+#     def vars_for_template(self):
+#
+#         return {
+#
+#         }
 
 
 page_sequence = [
-    # Instructions,
+    Instructions,
     PreDots,
     Dots,
     Dec,
     RoundResult,
-    TaskResult,
+    # TaskResult,
 
 ]

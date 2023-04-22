@@ -309,7 +309,7 @@ class TaskResult(Page):
 
 
 page_sequence = [
-    # Instructions,
+    Instructions,
     WP,
     PreDots,
     Dots,

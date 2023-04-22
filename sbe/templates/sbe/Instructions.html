@@ -2,46 +2,69 @@
 {% load otree static %}
 
 {% block title %}
-Instructions
+<div id="fs-request">
+    Thank you for completing the questionnaires!  <br><br>
+</div>
+Click below to start the First Task
 {% endblock %}
 
 {% block content %}<br>
+<div id="fs-request">
+
+    <p class="custom2"> <button type="button" style="background-color: lightgreen" onclick="toggleFullScreen(document.documentElement);">BEGIN</button></p>
+ </div>
+<div id="fs-main-content" class="hide" >
 
 <p class="custom" align="justify"> <br>
-    <b>You have been paired with another participant to play an advice-decision task for {{ num_actual_rounds }} rounds.
-    The objective in each round is to figure out if the number of dots that are
-        presented on the screen is MORE or LESS than 20. The dots will appear on the screen for {{ dots_secs }}
-    second. </b> <br><br>
-    In the task, one of you has been randomly assigned the role of Advisor and the other the role of Decider.
+    For this task you have been paired with another participant to complete an advice-decision task for {{ num_actual_rounds }} rounds.
+    One of you has been randomly assigned the role of Advisor and the other the role of Decider. On each round,
+    both of you will be shown various dots dispersed across the screen and must estimate if the number of dots is LESS
+    or MORE than 20. The dots will appear on the screen for {{ dots_secs }}
+    {% is dots_secs == 1 %}
+    second.
+    {% else %}
+    seconds.
+    {% endif %}
+    <br>
+      <br><br>
+    In half of the rounds the Decider will make this decision on their own and in the other half the Advisor
+    will provide a recommendation that the Decider has to implement. For each incorrect advice submitted by the Advisor,
+    the Decider will have to complete {{ round_multiplier }} additional rounds of the same task on their own
+    once the original {{ num_actual_rounds }} have finished. The Advisor will not have to complete
+    any additional rounds in the task.
+     <br>
+      <br><br>
     <b>You have been assigned the role of {{ role }}</b>.
     <br><br>
 
     {% if role == "Decider" %}
-    In half of the rounds, you will make a decision about the number of dots on your own. In the other half, you
-    will have to follow the advice of the Advisor, selecting the option they believe is correct. After every round,
-    you will be told if the decision submitted was correct or incorrect.
+    In rounds without advice, you will be asked to submit a decision about the dots, and receive feedback about accuracy.
+    In rounds with advice, you will be shown the Advisor's recommendation, be forced to provide the answer given by the
+    Advisor, receive feedback about whether the advice was correct or not, and whether you will need to complete additional
+    rounds of the task as a result.
     {% else %}
-    In half of the rounds, the Decider will make the decision about the number of dots on their own. In the other half,
-    you will have to send them an advice of which option you believe is correct, and they will have to follow that
-    advice. After every round you give advice on, you will be told if your advice was correct or incorrect.
+    In rounds without advice, you will not be asked to submit a response. In rounds with advice, you will have to submit
+    a recommendation that will determine the Decider's decision for the round. The advice will be shown to the Decider,
+    who will be forced to submit the recommended response. After every advice round, you will be told if the advice was
+    correct or not, and whether the Decider will need to complete additional rounds of the task as a result.
+
     {% endif %}
     <br><br>
-    For every incorrect advice given by the Advisor, the Decider will have to complete {{ round_multiplier }} extra rounds
-    of the task by themselves once the original {{ num_actual_rounds }} rounds are completed. The Advisor will not have to complete
-    any extra rounds.
+    <b>You will not know if it is a round without or with advice until AFTER the dots are shown on the screen, so you will
+        need to pay attention to the screen in every round. </b>
 
 </p>
 <p class="custom">
-    You will now complete {{ num_trial_rounds }} trial rounds to get a better idea of the task before the official rounds
-    begin.
+    You will now complete {{ num_trial_rounds }} practice rounds to get a better sense of the task before the official rounds
+    begin. You will not be told whether your responses are correct or incorrect in the practice rounds.
 </p>
 
 
 
 <br>
-<p class="custom"> Press "NEXT" to begin the trial rounds.</p>
+<p class="custom"> Press "NEXT" to begin the Practice Rounds.</p>
     <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
-
+</div>
 {% endblock %}
 
 
@@ -59,6 +82,8 @@ li{
 	font-size: 24px;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.hide { display: none!important; }
 </style>
 {% endblock %}
 
@@ -76,6 +101,16 @@ li{
 <!--    ;-->
 <!--    rfs.call(el);-->
 <!--});-->
+
+
+
+var fsRequest = $('#fs-request');
+var fsContent = $('#fs-main-content');
+function toggleFullScreen(elem) {
+
+    fsRequest.addClass('hide');
+    fsContent.removeClass('hide');
+}
 
 </script>
 {% endblock %}

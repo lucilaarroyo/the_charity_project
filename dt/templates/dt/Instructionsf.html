@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Charity Donations Instructions <i>(continued)</i>
+{% endblock %}
+
+{% block content %}
+
+<p class="custom" align="justify">
+    <br><br>
+    <b> Each Slider Task can gain ${{ slider_value }} for the selected charity.</b>
+        To gain the money, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
+        Therefore, you will gain ${{slider_value}} for each Slider Task you perform correctly.
+    <br><br><br>
+    Remember:</p>
+    <ul class="custom" align="justify">
+
+
+    <li><b>Only one of your {{num_charities}} donation commitments will be selected at random for you to perform.</b>
+        Therefore, you should treat each donation commitment as being the one that will be selected.<br>
+    </li>
+
+    <li><b>The research team will send the charity the money you gain.</b>
+    </li>
+    </ul>
+<br>
+    <br><br>
+ <p class="custom" align="justify">
+     Note: You will see each charity one time. Once you submit a donation commitment, you will not be able to go back.
+</p>
+    <br><br><br>
+
+
+
+
+
+
+<p class="custom"> Press "NEXT" to begin.</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
+
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.custom2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    text-align: center;
+}
+
+.boxed {
+  border: 1px solid black ;
+  padding: 12px;
+
+
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+</script>
+{% endblock %}

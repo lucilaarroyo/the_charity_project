@@ -4,6 +4,66 @@ from .models import Constants
 import random
 
 
+class GWP(WaitPage):
+    template_name = 'sbe/GWP.html'
+    group_by_arrival_time = True
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def after_all_players_arrive(self):
+        self.group.get_player_by_id(1).participant.vars['role'] = random.choice(Constants.roles)
+        if self.group.get_player_by_id(1).participant.vars['role'] == Constants.roles[0]:
+            self.group.get_player_by_id(2).participant.vars['role'] = Constants.roles[1]
+        else:
+            self.group.get_player_by_id(2).participant.vars['role'] = Constants.roles[0]
+
+        # need to change if num_trial_rounds changes
+        dots_displayed_trial = [random.choice(Constants.num_dots_easy)] + random.choices(Constants.num_dots_hard, k=2)
+        random.shuffle(dots_displayed_trial)
+        for player in self.group.get_players():
+            player.participant.vars['dots_displayed_trial'] = dots_displayed_trial
+
+        #difficulty = random.choice(Constants.level)
+        difficulty = 'Hard'
+        w_wo_advice = ["Without", "With"] + random.sample(Constants.adv_rounds, (Constants.num_actual_rounds - 2))
+        for player in self.group.get_players():
+            player.participant.vars['difficulty'] = difficulty
+            player.participant.vars['adv_rounds'] = w_wo_advice
+
+        if difficulty == 'Easy':
+            dots_displayed_adv = random.choices(Constants.num_dots_easy, k=12) + random.choices(Constants.num_dots_hard, k=3)
+            random.shuffle(dots_displayed_adv)
+            dots_displayed_dec = random.choices(Constants.num_dots_easy, k=12) + random.choices(Constants.num_dots_hard, k=3)
+            random.shuffle(dots_displayed_dec)
+            for_dots_displayed = []
+            for i in w_wo_advice:
+                if i == 'With':
+                    for_dots_displayed.append(dots_displayed_adv[0])
+                    del dots_displayed_adv[0]
+                else:
+                    for_dots_displayed.append(dots_displayed_dec[0])
+                    del dots_displayed_dec[0]
+            for player in self.group.get_players():
+                player.participant.vars['dots_displayed'] = for_dots_displayed
+
+        else:
+            dots_displayed_adv = random.choices(Constants.num_dots_easy, k=3) + random.choices(Constants.num_dots_hard, k=12)
+            random.shuffle(dots_displayed_adv)
+            dots_displayed_dec = random.choices(Constants.num_dots_easy, k=3) + random.choices(Constants.num_dots_hard, k=12)
+            random.shuffle(dots_displayed_dec)
+            for_dots_displayed = []
+            for i in w_wo_advice:
+                if i == 'With':
+                    for_dots_displayed.append(dots_displayed_adv[0])
+                    del dots_displayed_adv[0]
+                else:
+                    for_dots_displayed.append(dots_displayed_dec[0])
+                    del dots_displayed_dec[0]
+            for player in self.group.get_players():
+                player.participant.vars['dots_displayed'] = for_dots_displayed
+
+
 class Instructions(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
@@ -34,8 +94,8 @@ class WP(WaitPage):
 
     def after_all_players_arrive(self):
         round_num = self.subsession.round_number
-        for_margins_left = range(30, 1240 + 1, 15)
-        for_margins_top = range(20, 720 + 1, 15)
+        for_margins_left = range(20, 1000 + 1, 12)
+        for_margins_top = range(20, 680 + 1, 12)
         if round_num <= Constants.num_trial_rounds:
             num_dots = self.group.get_player_by_id(1).participant.vars['dots_displayed_trial'][(round_num - 1)]
             margins_left = random.sample(for_margins_left, num_dots)
@@ -50,22 +110,6 @@ class WP(WaitPage):
             for p in self.group.get_players():
                 p.participant.vars['m_l'] = margins_left
                 p.participant.vars['m_t'] = margins_top
-        # if self.player.id_in_group == 1:
-        #     if round_num <= Constants.num_trial_rounds:
-        #         num_dots = self.player.participant.vars['dots_displayed_trial'][(round_num - 1)]
-        #         self.player.participant.vars['m_l'] = random.sample(for_margins_left, num_dots)
-        #         self.player.participant.vars['m_t'] = random.sample(for_margins_top, num_dots)
-        #         for pl in self.player.get_others_in_group():
-        #             pl.participant.vars['m_l'] = self.player.participant.vars['m_l']
-        #             pl.participant.vars['m_t'] = self.player.participant.vars['m_t']
-        #
-        #     else:
-        #         num_dots = self.player.participant.vars['dots_displayed'][(round_num - Constants.num_trial_rounds - 1)]
-        #         self.player.participant.vars['m_l'] = random.sample(for_margins_left, num_dots)
-        #         self.player.participant.vars['m_t'] = random.sample(for_margins_top, num_dots)
-        #         for pl in self.player.get_others_in_group():
-        #             pl.participant.vars['m_l'] = self.player.participant.vars['m_l']
-        #             pl.participant.vars['m_t'] = self.player.participant.vars['m_t']
 
 
 class PreDots(Page):
@@ -78,22 +122,6 @@ class PreDots(Page):
             self.player.num_of_dots = self.player.participant.vars['dots_displayed_trial'][(round_num - 1)]
         else:
             self.player.num_of_dots = self.player.participant.vars['dots_displayed'][(round_num - Constants.num_trial_rounds - 1)]
-        # for_margins_left = range(30, 1240 + 1, 15)
-        # for_margins_top = range(20, 720 + 1, 15)
-        # if self.player.id_in_group == 1:
-        #     if round_num <= Constants.num_trial_rounds:
-        #         num_dots = self.player.participant.vars['dots_displayed_trial'][(round_num - 1)]
-        #         self.player.participant.vars['m_l'] = random.sample(for_margins_left, num_dots)
-        #         self.player.participant.vars['m_t'] = random.sample(for_margins_top, num_dots)
-        #
-        #     else:
-        #         num_dots = self.player.participant.vars['dots_displayed'][(round_num - Constants.num_trial_rounds - 1)]
-        #         self.player.participant.vars['m_l'] = random.sample(for_margins_left, num_dots)
-        #         self.player.participant.vars['m_t'] = random.sample(for_margins_top, num_dots)
-        #
-        # if self.player.id_in_group == 2:
-        #     self.player.participant.vars['m_l'] = []
-        #     self.player.participant.vars['m_t'] = []
 
         return {
             'role': self.player.participant.vars['role'],
@@ -142,13 +170,12 @@ class Adv(Page):
 
     def before_next_page(self):
         if self.player.participant.vars['role'] == 'Advisor':
-            if self.player.num_of_dots < 20 and self.player.advice == 'LESS':
-                self.player.correct_advice = 1
-            elif self.player.num_of_dots > 20 and self.player.advice == 'MORE':
+            if self.player.num_of_dots == self.player.advice:
                 self.player.correct_advice = 1
             else:
                 self.player.correct_advice = 0
-        self.player.participant.vars['num_correct_adv'] += self.player.correct_advice
+        self.player.participant.vars['num_correct_adv'] = self.player.participant.vars['num_correct_adv'] + self.player.correct_advice
+
 
 class AWP(WaitPage):
     template_name = 'sbe/AWP.html'
@@ -175,6 +202,7 @@ class AdvDec(Page):
             'role': self.player.participant.vars['role'],
             'num_dots': self.player.num_of_dots,
             'advice': self.player.advice,
+            'num_cor_adv': self.player.participant.vars['num_correct_adv'],
         }
 
 
@@ -211,9 +239,7 @@ class Dec(Page):
         )
 
     def before_next_page(self):
-        if self.player.num_of_dots < 20 and self.player.decision == 'LESS':
-            self.player.correct_decision = 1
-        elif self.player.num_of_dots > 20 and self.player.decision == 'MORE':
+        if self.player.num_of_dots == self.player.decision:
             self.player.correct_decision = 1
         else:
             self.player.correct_decision = 0
@@ -263,7 +289,7 @@ class RoundResult(Page):
     def before_next_page(self):
         if self.subsession.round_number > Constants.num_trial_rounds and self.player.participant.vars['adv_rounds'][self.subsession.round_number - Constants.num_trial_rounds - 1] == "With":
             if self.player.participant.vars['role'] == 'Decider':
-                self.player.participant.vars['num_correct_adv'] += self.player.correctness
+                self.player.participant.vars['num_correct_adv'] = self.player.participant.vars['num_correct_adv'] + self.player.correctness
 
 
 class TRWP(WaitPage):
@@ -274,12 +300,15 @@ class TRWP(WaitPage):
 
 
 class TaskResult(Page):
+    form_model = 'player'
+    form_fields = ['performance']
+
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds
 
     def vars_for_template(self):
         num_adv_rounds = Constants.num_actual_rounds/2
-        self.player.num_adv_incorrect = num_adv_rounds - self.player.participant.vars['num_correct_adv']
+        self.player.num_adv_incorrect = int(num_adv_rounds) - self.player.participant.vars['num_correct_adv']
 
         for p in self.player.get_others_in_group():
             if self.player.participant.vars['num_correct_adv'] != p.participant.vars['num_correct_adv']:
@@ -309,6 +338,7 @@ class TaskResult(Page):
 
 
 page_sequence = [
+    GWP,
     Instructions,
     WP,
     PreDots,

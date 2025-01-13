@@ -8,14 +8,20 @@
 
 {% block content %}<br><br>
 
-    <p class="custom2">
-
-            Your compensation for participating in the study is 0.5 course credit.
+    <p class="custom2" align="justify">
+            {% if part_pool == "SONA" %}
+                Your compensation for participating in the study is 0.5 course credit.
+            {% elif part_pool == "ESSL" %}
+                Your compensation for participating in the study is ${{ Constants.comp_essl }}.
+            {% else %}
+                Your compensation for participating in the study is ${{ Constants.comp_prolific }}. <br>
+                <i>Completion code:</i> C7MXWP3B
+            {% endif %}
             <br>
 
     </p>
 
-    <br><br>
+    <br>
     <p class="custom2" align="justify"> The charity chosen is <b>{{ chosen_charity }}</b>.  </p>
 
     {% if cont == 'YES' %}
@@ -23,22 +29,29 @@
             You committed to perform
             <b>{{ chosen_tasks_committed }} task(s)</b> for this charity.
 
-            <br><br><br>
+            <br><br><br><br>
 
-            Please, click "NEXT" when you are ready to begin the Slider Tasks.
-            <br><br><br>
-            <i>Remember:</i></p>
-            <ul class="custom2" align="justify"> <li>
-            The time you spend completing the Slider Tasks
-            will not be compensated with course credit, instead, you will be donating your time and effort to gain
-            money for the charity.</li>
+
+            <b><i>Remember:</i></b></p>
+            <ul class="custom2" align="justify">
+                <li>
+                    {% if part_pool == "SONA" %}
+                        You will not receive additional course credit compensation for the time you spend completing the Slider Tasks,
+                        instead, you will be donating your time and effort to gain money for the charity.
+                    {% else %}
+                        You will not receive additional monetary compensation for the time you spend completing the Slider Tasks,
+                        instead, you will be donating your time and effort to gain money for the charity.
+                    {% endif %}
+                </li>
 
             <li>To gain the money from a Slider Task, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
-                <b>You will gain ${{slider_value}} for each Slider Task you perform correctly.</b></li>
+                You will gain ${{slider_value}} for each Slider Task you perform correctly.</li>
 
             </ul>
 
-<br><br><br>
+<br><br><br><br><br>
+<p class="custom2"> <b>Please, click "NEXT" to START the Slider Tasks.</b></p>
+            <br>
         <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
     {% endif %}
 
@@ -62,17 +75,24 @@
     max-width: 1280px;
 }
 
+ul {
+	line-height: 22pt;
+}
+
 .custom0 {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 

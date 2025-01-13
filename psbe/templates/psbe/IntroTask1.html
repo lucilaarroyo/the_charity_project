@@ -1,0 +1,101 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div id="fs-request">
+    Thank you for completing the questionnaires!  <br><br>
+</div>
+Click below to start the First Task
+{% endblock %}
+
+{% block content %}<br>
+<div id="fs-request">
+
+    <p class="custom2"> <button type="button" style="background-color: lightgreen" onclick="toggleFullScreen(document.documentElement);">BEGIN</button></p>
+ </div>
+<div id="fs-main-content" class="hide" >
+
+<p class="custom" align="justify"> <br>
+    <b>You will be paired with another participant to complete an advice-decision task for {{ num_paired_dot_rounds }} rounds.
+    One of you will be randomly assigned the role of Advisor and the other the role of Decider.</b>
+      <br><br><br>
+    <b>On each round, both of you will be shown various dots dispersed across the screen and must estimate
+        if the number of dots is equal to {{ num_dots_easy.0 }}, {{ num_dots_hard.0 }}, {{ num_dots_hard.1 }}, or
+        {{ num_dots_easy.1 }}.</b>
+    The dots will appear on the screen for {{ dots_secs }}
+    {% if dots_secs == 1 %}
+    second.
+    {% else %}
+    seconds.
+    {% endif %}
+    In half of the rounds the Decider will make this decision on their own and in the other half the Advisor
+    will provide an advice that the Decider will have to implement.
+      <br><br><br>
+     <b>For each incorrect advice submitted by the Advisor,
+         the Decider will have to complete {{ round_multiplier }} additional rounds of the same task on their own
+    once the original {{ num_paired_dot_rounds }} have finished. The Advisor will not have to complete
+    any additional rounds of the task.</b>
+     <br>
+      <br><br>
+
+
+<p class="custom" align="justify"> Press "NEXT" to be paired with another participant and learn more about your role. You might see a
+    blue bar on the screen as the study looks for a participant to pair you with (this might take a few minutes).
+    {% if part_pool == "PROLIFIC" %}
+    <br><i>(Please, do not click "NEXT" if you are planning to return the study.)</i>
+    {% endif %}
+</p>
+    <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
+</div>
+{% endblock %}
+
+
+{% block app_styles %}
+<style type="text/css">
+
+li{
+  margin: 10px 0;
+  line-height: 22pt;
+}
+.custom {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
+}
+.custom2 {
+	font-size: 24px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
+}
+
+.hide { display: none!important; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+<!--addEventListener("click", function() {-->
+<!--    var-->
+<!--          el = document.documentElement-->
+<!--        , rfs =-->
+<!--               el.requestFullScreen-->
+<!--            || el.webkitRequestFullScreen-->
+<!--            || el.mozRequestFullScreen-->
+<!--    ;-->
+<!--    rfs.call(el);-->
+<!--});-->
+
+
+
+var fsRequest = $('#fs-request');
+var fsContent = $('#fs-main-content');
+function toggleFullScreen(elem) {
+
+    fsRequest.addClass('hide');
+    fsContent.removeClass('hide');
+}
+
+</script>
+{% endblock %}

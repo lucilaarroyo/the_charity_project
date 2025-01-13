@@ -17,30 +17,17 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
 
-    # {
-    #     'name': 'Comp_sona',
-    #     'display_name': "Comp_sona",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['Comp_sona'],
-    # },
-
-    # {
-    #     'name': 'comp_and_slider',
-    #     'display_name': "comp_and_slider",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['Comp_sona', 'slider_task'],
-    # },
     {
-        'name': 'sbe',
-        'display_name': "sbe",
-        'num_demo_participants': 4,
-        'app_sequence': ['psbe', 'sbe', 'edt', 'dt', 'st'],
+        'name': 'comp_and_slider',
+        'display_name': "comp_and_slider",
+        'num_demo_participants': 2,
+        'app_sequence': ['Comp_sona', 'slider_task'],
     },
     {
         'name': 'sbe',
-        'display_name': "sb",
+        'display_name': "sbe",
         'num_demo_participants': 2,
-        'app_sequence': ['psbe', 'sbe'],
+        'app_sequence': ['psbe', 'sbe', 'edt', 'dt', 'st'],
     },
 
 

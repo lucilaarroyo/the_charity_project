@@ -15,6 +15,7 @@ class Introduction(Page):
         return {
             'num_charities': Constants.num_charities,
             'max_tasks': Constants.max_tasks,
+            'part_pool': self.player.participant.vars['part_pool'],
         }
 
 
@@ -29,6 +30,7 @@ class Instructions2(Page):
         return {
             'max_tasks': Constants.max_tasks,
             'slider_value': Constants.slider_value,
+            'part_pool': self.player.participant.vars['part_pool'],
         }
 
 
@@ -73,6 +75,7 @@ class Instructionsf(Page):
             'slider_value': Constants.slider_value,
             'max_tasks': Constants.max_tasks,
             'num_charities': Constants.num_charities,
+            'part_pool': self.player.participant.vars['part_pool'],
 
         }
 
@@ -90,6 +93,7 @@ class DT(Page):
             'round_num': self.subsession.round_number,
             'num_rounds': Constants.num_rounds,
             'max_tasks': Constants.max_tasks,
+            'part_pool': self.player.participant.vars['part_pool'],
 
         }
 
@@ -115,6 +119,7 @@ class ThankYou(Page):
             'chosen_charity': self.player.chosen_charity,
             'chosen_tasks_committed': self.player.chosen_tasks_committed,
             'slider_value': Constants.slider_value,
+            'part_pool': self.player.participant.vars['part_pool'],
         }
 
 

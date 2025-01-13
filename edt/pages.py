@@ -6,22 +6,23 @@ import random
 
 class Instructions(Page):
     def is_displayed(self):
-        return self.subsession.round_number == 1
+        return self.subsession.round_number == 1 and self.player.participant.vars['num_extra_rounds'] > 0
 
     def vars_for_template(self):
         self.player.difficulty = self.player.participant.vars['difficulty']
         self.player.num_extra_rounds = self.player.participant.vars['num_extra_rounds']
+
         if self.player.difficulty == 'Easy':
             num_easy_rounds = (2/3) * self.player.num_extra_rounds
             num_hard_rounds = (1/3) * self.player.num_extra_rounds
-            extra_dots_displayed = random.choices(Constants.num_dots_easy, k=num_easy_rounds) + random.choices(Constants.num_dots_hard, k=num_hard_rounds)
+            extra_dots_displayed = random.choices(Constants.num_dots_easy, k=int(num_easy_rounds)) + random.choices(Constants.num_dots_hard, k=int(num_hard_rounds))
             random.shuffle(extra_dots_displayed)
             self.player.participant.vars['extra_dots_displayed'] = extra_dots_displayed
         else:
             num_easy_rounds = (1 / 3) * self.player.num_extra_rounds
             num_hard_rounds = (2 / 3) * self.player.num_extra_rounds
-            extra_dots_displayed = random.choices(Constants.num_dots_easy, k=num_easy_rounds) + random.choices(
-                Constants.num_dots_hard, k=num_hard_rounds)
+            extra_dots_displayed = random.choices(Constants.num_dots_easy, k=int(num_easy_rounds)) + random.choices(
+                Constants.num_dots_hard, k=int(num_hard_rounds))
             random.shuffle(extra_dots_displayed)
             self.player.participant.vars['extra_dots_displayed'] = extra_dots_displayed
 
@@ -44,10 +45,10 @@ class PreDots(Page):
         round_num = self.subsession.round_number
         self.player.num_of_dots = self.player.participant.vars['extra_dots_displayed'][(round_num - 1)]
 
-        for_margins_left = range(30, 1240 + 1, 15)
-        for_margins_top = range(20, 720 + 1, 15)
-        self.player.participant.vars['m_l'] = random.sample(for_margins_left, self.player.num_dots)
-        self.player.participant.vars['m_t'] = random.sample(for_margins_top, self.player.num_dots)
+        for_margins_left = range(20, 1000 + 1, 12)
+        for_margins_top = range(20, 680 + 1, 12)
+        self.player.participant.vars['m_l'] = random.sample(for_margins_left, self.player.num_of_dots)
+        self.player.participant.vars['m_t'] = random.sample(for_margins_top, self.player.num_of_dots)
 
         return {
             'num_dots': self.player.num_of_dots,
@@ -89,9 +90,7 @@ class Dec(Page):
         }
 
     def before_next_page(self):
-        if self.player.num_of_dots < 20 and self.player.decision == 'LESS':
-            self.player.correct_decision = 1
-        elif self.player.num_of_dots > 20 and self.player.decision == 'MORE':
+        if self.player.num_of_dots == self.player.decision:
             self.player.correct_decision = 1
         else:
             self.player.correct_decision = 0
@@ -138,6 +137,5 @@ page_sequence = [
     Dots,
     Dec,
     RoundResult,
-    # TaskResult,
 
 ]

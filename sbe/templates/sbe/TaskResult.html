@@ -11,30 +11,76 @@
     <p class="custom2">
         {% if role == "Advisor" %}
             {% if num_adv_incorrect == 1 %}
-                You gave INCORRECT advice in <b>{{ num_adv_incorrect }} round</b>. Because of this, the Decider
-                will have to complete <b>{{ num_extra_rounds }} extra rounds</b> of the task by themselves.
+                You gave INCORRECT advice in {{ num_adv_incorrect }} round. Because of this, <b>the Decider
+                will have to complete {{ num_extra_rounds }} additional rounds of this task by themselves.</b>
             {% else %}
-                You gave INCORRECT advice in <b>{{ num_adv_incorrect }} rounds</b>. Because of this, the Decider
-                will have to complete <b>{{ num_extra_rounds }} extra rounds</b> of the task by themselves.
+                You gave INCORRECT advice in {{ num_adv_incorrect }} rounds. Because of this, <b>the Decider
+                will have to complete {{ num_extra_rounds }} additional rounds of this task by themselves.</b>
             {% endif %}
+            <br><br><br><br>
+        In a sample of 30 previous Advisors, the <b><i>average number of incorrect advice was 8.13</i></b>.
+
+
 
         {% endif %}
         {% if role == "Decider" %}
             {% if num_adv_incorrect == 1 %}
-                You received INCORRECT advice in <b>{{ num_adv_incorrect }} round</b>. Because of this, you
-                will have to complete <b>{{ num_extra_rounds }} extra rounds</b> of the task by yourself.
+                You received INCORRECT advice in {{ num_adv_incorrect }} round. Because of this, <b>you
+                will have to complete {{ num_extra_rounds }} additional rounds of this task by yourself.</b>
+                The Advisor can proceed to the Second Task.
             {% else %}
-                You received INCORRECT advice in <b>{{ num_adv_incorrect }} rounds</b>. Because of this, you
-                will have to complete <b>{{ num_extra_rounds }} extra rounds</b> of the task by yourself.
+                You received INCORRECT advice in {{ num_adv_incorrect }} rounds. Because of this, <b>you
+                will have to complete {{ num_extra_rounds }} additional rounds of this task by yourself.</b>
+                The Advisor can proceed to the Second Task.
             {% endif %}
+            <br><br><br><br>
+        In a sample of 30 previous Advisors, the <b><i>average number of incorrect advice was 8.13</i></b>.
+
         {% endif %}
 
     </p>
+<br><br><br><br><br>
 
 
-<br><br><br>
+    {{ form.non_field_errors }}
+    {{ form.performance.errors }}
+        {% if role == "Advisor" %}
+            <p class="custom">  How would you character your performance as Advisor? </p>
+            <table class="custom0" style="margin: 5px" cellpadding="15"  >
+                <tr >
+                    <td align=left><input type="radio" name="performance" value ="Very poor"> Very poor </td>
+                    <td align=left><input type="radio" name="performance" value ="Poor"> Poor </td>
+                    <td align=left><input type="radio" name="performance" value ="Neutral"> Neutral </td>
+                    <td align=left><input type="radio" name="performance" value ="Good"> Good </td>
+                    <td align=left><input type="radio" name="performance" value ="Very good"> Very good </td>
+                </tr>
+            </table>
 
+        {% endif %}
+
+        {% if role == "Decider" %}
+            <p class="custom"> How would you character the Advisor's performance? </p>
+            <table class="custom0" style="margin: 5px" cellpadding="15"  >
+                <tr >
+                    <td align=left><input type="radio" name="performance" value ="Very poor"> Very poor </td>
+                    <td align=left><input type="radio" name="performance" value ="Poor"> Poor </td>
+                    <td align=left><input type="radio" name="performance" value ="Neutral"> Neutral </td>
+                    <td align=left><input type="radio" name="performance" value ="Good"> Good </td>
+                    <td align=left><input type="radio" name="performance" value ="Very good"> Very good </td>
+                </tr>
+            </table>
+
+        {% endif %}
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+{% if role == "Advisor" %}
+    <p class="custom"> Click 'NEXT' to proceed to the Second Task <br> </p>
+{% endif %}
+{% if role == "Decider" %}
     <p class="custom"> Click 'NEXT' to proceed <br> </p>
+{% endif %}
 
         <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
 
@@ -49,17 +95,26 @@
     max-width: 1280px;
 }
 
-.custom0 {
+pre {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
+}
+
+.custom0 {
+	font-size: 19px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 

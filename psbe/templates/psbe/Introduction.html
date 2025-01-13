@@ -24,9 +24,15 @@ Welcome!
 
     You may pace yourself and are encouraged to take short (20-second) breaks as needed.
     <br><br><br>
-
-    You are free to stop the experiment at any time you wish; however, stopping before completing the study means
-    that you will not receive course credit compensation.<br>
+    {% if part_pool == "SONA"%}
+        You are free to stop the experiment at any time you wish; however, stopping before completing the study means
+        that you will not receive course credit compensation.<br>
+    {% elif part_pool == "ESSL" %}
+        You are free to stop the experiment at any time you wish.<br>
+    {% else %}
+        You are free to stop the experiment at any time you wish; however, stopping before completing the study means
+        that you will not receive monetary compensation.<br>
+    {% endif %}
 
 
     <br>
@@ -52,11 +58,13 @@ Welcome!
 .custom {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .custom2 {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .hide { display: none!important; }

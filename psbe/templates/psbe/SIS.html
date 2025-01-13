@@ -6,8 +6,13 @@
 
 {% block content %}
 <p align="center">
-<img src="{% static 'psbe/pics/SIS 1.jpeg' %}" width="100%">
-<img src="{% static 'psbe/pics/SIS 2.jpeg' %}" width="100%">
+    {% if part_pool == "SONA" %}
+        <img src="{% static 'psbe/pics/SIS 1.jpeg' %}" width="100%">
+        <img src="{% static 'psbe/pics/SIS 2.jpeg' %}" width="100%">
+    {% else %}
+        <img src="{% static 'psbe/pics/PAID 1.jpeg' %}" width="100%">
+        <img src="{% static 'psbe/pics/PAID 2.jpeg' %}" width="100%">
+    {% endif %}
 </p>
 <br><br>
 <ul class="custom2">
@@ -39,22 +44,15 @@ The study team would like your permission to contact you for future research. Pl
 </ul>
 
 
-<br>
-<p class="custom2" align="justify"> <b> IN THIS STUDY you may have the opportunity to gain real money for a charity of your choice.
-    The donation will be either Anonymous or Public depending on your decisions.
-    If you choose to make a Public donation, your name might be listed as a donor on The Charity Project's website
-    <i>(<a href="https://sites.google.com/view/thecharityproject/home" target="_blank">https://sites.google.com/view/thecharityproject/home</a>)</i>.
-</b></p>
 <br><br>
 
 
-<p class="custom2"> <b>HOW DO YOU AGREE TO PARTICIPATE IN THIS STUDY?</b><br>
+<p class="custom2" style="line-height: 20pt;"> <b>HOW DO YOU AGREE TO PARTICIPATE IN THIS STUDY?</b><br>
 <b>Participation in this study is voluntary.</b>  You may refuse to answer any question or discontinue your involvement at any time without penalty or loss of benefits to which you might otherwise be entitled.  Your decision will not affect your future relationship with UCI or your quality of care at the UCI Medical Center.
 <br><br>
 Selecting the "I agree to participate in the study" option indicates that you have read and consent to the information in this form.</p>
 {{ form.SIS.errors }}
 
-<br>
         <table class="custom2" style="margin: 15px" >
             <tr >
                 <td align=left><input type="radio" name="SIS" value ="1"> <b><i>I agree to participate in the study.</i></b><br><br></td>
@@ -64,6 +62,8 @@ Selecting the "I agree to participate in the study" option indicates that you ha
             </tr>
         </table>
 
+<br>
+<br>
 <br>
 <br>
 <p class="custom" > Press "NEXT" to submit your responses.</p><br>
@@ -80,21 +80,25 @@ Selecting the "I agree to participate in the study" option indicates that you ha
 pre{
     font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: justify;
+	line-height: 22pt;
 }
 
 ul {
     margin-top: 1em;
     margin-bottom: 3em;
+	line-height: 22pt;
 }
 
 

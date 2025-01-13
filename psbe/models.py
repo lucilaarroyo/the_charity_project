@@ -20,7 +20,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'psbe'
-    players_per_group = 2
+    players_per_group = None
     num_rounds = 6
 
     SubC_num = ["item item-1", "item item-2", "item item-3", "item item-4", "item item-5", "item item-6",
@@ -29,14 +29,20 @@ class Constants(BaseConstants):
 
     SCA = ['SCA1', 'SCA2', 'SCA3', 'SCA4', 'SCA5']
 
-    roles = ['Advisor', 'Decider']
-
+    num_paired_dot_rounds = 30
+    round_multiplier = 3
+    dots_secs = 1.5
+    num_dots_easy = [17, 23]
+    # num_dots_medium = [18, 22]
+    num_dots_hard = [19, 21]
 
 
 class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             for p in self.get_players():
+                # SONA, ESSL, PROLIFIC
+                p.participant.vars['part_pool'] = "PROLIFIC"
                 p.participant.vars['orderSubC'] = random.sample(Constants.SubC_num, 10)
                 p.participant.vars['orderSCA1'] = random.sample(Constants.sca_num, 2)
                 p.participant.vars['orderSCA2'] = random.sample(Constants.sca_num, 2)
@@ -51,16 +57,6 @@ class Subsession(BaseSubsession):
                     p.participant.vars['orderSCApages'] = p.participant.vars['orderSCA1to5'] + ['SCA6']
 
                 p.participant.vars['end_experiment'] = False
-
-            for group in self.get_groups():
-                group.get_player_by_id(1).participant.vars['role'] = random.choice(Constants.roles)
-                if group.get_player_by_id(1).participant.vars['role'] == Constants.roles[0]:
-                    group.get_player_by_id(2).participant.vars['role'] = Constants.roles[1]
-                else:
-                    group.get_player_by_id(2).participant.vars['role'] = Constants.roles[0]
-                for player in group.get_players():
-                    player.rolee = player.participant.vars['role']
-
 
 
 class Group(BaseGroup):
@@ -148,5 +144,4 @@ class Player(BasePlayer):
     e10 = models.IntegerField(choices=[1, 2, 3, 4, 5], widget=widgets.RadioSelectHorizontal())
     e11 = models.IntegerField(choices=[1, 2, 3, 4, 5], widget=widgets.RadioSelectHorizontal())
 
-    rolee = models.StringField()
 

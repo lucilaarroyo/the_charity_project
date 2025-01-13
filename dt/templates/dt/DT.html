@@ -13,11 +13,12 @@ Charity Donation Commitment ({{round_num}} of {{num_rounds}})
 
     </div>
 
-    <div class="item item-2">
+    <div class="item item-2"><br>
         <p class="custom3" align="justify"> <b>How many Slider Tasks would you like to perform to gain money for this charity?</b>
             </p>
+        <br>
         <p class="custom3" align="justify">You can choose any number between 0 and {{max_tasks}}. Please enter your commitment in the box below.</p>
-
+        <br>
         {{ form.non_field_errors }}
         {{ form.tasks_committed.errors }}
 
@@ -50,14 +51,17 @@ Charity Donation Commitment ({{round_num}} of {{num_rounds}})
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom3 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .grid-container {

@@ -27,6 +27,9 @@ class Constants(BaseConstants):
     max_tasks = 20
     slider_value = 1
 
+    comp_essl = 10
+    comp_prolific = 5
+
 
 class Subsession(BaseSubsession):
     def creating_session(self):

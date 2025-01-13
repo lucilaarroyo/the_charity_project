@@ -10,11 +10,11 @@ class SIS(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
-    # def vars_for_template(self):
-    #     self.player.participant.vars['time_start'] = time.time()
-    #     return {
-    #
-    #     }
+    def vars_for_template(self):
+        return {
+            'part_pool': self.player.participant.vars['part_pool']
+
+        }
 
     def before_next_page(self):
         if self.player.SIS == 0:
@@ -40,7 +40,7 @@ class Introduction(Page):
 
     def vars_for_template(self):
         return {
-            'role': self.player.rolee,
+            'part_pool': self.player.participant.vars['part_pool']
 
         }
 
@@ -167,6 +167,23 @@ class SCA6(Page):
         }
 
 
+class IntroTask1(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+
+        return {
+            'num_paired_dot_rounds': Constants.num_paired_dot_rounds,
+            'round_multiplier': Constants.round_multiplier,
+            'dots_secs': Constants.dots_secs,
+            'num_dots_easy': Constants.num_dots_easy,
+            'num_dots_hard': Constants.num_dots_hard,
+            'part_pool': self.player.participant.vars['part_pool'],
+
+        }
+
+
 page_sequence = [
     SIS,
     TY2,
@@ -178,4 +195,5 @@ page_sequence = [
     SCA4,
     SCA5,
     SCA6,
+    IntroTask1,
 ]

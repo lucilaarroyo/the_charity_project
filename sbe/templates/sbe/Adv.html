@@ -7,26 +7,27 @@
 
 {% block content %}
 <br><br>
-<div class="grid-container"> <br><br>
-    <div class="item item-0">
-    <p class="custom3"> Do you believe the number of dots shown in the previous screen was less or more than 20? </p>
 
+    <p class="custom3"> How many dots were displayed on the previous screen? </p>
+<br><br>
     {{ form.non_field_errors }}
     {{ form.advice.errors }}
-    </div>
-    <div class="item item-1">
 
-        <p class="custom" align="center"><input type="radio" name="advice" value="LESS" > <b>LESS</b> </p>
+        <table class="custom2" style="margin: 5px" >
+            <tr >
+                <td align=left><input type="radio" name="advice" value ="17"> 17<br><br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="advice" value ="19"> 19<br><br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="advice" value ="21"> 21<br><br></td>
+            </tr>
+            <tr >
+                <td align=left><input type="radio" name="advice" value ="23"> 23<br><br></td>
+            </tr>
+        </table>
 
-
-    </div>
-    <div class="item item-2">
-
-        <p class="custom" align="center"><input type="radio" name="advice" value="MORE" > <b>MORE</b> </p>
-
-
-    </div>
-</div>
 <br><br><br><br>
 <p class="custom"> Press "NEXT" to submit your advice.</p>
 <button class="otree-btn-next btn btn-primary" style="font-size:20px">NEXT</button>
@@ -42,21 +43,26 @@
 pre{
     font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
+
 }
 
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .custom2 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .custom3 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 table tr#ROWodd {background-color:#ededed;}
@@ -99,11 +105,11 @@ table tr#ROWeven {background-color:white;}
 }
 
 
-input[type=radio] {
-    border: 0px;
-    width: 100%;
-    height: 1em;
-}
+<!--input[type=radio] {-->
+<!--    border: 0px;-->
+<!--    width: 100%;-->
+<!--    height: 1em;-->
+<!--}-->
 
 .hide { display: none!important; }
 

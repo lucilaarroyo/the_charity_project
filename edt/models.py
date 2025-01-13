@@ -16,7 +16,7 @@ edt
 class Constants(BaseConstants):
     name_in_url = 'edt'
 
-    players_per_group = 1
+    players_per_group = None
 
     num_adv_rounds = 15
     round_multiplier = 3
@@ -25,10 +25,10 @@ class Constants(BaseConstants):
     level = ['Easy', 'Hard']
 
     num_dots_easy = [17, 23]
-    num_dots_medium = [18, 22]
+    # num_dots_medium = [18, 22]
     num_dots_hard = [19, 21]
 
-    dots_secs = 3
+    dots_secs = 1.5
 
 
 class Subsession(BaseSubsession):
@@ -46,7 +46,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     difficulty = models.StringField()
     num_of_dots = models.IntegerField()
-    decision = models.StringField(choices=['LESS', 'MORE'])
+    decision = models.IntegerField(choices=[17, 19, 21, 23])
     correct_decision = models.BooleanField()
     num_extra_rounds = models.IntegerField()
 

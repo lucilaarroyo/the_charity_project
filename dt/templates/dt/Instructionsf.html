@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-Charity Donations Instructions <i>(continued)</i>
+Instructions <i>(continued)</i>
 {% endblock %}
 
 {% block content %}
@@ -13,16 +13,23 @@ Charity Donations Instructions <i>(continued)</i>
         To gain the money, all five sliders have to be positioned exactly at 50 when the 30-second timer runs out.
         Therefore, you will gain ${{slider_value}} for each Slider Task you perform correctly.
     <br><br><br>
-    Remember:</p>
+    <i>Remember:</i></p>
     <ul class="custom" align="justify">
 
 
-    <li><b>Only one of your {{num_charities}} donation commitments will be selected at random for you to perform.</b>
-        Therefore, you should treat each donation commitment as being the one that will be selected.<br>
-    </li>
+        <li>Only one of your {{num_charities}} donation commitments will be selected at random for you to complete.
+            Therefore, you should treat each donation commitment as being the one that will be selected.<br>
+        </li>
+        <li>
+            {% if part_pool == "SONA" %}
+                You will not receive course credit compensation for the time you spend completing the Slider Tasks
+                you commit to.
+            {% else %}
+                You will not receive monetary compensation for the time you spend completing the Slider Tasks
+                you commit to.
+            {% endif %}
+        </li>
 
-    <li><b>The research team will send the charity the money you gain.</b>
-    </li>
     </ul>
 <br>
     <br><br>
@@ -45,14 +52,19 @@ Charity Donations Instructions <i>(continued)</i>
 {% block app_styles %}
 <style type="text/css">
 
+ul {
+	line-height: 22pt;
+}
 
 .custom {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .picture {

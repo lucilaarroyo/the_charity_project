@@ -2,69 +2,53 @@
 {% load otree static %}
 
 {% block title %}
-<div id="fs-request">
-    Thank you for completing the questionnaires!  <br><br>
-</div>
-Click below to start the First Task
+Instructions <i>(continued)</i>
+
 {% endblock %}
 
 {% block content %}<br>
-<div id="fs-request">
-
-    <p class="custom2"> <button type="button" style="background-color: lightgreen" onclick="toggleFullScreen(document.documentElement);">BEGIN</button></p>
- </div>
-<div id="fs-main-content" class="hide" >
 
 <p class="custom" align="justify"> <br>
-    For this task you have been paired with another participant to complete an advice-decision task for {{ num_actual_rounds }} rounds.
-    One of you has been randomly assigned the role of Advisor and the other the role of Decider. On each round,
-    both of you will be shown various dots dispersed across the screen and must estimate if the number of dots is LESS
-    or MORE than 20. The dots will appear on the screen for {{ dots_secs }}
-    {% is dots_secs == 1 %}
-    second.
+
+    {% if role == "Decider" %}
+    <b>YOU HAVE BEEN ASSIGNED THE ROLE OF: <span style="color:red">DECIDER</span></b>
     {% else %}
-    seconds.
+    <b>YOU HAVE BEEN ASSIGNED THE ROLE OF: <span style="color:red">ADVISOR</span></b>
     {% endif %}
     <br>
-      <br><br>
-    In half of the rounds the Decider will make this decision on their own and in the other half the Advisor
-    will provide a recommendation that the Decider has to implement. For each incorrect advice submitted by the Advisor,
-    the Decider will have to complete {{ round_multiplier }} additional rounds of the same task on their own
-    once the original {{ num_actual_rounds }} have finished. The Advisor will not have to complete
-    any additional rounds in the task.
-     <br>
-      <br><br>
-    <b>You have been assigned the role of {{ role }}</b>.
     <br><br>
 
     {% if role == "Decider" %}
-    In rounds without advice, you will be asked to submit a decision about the dots, and receive feedback about accuracy.
-    In rounds with advice, you will be shown the Advisor's recommendation, be forced to provide the answer given by the
-    Advisor, receive feedback about whether the advice was correct or not, and whether you will need to complete additional
+    <b>In rounds without advice, you will be asked to submit a decision about the dots and receive feedback about accuracy.
+    In rounds with advice, you will be shown the Advisor's advice and be forced to submit the recommended response.</b>
+    After every advice round, you will receive feedback about whether the advice was correct or not, and whether you will need to complete additional
     rounds of the task as a result.
+
     {% else %}
-    In rounds without advice, you will not be asked to submit a response. In rounds with advice, you will have to submit
-    a recommendation that will determine the Decider's decision for the round. The advice will be shown to the Decider,
+    <b>In rounds without advice, you will not be asked to submit a response. In rounds with advice, you will have to submit
+        an advice that will determine the Decider's decision for the round.</b> The advice will be shown to the Decider,
     who will be forced to submit the recommended response. After every advice round, you will be told if the advice was
     correct or not, and whether the Decider will need to complete additional rounds of the task as a result.
 
     {% endif %}
-    <br><br>
+    <br><br><br>
     <b>You will not know if it is a round without or with advice until AFTER the dots are shown on the screen, so you will
         need to pay attention to the screen in every round. </b>
 
 </p>
-<p class="custom">
+    <br><br>
+    <p class="custom" align="justify"> <i>Note: Whenever you see a blue bar at the top of the screen, it means the study is waiting for the
+        participant you have been paired with to reach the same page you are on before moving forward.</i></p>
+    <br><br>
+<p class="custom" align="justify">
     You will now complete {{ num_trial_rounds }} practice rounds to get a better sense of the task before the official rounds
     begin. You will not be told whether your responses are correct or incorrect in the practice rounds.
 </p>
 
 
-
-<br>
 <p class="custom"> Press "NEXT" to begin the Practice Rounds.</p>
     <button class="otree-btn-next btn btn-primary" style="font-size:20px"> NEXT </button>
-</div>
+
 {% endblock %}
 
 
@@ -73,14 +57,17 @@ Click below to start the First Task
 
 li{
   margin: 10px 0;
+  line-height: 22pt;
 }
 .custom {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 24px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 .hide { display: none!important; }

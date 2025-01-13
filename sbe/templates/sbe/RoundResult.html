@@ -3,7 +3,7 @@
 
 {% block title %}
     {% if round_num <= Constants.num_trial_rounds %}
-        Practice Round
+        Practice Round {{round_num}} of  {{ Constants.num_trial_rounds }}
     {% endif %}
     {% if round_num > Constants.num_trial_rounds %}
         Round {{ round_count }} Result
@@ -24,14 +24,14 @@
             Your advice was <b>{{ result }}</b>.
             {% if correctness == 0 %}
                 <br><br>
-                <b> The Decider will have to complete {{ round_mult }} extra rounds of the task.</b>
+                <b> The Decider will have to complete {{ round_mult }} additional rounds of the task.</b>
             {% endif %}
         {% endif %}
         {% if adv_round == "With" and role == "Decider" %}
              The Advisor's advice was <b>{{ result }}</b>.
             {% if correctness == 0 %}
                 <br><br>
-                <b>You will have to complete {{ round_mult }} extra rounds of the task.</b>
+                <b>You will have to complete {{ round_mult }} additional rounds of the task.</b>
             {% endif %}
         {% endif %}
         {% if adv_round == "Without" and role == "Decider" %}
@@ -45,14 +45,11 @@
 
 
 <br><br><br>
-<!--{% if round_num < Constants.num_trial_rounds %}-->
-<!--    <p class="custom"> Click 'NEXT' to proceed to the next Practice Round <br> </p>-->
+
 {% if round_num == Constants.num_trial_rounds %}
-    <p class="custom"> <b>This was the last Practice Round.</b>Click 'NEXT' to begin the task. <br> </p>
+    <p class="custom"> <b>This was the LAST Practice Round. <br><br>Click 'NEXT' to START THE FIRST OFFICIAL ROUND. </b><br> </p>
 {% endif %}
-<!--{% elif round_num < Constants.num_rounds %}-->
-<!--    <p class="custom"> Click 'NEXT' to proceed to the next Round <br> </p>-->
-<!--{% else %}-->
+
 {% if round_num == Constants.num_rounds %}
     <p class="custom"> Click 'NEXT' to proceed <br> </p>
 {% endif %}
@@ -72,14 +69,17 @@
 .custom0 {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 .custom2 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22pt;
 }
 
 
